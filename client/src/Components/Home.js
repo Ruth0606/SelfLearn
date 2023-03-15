@@ -3,10 +3,11 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css"; 
 import { MegaMenu } from 'primereact/megamenu';
- 
+import {useNavigate} from "react-router-dom"
 
 
 const Home=()=>{
+    const navigate = useNavigate();
     const items = [
         {
             label: 'מי אנחנו', icon: 'pi pi-fw pi-video',
@@ -122,6 +123,7 @@ const Home=()=>{
     ];
     return(
         <>
+        <button  onClick={()=>navigate("/Test")}>click me</button>
         {/* hello home */}
         {/* <MegaMenu model={[items, [
                     {

@@ -9,7 +9,7 @@ import { MegaMenu } from 'primereact/megamenu';
 const Home=()=>{
     const items = [
         {
-            label: 'Videos', icon: 'pi pi-fw pi-video',
+            label: 'מי אנחנו', icon: 'pi pi-fw pi-video',
             items: [
                 [
                     {
@@ -116,12 +116,19 @@ const Home=()=>{
                         items: [{ label: 'Setting 4.1' }, { label: 'Setting 4.2' }]
                     }
                 ]
+                
             ]
         }
     ];
     return(
         <>
         {/* hello home */}
+        {/* <MegaMenu model={[items, [
+                    {
+                        label: 'Technology 4',
+                        items: [{ label: 'Setting 4.1' }, { label: 'Setting 4.2' }]
+                    }
+                ]]} breakpoint="960px" style={{"backgroundColor":"lightblue"}} /> */}
         <MegaMenu model={items} breakpoint="960px" />
         </>
     )

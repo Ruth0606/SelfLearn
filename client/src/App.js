@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home';
-import Material from './Components/Material';
-import Select from './Components/SelectMaterial';
-import TirgulQ from './Components/TirgulQ';
+import Material from './Components/Tirgul/Material';
+import Select from './Components/Tirgul/SelectMaterial';
+import TirgulQ from './Components/Tirgul/TirgulQ';
 
 function App() {
   return (

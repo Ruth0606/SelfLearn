@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RadioButton } from "primereact/radiobutton";
 
-export default function TirgulQ() {
+export default function TirgulQ(props) {
     const categories = [
         { name: 'Accounting', key: 'A' },
         { name: 'Marketing', key: 'M' },
@@ -13,7 +13,8 @@ export default function TirgulQ() {
     return (
         <div className="card flex justify-content-center">
             <div className="flex flex-column gap-3" >
-            <span style={{"marginRight":"2%" }}>שאלה 1</span>
+            <span style={{"marginRight":"2%" }}>שאלה {props.num}:</span><br></br><br></br>
+            <span style={{"margin":"2%" }}>2+2= </span>
                 {categories.map((category) => {
                     return (
                         

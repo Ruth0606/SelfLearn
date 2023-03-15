@@ -4,15 +4,16 @@ import Home from './Components/Home';
 import Material from './Components/Tirgul/Material';
 import Select from './Components/Tirgul/SelectMaterial';
 import TirgulQ from './Components/Tirgul/TirgulQ';
-
+import Test from './Components/Test/Test';
 function App() {
   return (
     < >
     <div style={{"direction":"rtl"}}>
-    <Home/><br/>
+    {/* <Home/><br/>
     <Select/><br/>
     <Material/> <br/>
-   <TirgulQ/>
+   <TirgulQ/> */}
+   <Test/>
     </div>
     </>
   );

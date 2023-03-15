@@ -5,15 +5,40 @@ export default function Select() {
     const [value, setValue] = useState('');
     const [items, setItems] = useState([]);
 
+    const [value2, setValue2] = useState('');
+    const [items2, setItems2] = useState([]);
+
+    const [value3, setValue3] = useState('');
+    const [items3, setItems3] = useState([]);
+
+    const [value4, setValue4] = useState('');
+    const [items4, setItems4] = useState([]);
     const search = (event) => {
         let _items = [...Array(10).keys()];
         setItems(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items);
     }
+    const search2 = (event) => {
+        let _items2 = [...Array(10).keys()];
+        setItems2(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items2);
+    }
+    const search3= (event) => {
+        let _items3 = [...Array(10).keys()];
+        setItems3(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items3);
+    }
+    const search4 = (event) => {
+        let _items4 = [...Array(10).keys()];
+        setItems4(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items4);
+    }
 
     return (
-        <div className="card flex justify-content-center" style={{"marginLeft":"3%","marginRight":"3%"}} placeholder="בחר מקצוע">
-            <AutoComplete value={value} suggestions={items} completeMethod={search}  placeholder="בחר מקצוע" onChange={(e) => setValue(e.value)} dropdown />
+        <div className="card flex justify-content-center"  placeholder="בחר מקצוע">
+            <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value} suggestions={items} completeMethod={search}  placeholder="בחר כיתה" onChange={(e) => setValue(e.value)} dropdown />
+            <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value2} suggestions={items2} completeMethod={search2}  placeholder="בחר מקצוע" onChange={(e) => setValue2(e.value)} dropdown />
+            <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value3} suggestions={items3} completeMethod={search3}  placeholder="בחר נושא" onChange={(e) => setValue3(e.value)} dropdown />
+            <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value4} suggestions={items4} completeMethod={search4}  placeholder="בחר רמה" onChange={(e) => setValue4(e.value)} dropdown />
+
         </div>
+        
     )
 }
 // import React, { useState } from "react";

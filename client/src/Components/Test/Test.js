@@ -5,27 +5,27 @@ export default function Test() {
     var k=[1,2,3,4,5,6,7,8,9,10]
 
 
-    async function fetchData() {
-        useGetData('https://jsonplaceholder.typicode.com/posts',3)
-      }
+    // async function fetchData() {
+    //     useGetData('https://jsonplaceholder.typicode.com/posts',3)
+    //   }
       
-    //   useEffect(() => {
-    //     fetchData();
-    //   }, []);
+    // //   useEffect(() => {
+    // //     fetchData();
+    // //   }, []);
       
-    async function postData() {
-        try {
-          const data = {
-            title: 'foo',
-            body: 'bar',
-            userId: 1
-          };
-          const response = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
-          console.log(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      }
+    // async function postData() {
+    //     try {
+    //       const data = {
+    //         title: 'foo',
+    //         body: 'bar',
+    //         userId: 1
+    //       };
+    //       const response = await axios.post('https://jsonplaceholder.typicode.com/posts', data);
+    //       console.log(response.data);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
       
 
     return (

@@ -4,7 +4,7 @@ import Home from './Components/Home';
 import Material from './Components/Tirgul/Material';
 import Select from './Components/Tirgul/SelectMaterial';
 import TirgulQ from './Components/Tirgul/TirgulQ';
-
+import Login from './Components/Login/Login'
 function App() {
   return (
     < >
@@ -12,7 +12,8 @@ function App() {
     <Home/><br/>
     <Select/><br/>
     <Material/> <br/>
-   <TirgulQ/>
+   <TirgulQ/><br/>
+   <Login/>
     </div>
     </>
   );

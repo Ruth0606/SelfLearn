@@ -27,6 +27,9 @@ function App() {
     <Material/> <br/>
     <TirgulQ/> */}
     {/* <Test></Test> */}
+
+    <Login></Login>
+
     {/* <Login></Login> */}
     </div>
     </>

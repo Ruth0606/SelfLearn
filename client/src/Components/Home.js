@@ -4,9 +4,12 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css"; 
 import { MegaMenu } from 'primereact/megamenu';
 import {useNavigate} from "react-router-dom"
+import useGetData from '../Hooks/useGetData'
 
 
 const Home=()=>{
+   // useGetData("localhost:8000/user/visit",1)
+    console.log("ghf")
     const navigate = useNavigate();
     const items = [
         {

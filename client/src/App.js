@@ -12,7 +12,7 @@ function App() {
   return (
     < >
     <div style={{"direction":"rtl"}}>
-
+    
     <Router>
            <div className="App">
            <Routes>
@@ -22,8 +22,8 @@ function App() {
           </div>
        </Router>
 
-    {/* <Home/><br/>
-    <Select/><br/>
+    {/* <Home/><br/> */}
+    {/* <Select/><br/>
     <Material/> <br/>
     <TirgulQ/> */}
     {/* <Test></Test> */}

@@ -1,4 +1,6 @@
-const useGetData=async(url,param)=>{
+import axios from 'axios';
+
+export default async function useGetData(url,param){
 
     try {
         const response = await axios.get(`${url}/${param}`);

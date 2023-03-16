@@ -27,11 +27,10 @@ function App() {
     <Material/> <br/>
     <TirgulQ/> */}
     {/* <Test></Test> */}
-<<<<<<< HEAD
+
     <Login></Login>
-=======
+
     {/* <Login></Login> */}
->>>>>>> 8c43b4559fb6bab5235eb9a8ff3ec3aef245c26b
     </div>
     </>
   );

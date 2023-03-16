@@ -126,7 +126,7 @@ const Home=()=>{
     ];
     return(
         <>
-        <button  onClick={()=>navigate("/Test")}>click me</button>
+        {/* <button  onClick={()=>navigate("/Test")}>click me</button> */}
         {/* hello home */}
         {/* <MegaMenu model={[items, [
                     {

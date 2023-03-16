@@ -1,5 +1,5 @@
 import React from "react";
-import TirgulQ from "../Tirgul/TirgulQ";
+import TirgulQ from "../tirgul/TirgulQ";
 
 export default function Test() {
     var k=[1,2,3,4,5,6,7,8,9,10]

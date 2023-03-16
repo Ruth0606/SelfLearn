@@ -15,8 +15,8 @@ function App() {
     <Select/><br/>
     <Material/> <br/>
     <TirgulQ/> */}
-    <Test></Test>
-    {/* <Login></Login> */}
+    {/* <Test></Test> */}
+    <Login></Login>
     </div>
     </>
   );

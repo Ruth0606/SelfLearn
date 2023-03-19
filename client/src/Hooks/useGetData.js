@@ -3,7 +3,11 @@ import React, { useState, useEffect } from 'react';
 import useAxios from 'axios-hooks'
 
  const useGetData=(url)=> {
-  const [{ data, loading, error }, refetch] = useAxios(url);
+ const [{ data, loading, error }, refetch] = useAxios(url);
+
+  console.log("url",url) ;
+  console.log("ccc",data) ;
+
   useEffect(() => { console.log("error", error); }, [error]);
   return { data, loading, error, refetch }
   // try {

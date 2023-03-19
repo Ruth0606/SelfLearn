@@ -75,7 +75,6 @@ class StudentDataAccessor {
         
             }
           });
-         console.log(req.user);
 
         const match = await bcrypt.compare(password1,found.password)
         if (match)

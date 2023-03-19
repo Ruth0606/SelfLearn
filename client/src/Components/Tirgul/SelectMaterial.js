@@ -12,6 +12,8 @@ export default function SelectMaterial() {
   const [flagClass, setflagClass] = useState(true);
   const [flagSubject, setflagSubject] = useState(true);
   const [flagSubsubject, setflagSubsubject] = useState(true);
+  const [flagLevel, setflagLevel] = useState(false);
+
 
   const [selectedClass, setSelectedClass] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -21,7 +23,7 @@ export default function SelectMaterial() {
   const [arrsubjects, setArrsubjects] = useState([]);
   const [arrsubsubjects, setArrsubsubjects] = useState([]);
   const [arrlevels, setArrlevels] = useState([]);
-  const [f, setf] = useState(false);
+
 
   //useEffect(()=>setf(true),[selectedlevel])
 
@@ -175,7 +177,7 @@ export default function SelectMaterial() {
         value={selectedlevel}
         onChange={(e) => {
           setSelectedlevel(e.value);
-          setf(true);
+          setflagLevel(true);
           idlevel = e.value.idlevel;
         }}
         options={arrlevels}
@@ -184,7 +186,9 @@ export default function SelectMaterial() {
         className="p-invalid w-full md:w-14rem"
         style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%"}}
       />
-      {/* {f && <GetPageQ idlevel={idlevel}></GetPageQ>} */}
+      {console.log(flagLevel)}
+      {flagLevel && <div>eedsdssssa</div>}
+      {flagLevel && <GetPageQ idlevel={selectedlevel.idlevel}></GetPageQ>}
     </div>
   );
 }

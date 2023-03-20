@@ -192,7 +192,7 @@ export default function SelectMaterial() {
       {/* {console.log(flagLevel)} */}
       {flagLevel && <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
      
-      {flagLevel && <GetPageQ idlevel={selectedlevel.idlevel}></GetPageQ>}
+      {flagLevel && <GetPageQ idlevel={selectedlevel.idlevel} type={1}></GetPageQ>}
     </div>
   );
 }

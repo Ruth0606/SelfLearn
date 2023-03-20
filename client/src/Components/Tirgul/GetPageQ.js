@@ -13,39 +13,39 @@ export default function GetPageQ(props) {
 
   console.log("props.idlevel", props.idlevel);
   const { getDataFunc } = useDataFunctions();
-  const[flag, setflag] = useState(false);
+  const [flag, setflag] = useState(false);
   // const {
   //   data: data,
   //   error,
   //   loading,
   //   refetch,
   // } = useGetData(`http://localhost:8000/question/1/${props.idlevel}`);
-  useEffect(()=>{console.log("flag",flag)},flag)
-useEffect(()=>{
-  console.log("2222222222222222222222222222222222222222222222222222222222222222222")
-  getDataFunc(`http://localhost:8000/question/1/${props.idlevel}`).then(
-    (data1) => {
-    setdata(data1);
-      data1.forEach((element) => {
-        const idquestion = element.idquestion;
-        getDataFunc(
-          `http://localhost:8000/answer/byidquestion/${idquestion}`
-        ).then((data2) => {
-          //dataAnswer.push(data2);
-          // let arr=dataAnswer
-          // arr.push(data2)
-          console.log({data2})
-          setdataAnswer(dataAnswer)
-          console.log({dataAnswer})
+  // useEffect(()=>{console.log("flag",flag)},flag)
+  useEffect(() => {
+    let arr = []
+    console.log("2222222222222222222222222222222222222222222222222222222222222222222")
+    getDataFunc(`http://localhost:8000/question/${props.type}/${props.idlevel}`).then(
+      (data1) => {
+        setdata(data1);
+        data1.forEach((element) => {
+          const idquestion = element.idquestion;
+          getDataFunc(
+            `http://localhost:8000/answer/byidquestion/${idquestion}`
+          ).then((data2) => {
+            // dataAnswer.push(data2);
+
+            arr.push(data2)
+            console.log({ data2 })
+            setdataAnswer(arr)
+            console.log({ dataAnswer })
+          });
         });
-      });
-      console.log("dataAnswer", dataAnswer)
-      setflag(true);
-      console.log("ffffffff", flag);
-      console.log(dataAnswer.length)
-    }
-  );
-},[])
+        console.log("dataAnswer", dataAnswer)
+        setflag(true);
+        // console.log("ffffffff", flag);
+      }
+    );
+  }, [])
 
   // useEffect(() => {
 
@@ -68,25 +68,29 @@ useEffect(()=>{
   //   }
   // }, [data]);
 
-  var k = [1, 2]//, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
 
   return (
-    
-    dataAnswer.length>0 && <div style={{ margin: "3%", textAlign: "right" }}>
-      {k.map((val) => {
-        console.log("dataAnswer in return", dataAnswer)
-        console.log("data in return", data)
-        console.log("111111", data[val - 1]);
-        console.log("2222222", dataAnswer[val - 1]);
-        console.log("333", val);
+
+     
+    <div style={{ margin: "3%", textAlign: "right" }}>
+      {dataAnswer.length > 0 && dataAnswer.map((val,i) => {
+
+        // console.log("dataAnswer in return", dataAnswer)
+        // console.log("data in return", data)
+        // console.log("111111", data[val - 1]);
+        // console.log("2222222", dataAnswer[val-1]);
+        // console.log("333", val);
         return (
           flag && (
             <TirgulQ
-              num={val}
-              quest={data[val - 1]}
-              categories={dataAnswer[val - 1]}
+              // key={val}
+              num={i+1}
+              quest={data[i]}
+              categories={val}
             ></TirgulQ>
           )
+          // <h1>gftgh</h1>
         );
       })}
     </div>

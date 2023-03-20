@@ -1,9 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
 import useAxios from 'axios-hooks'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import useAxios from 'axios-hooks'
 
  const useGetData=(url)=> {
   const [{ data, loading, error }, refetch] = useAxios(url);

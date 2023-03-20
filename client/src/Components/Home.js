@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css"; 
 import { MegaMenu } from 'primereact/megamenu';
 import {useNavigate} from "react-router-dom"
 import useGetData from '../Hooks/useGetData'
+import GetPageQ from './tirgul/GetPageQ';
 
 
 const Home=()=>{
-   // useGetData("localhost:8000/user/visit",1)
-    console.log("ghf")
+    useGetData("http://localhost:8000/user/2")
     const navigate = useNavigate();
     const items = [
         {
@@ -126,7 +126,6 @@ const Home=()=>{
     ];
     return(
         <>
-        <button  onClick={()=>navigate("/Test")}>click me</button>
         {/* hello home */}
         {/* <MegaMenu model={[items, [
                     {
@@ -135,6 +134,8 @@ const Home=()=>{
                     }
                 ]]} breakpoint="960px" style={{"backgroundColor":"lightblue"}} /> */}
         <MegaMenu model={items} breakpoint="960px" />
+        <button onClick={()=>navigate("/Tirgul")}>למעבר לתרגול</button>
+     
         </>
     )
 }

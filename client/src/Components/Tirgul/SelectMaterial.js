@@ -4,6 +4,8 @@ import TirgulQ from "./TirgulQ";
 import useGetData from "../../Hooks/useGetData";
 import GetPageQ from "./GetPageQ";
 import { useDataFunctions } from "../../Hooks/useDataFunctions";
+import "../styles/Tirgul.css"
+import Material from "./Material";
 
 export default function SelectMaterial() {
   const { getDataFunc } = useDataFunctions();
@@ -27,20 +29,20 @@ export default function SelectMaterial() {
 
   //useEffect(()=>setf(true),[selectedlevel])
 
-  const classes = [
-    { name: "New York", code: "NY" },
-    { name: "Rome", code: "RM" },
-    { name: "London", code: "LDN" },
-    { name: "Istanbul", code: "IST" },
-    { name: "Paris", code: "PRS" },
-  ];
-  const classes2 = [
-    { name: "b", code: "NY" },
-    { name: "d", code: "RM" },
-    { name: "g", code: "LDN" },
-    { name: "i", code: "IST" },
-    { name: "o", code: "PRS" },
-  ];
+  // const classes = [
+  //   { name: "New York", code: "NY" },
+  //   { name: "Rome", code: "RM" },
+  //   { name: "London", code: "LDN" },
+  //   { name: "Istanbul", code: "IST" },
+  //   { name: "Paris", code: "PRS" },
+  // ];
+  // const classes2 = [
+  //   { name: "b", code: "NY" },
+  //   { name: "d", code: "RM" },
+  //   { name: "g", code: "LDN" },
+  //   { name: "i", code: "IST" },
+  //   { name: "o", code: "PRS" },
+  // ];
   //let arrclasses = [];
  // let arrsubjects = [];
   const {
@@ -61,10 +63,10 @@ export default function SelectMaterial() {
   //     // console.log(classes2)
 
   useEffect(() => {
-    console.log("selectedClass", selectedClass);
+    //console.log("selectedClass", selectedClass);
     if (selectedClass != null) {
-      console.log("selectedClass", selectedClass);
-      console.log("dataClass", dataClass);
+      // console.log("selectedClass", selectedClass);
+      // console.log("dataClass", dataClass);
 
       //   const arr = dataClass.filter(
       //     (el) => el.description == selectedClass.description
@@ -73,12 +75,12 @@ export default function SelectMaterial() {
       const idclass = selectedClass.idclass;
       getDataFunc(`http://localhost:8000/data/subject/${idclass}`).then(
         (data) => {
-          console.log(data);
+          // console.log(data);
           setArrsubjects (data) ;
           // data.forEach(element => {
           //     arrsubjects.push({"description":element.description,"id":element.id})
           // });
-          console.log("arrsubjects", arrsubjects);
+          // console.log("arrsubjects", arrsubjects);
         }
       );
       //const { data: dataSubject, error,  loading,refetch,} = useGetData(`http://localhost:8000/data/subject/${idclass}`);
@@ -103,9 +105,9 @@ export default function SelectMaterial() {
       const idsubject = selectedSubject.idsubject;
       getDataFunc(`http://localhost:8000/data/subsubject/${idsubject}`).then(
         (data) => {
-          console.log(data);
+         
           setArrsubsubjects (data) ;
-          console.log("setArrsubsubjects", arrsubsubjects);
+         // console.log("setArrsubsubjects", arrsubsubjects);
         }
       );
     }
@@ -118,9 +120,9 @@ export default function SelectMaterial() {
       const idsubsubject = selectedSubsubject.idsubsubject;
       getDataFunc(`http://localhost:8000/data/level/${idsubsubject}`).then(
         (data) => {
-          console.log(data);
+        
           setArrlevels (data) ;
-          console.log("setArrsubsubjects", arrsubsubjects);
+          //console.log("setArrsubsubjects", arrsubsubjects);
         }
       );
     }
@@ -130,20 +132,21 @@ export default function SelectMaterial() {
   return loading ? (
     <div>loading</div>
   ) : (
-    <div className="card flex justify-content-center" style={{ margin: "3%" }}>
+    <div className="card flex justify-content-center" style={{ margin: "3%"}}>
       {dataClass.length && (
         <Dropdown
+      
           value={selectedClass}
           onChange={(e) => {
             setSelectedClass(e.value);
             setflagClass(false);
-            console.log(e.value);
+            //console.log(e.value);
           }}
           options={dataClass}
           optionLabel="description"
           placeholder="בחר כיתה"
-          className="p-invalid w-full md:w-14rem"
-          style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%"}}
+          className="Dropdown"
+          style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%",backgroundColor:" #f9f9f9 ",borderColor: "#4CAF50"}}
         />
       )}
       <Dropdown
@@ -156,7 +159,7 @@ export default function SelectMaterial() {
         options={arrsubjects}
         optionLabel="description"
         placeholder="בחר מקצוע"
-        className="p-invalid w-full md:w-14rem"
+        className="Dropdown"
         style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%"}}
       />
       <Dropdown
@@ -169,7 +172,7 @@ export default function SelectMaterial() {
         options={arrsubsubjects}
         optionLabel="description"
         placeholder="בחר נושא"
-        className="p-invalid w-full md:w-14rem"
+        className="Dropdown"
         style={{ marginLeft: "3%", marginRight: "3%",width:"15%" }}
       />
       <Dropdown
@@ -183,12 +186,13 @@ export default function SelectMaterial() {
         options={arrlevels}
         optionLabel="description"
         placeholder="בחר רמה"
-        className="p-invalid w-full md:w-14rem"
+        className="Dropdown"
         style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%"}}
       />
-      {console.log(flagLevel)}
-      {flagLevel && <div>eedsdssssa</div>}
-      {flagLevel && <GetPageQ idlevel={selectedlevel.idlevel}></GetPageQ>}
+      {/* {console.log(flagLevel)} */}
+      {flagLevel && <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
+     
+      {/* {flagLevel && <GetPageQ idlevel={selectedlevel.idlevel}></GetPageQ>} */}
     </div>
   );
 }

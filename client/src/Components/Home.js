@@ -134,6 +134,7 @@ const Home=()=>{
                 ]]} breakpoint="960px" style={{"backgroundColor":"lightblue"}} /> */}
         <MegaMenu model={items} breakpoint="960px" />
         <button onClick={()=>navigate("/Tirgul")}>למעבר לתרגול</button>
+     
         </>
     )
 }

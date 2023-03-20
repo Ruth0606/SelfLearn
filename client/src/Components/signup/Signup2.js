@@ -12,6 +12,10 @@ export default function Signup() {
         <div class="login-page">
             <h1>הרשמה לLetTargel</h1>
             <div class="form">
+                <form class="register-form">
+
+
+                </form>
                 {/* <div className="card flex justify-content-center" >
                     <InputText value={value} onChange={(e) => setValue(e.target.value)} style={{ borderWidth: 1, borderStyle: "dotted", borderColor: "#dbdada", borderRadius: "0.25rem" }} placeholder="שם"/>
                 </div> */}
@@ -30,16 +34,3 @@ export default function Signup() {
         </div>
     )
 }
-
-// import React, { useState } from "react";
-// import { InputText } from "primereact/inputtext";
-
-// export default function BasicDemo() {
-//     const [value, setValue] = useState('');
-
-//     return (
-//         <div className="card flex justify-content-center">
-//             <InputText value={value} onChange={(e) => setValue(e.target.value)} />
-//         </div>
-//     )
-// }

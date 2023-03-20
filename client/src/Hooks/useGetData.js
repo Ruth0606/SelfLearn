@@ -1,12 +1,13 @@
-import axios from 'axios';
+
 import React, { useState, useEffect } from 'react';
 import useAxios from 'axios-hooks'
+import axios from 'axios';
 
  const useGetData=(url)=> {
  const [{ data, loading, error }, refetch] = useAxios(url);
 
-  console.log("url",url) ;
-  console.log("ccc",data) ;
+  // console.log("url",url) ;
+  // console.log("ccc",data) ;
 
   useEffect(() => { console.log("error", error); }, [error]);
   return { data, loading, error, refetch }
@@ -18,4 +19,4 @@ import useAxios from 'axios-hooks'
   //   console.log(error);
   // }
 }
-export default useGetData
+export default useGetData;

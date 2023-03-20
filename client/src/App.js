@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home';
-import Material from './Components/Tirgul/Material';
-import Select from './Components/Tirgul/SelectMaterial';
-import TirgulQ from './Components/Tirgul/TirgulQ';
-import Test from './Components/Test/Test';
-import Login from './Components/Login/Login';
+import Material from './Components/tirgul/Material';
+import Select from './Components/tirgul/SelectMaterial';
+import TirgulQ from './Components/tirgul/TirgulQ';
+import Test from './Components/test/Test';
+import Login from './Components/login/Login';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Tirgul from './Components/Tirgul/Tirgul';
+import Tirgul from './Components/tirgul/Tirgul';
 
 function App() {
   return (

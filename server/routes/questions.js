@@ -8,7 +8,8 @@ const router = express.Router()
 
 
 //router.delete("/",loginCon.Delete)
-
+router.route("/test/byStudent")
+    .get(questCon.getTestByIdStudent) 
 router.route("/")
     .post(questCon.addQ)
 router.route("/:id")
@@ -28,8 +29,7 @@ router.route("/test")
    
 router.route("/test/mark")
 //    .post(questCon.addMark)
-router.route("/test/byStudent")
-    .get(questCon.getTestByIdStudent) 
+
 
 router.route("/test/:id")
     .get(questCon.getMark)

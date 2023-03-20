@@ -115,7 +115,7 @@ getLevelTestsByIdStudent(id)
               { model:db.levels ,attributes:['description'],include:[{model:db.subsubjects,attributes:['description'],include:[{model:db.subjects,attributes:['description']}]}]},   
    ],
    raw:true,
-   attributes:[]
+   attributes:['idtest','mark']
 })
 
 }
@@ -125,7 +125,7 @@ getSubjectsTestsByIdStudent(id){
         where: { idstudent: id,
                  idquestion_Type:2 },
        raw:true,
-       attributes:[]
+       attributes:['idtest','mark']
     })
 }
 }

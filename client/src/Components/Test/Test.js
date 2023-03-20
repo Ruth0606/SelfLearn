@@ -32,7 +32,7 @@ export default function Test() {
     <div>
     <h1>מבחן</h1>
     {
-    k.map((val)=>{return (<TirgulQ num={val} ></TirgulQ>)} )
+        k.map((val)=>{return (<TirgulQ num={val} ></TirgulQ>)} )
     }
     </div>
     )

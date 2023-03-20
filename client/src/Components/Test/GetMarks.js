@@ -1,49 +1,75 @@
-import React, { useEffect } from "react";
-import {useDataFunctions} from '../../Hooks/useDataFunctions'
+import React, { useEffect, useState } from "react";
+import { useDataFunctions } from '../../Hooks/useDataFunctions'
 import useGetData from '../../Hooks/useGetData'
 
 
 export default function GetMarks() {
-const {getDataFunc}= useDataFunctions();
+    const [data, setData] = useState([]);
+    const [data1, setData1] = useState([]);
+    const { getDataFunc } = useDataFunctions();
 
-// const {
-//     data,
-//     error,
-//     loading,
-//     refetch,
-//   } = useGetData(`http://localhost:8000/question/test/byStudent?idstudent=1`);
+    // const {
+    //     data,
+    //     error,
+    //     loading,
+    //     refetch,
+    //   } = useGetData(`http://localhost:8000/question/test/byStudent?idstudent=1`);
 
-//  useEffect(()=>{  console.log(data)},[data])
+    //  useEffect(()=>{  console.log(data)},[data])
 
-useEffect(()=>{
-     getDataFunc(`http://localhost:8000/question/test/getLevelTestsByIdStudent?idstudent=1`)
-    .then(
-        (data) => {
-            console.log("data")
-            console.log({data});
-        }
-      );
-},[]);
+    useEffect(() => {
+        // getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=1`)
+        //     .then(
+        //         (data1) => {
+        //             // console.log("data")
+        //             setData1(data1);
+        //             // console.log({data1});
+        //             const test1 = [...data1].sort((a1, b1) => 
+        //                 // console.log(a1);
+        //                 a1.subject.idsubject - b1.subject.idsubject
+        //             );
+        //             console.log({ test1 })
+        //         }
+        //     );
+        getDataFunc(`http://localhost:8000/question/test/getLevelTestsByIdStudent?idstudent=1`)
+            .then(
+                (data) => {
+                    // console.log("data")
+                    setData(data);
+                    console.log({data});
+                    console.log("/////////////////")
+                    console.log(data[0].level.subsubject.subject.idsubject)
+                    console.log("/////////////////")
+                    const test2 = [...data].sort(
+                        (a2, b2) => 
+                        a2.level.subsubject.subject.idsubject- b2.level.subsubject.subject.idsubject);
+                    console.log({ test2 })
+                }
+            );
 
-// useEffect(() => {
-//     if (selectedSubject != null) {
-//       const idsubject = selectedSubject.idsubject;
-//       getDataFunc(`http://localhost:8000/data/subsubject/${idsubject}`).then(
-//         (data) => {
-         
-//           setArrsubsubjects (data) ;
-//          // console.log("setArrsubsubjects", arrsubsubjects);
-//         }
-//       );
-//     }
-//   }, [selectedSubject]);
 
-return (
-    <div>
-    <h1>ציונים</h1>
-   <button onClick={()=>{
-   
-   }}>ציון ע"פ תלמיד</button>
-    </div>
+    }, []);
+
+    // useEffect(() => {
+    //     if (selectedSubject != null) {
+    //       const idsubject = selectedSubject.idsubject;
+    //       getDataFunc(`http://localhost:8000/data/subsubject/${idsubject}`).then(
+    //         (data) => {
+
+    //           setArrsubsubjects (data) ;
+    //          // console.log("setArrsubsubjects", arrsubsubjects);
+    //         }
+    //       );
+    //     }
+    //   }, [selectedSubject]);
+
+    return (
+        <div>
+            <h1>ציונים</h1>
+            <button onClick={() => {
+                // const t = [1, 2, 1, 3, 4, 1].sort((a, b) => a - b);
+                // console.log({ t })
+            }}>ציון ע"פ תלמיד</button>
+        </div>
     )
 }

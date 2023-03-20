@@ -4,6 +4,7 @@ import Home from './Components/Home';
 import Material from './Components/tirgul/Material';
 import Select from './Components/tirgul/SelectMaterial';
 import TirgulQ from './Components/tirgul/TirgulQ';
+import Tirgul from "./Components/tirgul"
 import Test from './Components/test/Test';
 import GetMarks from './Components/test/GetMarks';
 import Login from './Components/login/Login';
@@ -23,6 +24,7 @@ function App() {
                  <Route exact path='/login' element={< Login />}></Route>
                  <Route exact path='/signup' element={< Signup />}></Route>
                  <Route exact path='/marks' element={< GetMarks />}></Route>
+                 <Route exact path='/Tirgul' element={< Tirgul />}></Route>
           </Routes>
           </div>
        </Router>

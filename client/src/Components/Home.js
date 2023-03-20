@@ -5,6 +5,7 @@ import "primeicons/primeicons.css";
 import { MegaMenu } from 'primereact/megamenu';
 import {useNavigate} from "react-router-dom"
 import useGetData from '../Hooks/useGetData'
+import GetPageQ from './tirgul/GetPageQ';
 
 
 const Home=()=>{

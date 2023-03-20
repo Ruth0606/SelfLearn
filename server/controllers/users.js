@@ -6,6 +6,7 @@ const jwt= require('jsonwebtoken')
 class UserController{
   register=(req, res) => 
   {
+    console.log("from login in user controller")
     console.log(req.body.id)
     if (!req.body.id ||!req.body.password||!req.body.name) {
       res.status(400).send({

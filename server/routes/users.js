@@ -15,7 +15,8 @@ router.route("/:id")
  //export default router
 router.route("/")
     .get(loginCon.getAll)
-    .post(verifyJWT,loginCon.register)
+    // .post(verifyJWT,loginCon.register)
+    .post(loginCon.register)
     //.get(loginCon.getAllByParam);
 router.route("/visit/getLevelsofStudent")
     .get(loginCon.getLevelsofStudent)

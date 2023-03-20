@@ -153,7 +153,7 @@ getQByTypeAndId=(req,res)=>{
 getMark=(req,res)=>
   {
    const id = req.params.id;
-   
+   console.log(id)
    QuestionDal.getMarkbyId(id)
      .then(data => {
        if (data) {

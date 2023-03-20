@@ -1,53 +1,201 @@
-// import React, { useState } from "react";
-// import { Password } from 'primereact/password';
 
-// export default function BasicDemo() {
-//     const [value, setValue] = useState('');
+import React, { useEffect, useState } from "react";
+import '../styles/Login.css'
+import { useNavigate } from "react-router-dom";
+import { Password } from 'primereact/password';
+import '../../Hooks/useGetData'
+import '../../Hooks/useDataFunctions'
+import {useDataFunctions} from '../../Hooks/useDataFunctions'
+import useGetData from '../../Hooks/useGetData'
+import { Toast } from 'primereact/toast';
+import axios from 'axios';
 
-//     return (
-//         <div>
-//         <div className="card flex justify-content-center">
-//            סיסמא  <Password value={value} onChange={(e) => setValue(e.target.value)} feedback={false} toggleMask/>
-//         </div></div>
-//     )
-// }
-import React from 'react'; 
-import { Divider } from 'primereact/divider';
-import { InputText } from 'primereact/inputtext';
-import { Button } from 'primereact/button';
 
 export default function Login() {
+    const {getDataFunc}= useDataFunctions();
+    const navigate = useNavigate()
+    const [idUser, setIdUser] = useState('');
+    const [passUser, setPassUser] = useState('');
+    const [flag1, setFlag1] = useState(false);
+
+    useEffect(()=>{console.log('idUser',idUser)},[idUser]);
+    useEffect(()=>{console.log('passUser',passUser)},[passUser]);
+
+    useEffect(()=>{
+        if(passUser!='' && idUser!='' ){
+            console.log("hdzerubyh")
+            getDataFunc(`http://localhost:8000/user/login/${idUser}/${passUser}`)
+            .then(
+                (data) => {
+                console.log("data")
+                console.log(data);
+                            }
+                          );
+                        }
+    },[flag1])
     return (
-        <div className="card">
-            <div className="flex flex-column md:flex-row">
-                <div className="w-full md:w-5 flex flex-column align-items-s justify-content-center gap-3 py-5">
-                    <div className="flex flex-wrap justify-content-center align-items-center gap-2">
-                        <label htmlFor="username" className="w-6rem" style={{}}>
-                               תעודת זהות   
-                        </label>
-                        <InputText id="username" type="text" />
-                    <br/> <br/></div>
-                    <div className="flex flex-wrap justify-content-center align-items-center gap-2">
-                        <label htmlFor="password" className="w-6rem" toggleMask>
-                                      סיסמא                                                               
-                        </label>
-                        <InputText id="password" type="password" />
-                    </div>
-                    <Button label="Login" icon="pi pi-user" className="w-10rem mx-auto"></Button>
-                </div>
-                <div className="w-full md:w-2">
-                    <Divider layout="vertical" className="hidden md:flex">
-                        <b>OR</b>
-                    </Divider>
-                    <Divider layout="horizontal" className="flex md:hidden" align="center">
-                        <b>OR</b>
-                    </Divider>
-                </div>
-                <div className="w-full md:w-5 flex align-items-center justify-content-center py-5">
-                    <Button label="Sign Up" icon="pi pi-user-plus" className="p-button-success"></Button>
-                </div>
+        <div className="login-page">
+            <div className="form">
+               
+                    <input type="text" placeholder="תעודת זהות"
+                     onBlur={(e) => {
+                        setIdUser(e.target.value);
+                        // a=e.target.value;
+                    }} 
+                    style={{ borderWidth: 1, borderStyle: "dotted", borderColor: "#dbdada", borderRadius: "0.25rem" , borderRadius: "0.25rem"}} />
+                    <input type="password" placeholder="סיסמא"
+                       onBlur={(e) => {
+                        setPassUser(e.target.value);
+                        // b=e.target.value;
+                    }}  
+                    style={{ borderWidth: 1, borderStyle: "dotted", borderColor: "#dbdada", borderRadius: "0.25rem", borderRadius: "0.25rem"}}/>
+                    {/* <div className="card flex justify-content-center"> */}
+                        {/* <Password 
+                            value={value} 
+                            onChange={(e) => setValue(e.target.value)} 
+
+                            feedback={false} 
+                            style={{width:"100%"}}
+                            toggleMask
+                        /> */}
+                    {/* </div> */}
+                    {/* <span className="p-float-label"> */}
+                            {/* <Toast ref={toast} /> */}
+                            {/* <Password
+                                id="password"
+                                name="password"
+                                value={formik.values.password}
+                                onChange={(e) => formik.setFieldValue('password', e.target.value)}
+                                toggleMask
+                                className={classNames({ 'p-invalid': isFormFieldInvalid('password') })}
+                                feedback= {false}
+                            /> */}
+
+                            {/* <label htmlFor="input_value">סיסמא</label> */}
+                        {/* </span> */}
+                    <button type="submit" onClick={()=>{
+                         setFlag1(true);
+                         console.log("gggggg")
+                    }} style={{borderRadius: "0.25rem"}}>login</button>
+                    <div className="message">?Not registered <p onClick={() => { navigate('/signup') }} style={{ cursor: "pointer", color: "green" }}>Create an account</p></div>
             </div>
         </div>
     )
 }
-        
+
+/*import React, { useState } from "react";
+import { Password } from 'primereact/password';
+
+export default function ToggleMaskDemo() {
+    const [value, setValue] = useState('');
+
+    return (
+        <div className="card flex justify-content-center">
+            <Password value={value} onChange={(e) => setValue(e.target.value)} toggleMask />
+        </div>
+    )
+}*/
+
+///////////////////////////////////
+
+// import React, {useRef, useState } from "react";
+// import '../styles/Login.css'
+// import { useNavigate } from "react-router-dom";
+// import { Password } from 'primereact/password';
+// import { useFormik } from 'formik';
+// import { InputText } from "primereact/inputtext";
+// import { Button } from 'primereact/button';
+// import { classNames } from 'primereact/utils';
+
+// import { Toast } from 'primereact/toast';
+
+
+
+// export default function Login() {
+//     const navigate = useNavigate()
+//     const [value, setValue] = useState('');
+
+//     const toast = useRef(null);
+
+//     const show = () => {
+//         toast.current.show({ severity: 'success', summary: 'Form Submitted', detail: formik.values.userId });
+//         toast.current.show({ severity: 'success', summary: 'Form Submitted', detail: formik.values.password });
+//     };
+
+//     const formik = useFormik({
+//         initialValues: {
+//             userId: "",
+//             password: ""
+//         },
+//         validate: (data) => {
+//             let errors = {};
+//             if (!data.userId) {
+//                 errors.userId = 'נדרש תעודת זהות משתמש';
+//             }
+//             if (!data.password) {
+//                 errors.password = 'סיסמא נדרשת';
+//             }
+//             return errors;
+//         },
+//         onSubmit: (data) => {
+//             data && show(data);
+//             formik.resetForm();
+//         }
+//     });
+
+//     const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
+
+//     const getFormErrorMessage = (name) => {
+//         return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : <small className="p-error">&nbsp;</small>;
+//     };
+//     return (
+//         <div class="login-page">
+//             <div class="form">
+//                 <form onSubmit={formik.handleSubmit} class="login-form">
+//                     {/* <input type="text" placeholder="תעודת זהות" style={{ borderWidth: 1, borderStyle: "dotted", borderColor: "#dbdada", borderRadius: "0.25rem" }} /> */}
+//                     <Toast ref={toast} />
+//                             <InputText
+//                                 id="userId"
+//                                 name="userId"
+//                                 value={formik.values.userId}
+//                                 onChange={(e) => {
+//                                     formik.setFieldValue('userId', e.target.value);
+//                                 }}
+//                                 className={classNames({ 'p-invalid': isFormFieldInvalid('userId') })}
+//                                 style={{ width:"100%" }}
+//                             />
+//                             {getFormErrorMessage('userId')}
+//                     {/* <input type="password" placeholder="סיסמא" style={{ borderWidth: 1, borderStyle: "dotted", borderColor: "#dbdada", borderRadius: "0.25rem"}}/> */}
+//                     {/* <div className="card flex justify-content-center">
+//                         <Password 
+//                             value={value} 
+//                             onChange={(e) => setValue(e.target.value)} 
+                             
+//                             feedback={false} 
+//                             style={{width:"100%"}}
+//                             toggleMask
+//                         />
+//                     </div> */}
+//                     <span className="p-float-label">
+//                         <Toast ref={toast} />
+//                         <Password
+//                             id="password"
+//                             name="password"
+//                             value={formik.values.password}
+//                             onChange={(e) => formik.setFieldValue('password', e.target.value)}
+//                             toggleMask
+//                             className={classNames({ 'p-invalid': isFormFieldInvalid('password') })}
+//                             feedback={false}
+//                         />
+//                         <label htmlFor="input_value">סיסמא</label>
+//                     </span>
+
+//                     {getFormErrorMessage('password')}
+
+//                     <button type="submit" label="Submit" >login</button>
+//                     <p class="message">?Not registered <p onClick={() => { navigate('/signup') }} style={{ cursor: "pointer", color: "green" }}>Create an account</p></p>
+//                 </form>
+//             </div>
+//         </div>
+//     )
+// }

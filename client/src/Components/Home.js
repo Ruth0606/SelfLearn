@@ -5,6 +5,7 @@ import "primeicons/primeicons.css";
 import { MegaMenu } from 'primereact/megamenu';
 import {useNavigate} from "react-router-dom"
 import useGetData from '../Hooks/useGetData'
+import GetMarks from './test/GetMarks';
 import GetPageQ from './tirgul/GetPageQ';
 
 
@@ -126,6 +127,7 @@ const Home=()=>{
     ];
     return(
         <>
+        {/* <button  onClick={()=>navigate("/Test")}>click me</button> */}
         {/* hello home */}
         {/* <MegaMenu model={[items, [
                     {
@@ -134,8 +136,10 @@ const Home=()=>{
                     }
                 ]]} breakpoint="960px" style={{"backgroundColor":"lightblue"}} /> */}
         <MegaMenu model={items} breakpoint="960px" />
-        <button onClick={()=>navigate("/Tirgul")}>למעבר לתרגול</button>
-     
+        <button onClick={() => { navigate('/marks') }}>ציונים</button>
+         <button onClick={()=>navigate("/Tirgul")}>למעבר לתרגול</button>
+        {/* <GetMarks  idstudent={1}></GetMarks> */}
+        {/* <button onClick={()=>{return <GetMarks idstudent={1}></GetMarks>}}>לציונים</button> */}
         </>
     )
 }

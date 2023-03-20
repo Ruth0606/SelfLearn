@@ -8,11 +8,15 @@ const questionRouter=require("./routes/questions")
 const dataRouter=require("./routes/data")
 const materialRouter=require("./routes/material")
 const answerRouter=require("./routes/answer")
-const cors = require('cors');
+const cors=require('cors');
 
 app.use(express.urlencoded())
 app.use(express.json())
 app.use(cors())
+// app.use("/",(req,res,next)=>{
+    
+//     next()
+// })
 
 app.use("/user",userRoute)
 app.use("/question",questionRouter)

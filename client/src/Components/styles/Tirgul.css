@@ -13,3 +13,32 @@ body{
     margin:5%;
     background-color: #d6e7d7;
 }
+.ml-2{
+    font-size:34px;
+    color: #29672b ;
+
+}
+.p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: #044b0bf1;
+    background:  #4CAF50;
+}
+/* .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+    width: 25px;
+    height: 25px;
+    transition-duration: 0.2s;
+    background-color: #ffffff;
+} */
+#numq{
+    font-size: 30px;
+    color: #29672b ;
+}
+#quest{
+    font-size: 35px;
+    color: #29672b ;
+
+}
+/* .p-radiobutton-box	{
+    background:  #4CAF50;
+
+} */
+

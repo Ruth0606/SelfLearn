@@ -1,18 +1,20 @@
 import React from "react";
+import "../styles/Test.css"
 import TirgulQ from "../tirgul/TirgulQ";
+import GetPageQ from "../tirgul/GetPageQ"
+import { Button } from 'primereact/button';
+export default function Test(props) {
 
-export default function Test() {
-    var k=[1,2,3,4,5,6,7,8,9,10]
 
 
     // async function fetchData() {
     //     useGetData('https://jsonplaceholder.typicode.com/posts',3)
     //   }
-      
+
     // //   useEffect(() => {
     // //     fetchData();
     // //   }, []);
-      
+
     // async function postData() {
     //     try {
     //       const data = {
@@ -26,14 +28,18 @@ export default function Test() {
     //       console.log(error);
     //     }
     //   }
-      
+
 
     return (
-    <div>
-    <h1>מבחן</h1>
-    {
-        k.map((val)=>{return (<TirgulQ num={val} ></TirgulQ>)} )
-    }
-    </div>
+        <div>
+            <h1 className="title">מבחן</h1>
+            {
+             <GetPageQ idlevelorsubject={1} type={2}></GetPageQ>}
+            {
+              <div style={{margin:"3px"}}className="card flex justify-content-center">
+                     <Button label="הגש מבחן" onClick={()=>alert("מבחן הוגש")} />
+              </div>
+            }
+        </div>
     )
 }

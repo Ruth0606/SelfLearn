@@ -17,8 +17,8 @@ export default function TirgulQ(props) {
     return (
         <div className="card flex justify-content-center">
             <div className="flex flex-column gap-3" >
-                <span style={{ "marginRight": "2%" }}>שאלה {props.num}:</span><br></br><br></br>
-                <span style={{ "margin": "2%" }}>{props.quest.description}= </span>
+                <span id="numq"style={{ "marginRight": "2%" }}>שאלה {props.num}:</span><br></br><br></br>
+                <span id="quest" style={{ "margin": "2%" }}>{props.quest.description} = </span>
                 {props.categories.map((category) => {
                     return (
                         <div key={category.idanswer} className="flex align-items-center" style={{ "margin": "3%" }}>

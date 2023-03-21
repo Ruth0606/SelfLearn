@@ -13,7 +13,7 @@ export default function GetPageQ(props) {
 
   console.log("props.idlevel", props.idlevel);
   const { getDataFunc } = useDataFunctions();
-  const [flag, setflag] = useState(false);
+  // const [flag, setflag] = useState(false);
   // const {
   //   data: data,
   //   error,
@@ -23,8 +23,7 @@ export default function GetPageQ(props) {
   // useEffect(()=>{console.log("flag",flag)},flag)
   useEffect(() => {
     let arr = []
-    console.log("2222222222222222222222222222222222222222222222222222222222222222222")
-    getDataFunc(`http://localhost:8000/question/${props.type}/${props.idlevel}`).then(
+    getDataFunc(`http://localhost:8000/question/${props.type}/${props.idlevelorsubject}`).then(
       (data1) => {
         setdata(data1);
         data1.forEach((element) => {
@@ -41,7 +40,7 @@ export default function GetPageQ(props) {
           });
         });
         console.log("dataAnswer", dataAnswer)
-        setflag(true);
+        // setflag(true);
         // console.log("ffffffff", flag);
       }
     );
@@ -82,7 +81,7 @@ export default function GetPageQ(props) {
         // console.log("2222222", dataAnswer[val-1]);
         // console.log("333", val);
         return (
-          flag && (
+           (
             <TirgulQ
               // key={val}
               num={i+1}

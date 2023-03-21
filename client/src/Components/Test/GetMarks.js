@@ -6,7 +6,12 @@ import useGetData from '../../Hooks/useGetData'
 export default function GetMarks() {
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
+    const [flag, setFlag] = useState(true);
     const { getDataFunc } = useDataFunctions();
+
+    useEffect(()=>{console.log('data',data)},[data]);
+    useEffect(()=>{console.log('data1',data1)},[data1]);
+    useEffect(()=>{console.log('flag',flag)},[flag]);
 
     useEffect(() => {
         // getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=1`)
@@ -59,33 +64,50 @@ export default function GetMarks() {
     //   }, [selectedSubject]);
     const a="level.subsubject.subject.description";
     const b="level.subsubject.subject.idsubject";
+    const c="level.subsubject.description";
     return (
         <div>
+            <h1>ציונים</h1>
             {data&&
             data.map((item,i)=>{
+                // const s=item[a]
                 return(
                     <>
-                <b>{item[a]}</b>
-                {item[b]!==data[i-1][b]&&
-                getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=1`)
+                    {/* {console.log(s)} */}
+                   
+                    {/* {flag&& <h2>{s}</h2>} */}
+                    {/* <h2>חשבון</h2> */}
+                    
+                {/* {item[b]!==data[i-1][b]&& */}
+                {
+                getDataFunc(`http://localhost:8000/question/test/getTestByIdSubject?idsubject=${item["level.subsubject.subject.idsubject"]}`)
                     .then(
                         (data1) => {
-                           
+                            setData1(data1) 
                         }
                     )
-
-                }
-
-
-                    </>
+                // &&
+                // <><h1>מבחן סופי</h1>
+                // <h2>{data1.mark}ציון</h2>
+                // {setFlag(false)}
+                // </>
+                &&<>
+                <h2>{data1}</h2>
+                </>
+                
+                 } 
+                <h1>בוחן</h1>
+                {/* <h2>{item[c]}בנושא</h2> */}
+                <h2>{item.mark}ציון</h2>
+                <h1>{item}</h1>
+                </>
                 )
-
             })}
-            <h1>ציונים</h1>
-            <button onClick={() => {
-                // const t = [1, 2, 1, 3, 4, 1].sort((a, b) => a - b);
-                // console.log({ t })
-            }}>ציון ע"פ תלמיד</button>
+{/* <button onClick={() => {
+// const t = [1, 2, 1, 3, 4, 1].sort((a, b) => a - b);
+// console.log({ t })
+}}>ציון ע"פ תלמיד</button> */}
         </div>
+      
     )
 }

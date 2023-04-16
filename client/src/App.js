@@ -9,6 +9,7 @@ import Test from './Components/test/Test';
 import GetMarks from './Components/test/GetMarks';
 import Login from './Components/login/Login';
 import Signup from './Components/signup/Signup';
+import StudentList from './Components/manager/StudentList';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                  <Route exact path='/signup' element={< Signup />}></Route>
                  <Route exact path='/marks' element={< GetMarks />}></Route>
                  <Route exact path='/Tirgul' element={< Tirgul />}></Route>
+                 <Route exact path='/StudentList' element={< StudentList />}></Route>
           </Routes>
           </div>
        </Router>

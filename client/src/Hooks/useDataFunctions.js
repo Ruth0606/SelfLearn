@@ -1,16 +1,24 @@
 import axios from 'axios';
 
 export const useDataFunctions =  () => {
-     const getDataFunc = async (url) => {
-    console.log( {url});
-    try {
-        const response = await axios.get(url);
-        console.log(response.data);
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
+    const getDataFunc = async (url) => {
+   console.log( {url});
+   try {
+       const response = await axios.get(url);
+       console.log(response.data);
+       return response.data;
+   } catch (error) {
+       console.log(error);
+   }
 }
-     return { getDataFunc }
+const postDataFunc = async (url,data) => {
+   try {  
+       const response = await axios.post(url, data);
+       console.log(response.data);
+       return response.data;
+     } catch (error) {
+       console.log(error);
+     }
 }
-
+    return { getDataFunc,postDataFunc }
+}

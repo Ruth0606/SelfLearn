@@ -10,6 +10,8 @@ import GetMarks from './Components/test/GetMarks';
 import Login from './Components/login/Login';
 import Signup from './Components/signup/Signup';
 import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import Quiz from './Components/test/Quiz';
+import Update from './Components/manager/Updata'
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
                  <Route exact path='/signup' element={< Signup />}></Route>
                  <Route exact path='/marks' element={< GetMarks />}></Route>
                  <Route exact path='/Tirgul' element={< Tirgul />}></Route>
+                 <Route exact path='/quiz' element={< Quiz />}></Route>
+                 <Route exact path='/update' element={<Update  />}></Route>
+
           </Routes>
           </div>
        </Router>

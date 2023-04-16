@@ -7,7 +7,9 @@ export default function Tirgul(){
         <>
         <SelectedMaterial ></SelectedMaterial>
 
-        <button  onClick={()=>navigate("/Test")}>למבחן</button>
+       {/* <button onClick={()=>navigate("/Quiz")}>למעבר לבוחן</button> */}
+
+        {/* <button  onClick={()=>navigate("/Test")}>למבחן</button> */}
 
         </>
     );

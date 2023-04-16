@@ -6,10 +6,14 @@ import GetPageQ from "./GetPageQ";
 import { useDataFunctions } from "../../Hooks/useDataFunctions";
 import "../styles/Tirgul.css"
 import Material from "./Material";
+import Quiz from '../test/Quiz'
+import {useNavigate} from "react-router-dom"
+
+
 
 export default function SelectMaterial() {
   const { getDataFunc } = useDataFunctions();
-
+  const navigate = useNavigate();
   let idlevel = null;
   const [flagClass, setflagClass] = useState(true);
   const [flagSubject, setflagSubject] = useState(true);
@@ -114,7 +118,6 @@ export default function SelectMaterial() {
   }, [selectedSubject]);
 
 
-  
   useEffect(() => {
     if (selectedSubsubject != null) {
       const idsubsubject = selectedSubsubject.idsubsubject;
@@ -191,9 +194,13 @@ export default function SelectMaterial() {
       />
       {/* {console.log(flagLevel)} */}
       {flagLevel && <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
-     
       {flagLevel && <GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>}
-    </div>
+      {/* {flagLevel &&<button onClick={()=><Quiz idlevelorsubject={selectedlevel.idlevel}></Quiz>}>למעבר לבוחן</button>}     */}
+    {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
+    {/* selectedlevel.idlevel */}
+    {flagLevel && <button onClick={()=> {return navigate("/Quiz",{idlevelorsubject: selectedlevel.idlevel,idsub:selectedSubject.idsubject,leveldescription:selectedlevel.description})}}>למעבר לבוחן</button>}
+
+      </div>
   );
 }
 

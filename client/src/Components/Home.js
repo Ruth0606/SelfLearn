@@ -6,6 +6,7 @@ import { MegaMenu } from 'primereact/megamenu';
 import {useNavigate} from "react-router-dom"
 import useGetData from '../Hooks/useGetData'
 import GetMarks from './test/GetMarks';
+import StudentList from './manager/StudentList';
 import GetPageQ from './tirgul/GetPageQ';
 
 
@@ -138,6 +139,7 @@ const Home=()=>{
         <MegaMenu model={items} breakpoint="960px" />
         <button onClick={() => { navigate('/marks') }}>ציונים</button>
          <button onClick={()=>navigate("/Tirgul")}>למעבר לתרגול</button>
+         <button onClick={()=>navigate("/StudentList")}>לרשימת תלמידים</button>
         {/* <GetMarks  idstudent={1}></GetMarks> */}
         {/* <button onClick={()=>{return <GetMarks idstudent={1}></GetMarks>}}>לציונים</button> */}
         </>

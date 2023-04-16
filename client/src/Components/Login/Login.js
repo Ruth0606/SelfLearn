@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, {useEffect,useState} from "react";
 import '../styles/Login.css'
 import { useNavigate } from "react-router-dom";
 import { Password } from 'primereact/password';
@@ -23,7 +23,6 @@ export default function Login() {
 
     useEffect(()=>{
         if(passUser!='' && idUser!='' ){
-            console.log("hdzerubyh")
             getDataFunc(`http://localhost:8000/user/login/${idUser}/${passUser}`)
             .then(
                 (data) => {
@@ -75,7 +74,6 @@ export default function Login() {
                         {/* </span> */}
                     <button type="submit" onClick={()=>{
                          setFlag1(true);
-                         console.log("gggggg")
                     }} style={{borderRadius: "0.25rem"}}>login</button>
                     <div className="message">?Not registered <p onClick={() => { navigate('/signup') }} style={{ cursor: "pointer", color: "green" }}>Create an account</p></div>
             </div>

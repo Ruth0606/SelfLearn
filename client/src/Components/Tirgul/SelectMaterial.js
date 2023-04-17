@@ -69,6 +69,7 @@ export default function SelectMaterial() {
   useEffect(() => {
     //console.log("selectedClass", selectedClass);
     if (selectedClass != null) {
+      
       // console.log("selectedClass", selectedClass);
       // console.log("dataClass", dataClass);
 
@@ -80,7 +81,9 @@ export default function SelectMaterial() {
       getDataFunc(`http://localhost:8000/data/subject/${idclass}`).then(
         (data) => {
           // console.log(data);
+       
           setArrsubjects (data) ;
+        
           // data.forEach(element => {
           //     arrsubjects.push({"description":element.description,"id":element.id})
           // });
@@ -142,7 +145,18 @@ export default function SelectMaterial() {
           value={selectedClass}
           onChange={(e) => {
             setSelectedClass(e.value);
-            setflagClass(false);
+             setflagClass(false);
+             setflagSubject(true);
+             setflagSubsubject(true);
+            setflagLevel(true);
+            setSelectedSubject(null)
+
+            setSelectedSubsubject(null)
+            setSelectedlevel(null)
+
+            // setflagSubsubject(true)
+            // setflagSubject(true)
+            // setArrsubsubjects([...arrsubsubjects])
             //console.log(e.value);
           }}
           options={dataClass}
@@ -158,6 +172,10 @@ export default function SelectMaterial() {
         onChange={(e) => {
           setSelectedSubject(e.value);
           setflagSubject(false);
+          setflagSubsubject(true);
+          setflagLevel(true);
+          setSelectedSubsubject(null)
+          setSelectedlevel(null)
         }}
         options={arrsubjects}
         optionLabel="description"
@@ -171,6 +189,9 @@ export default function SelectMaterial() {
         onChange={(e) => {
           setSelectedSubsubject(e.value);
           setflagSubsubject(false);
+          
+          setflagLevel(true);
+          setSelectedlevel(null)
         }}
         options={arrsubsubjects}
         optionLabel="description"
@@ -193,12 +214,12 @@ export default function SelectMaterial() {
         style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%"}}
       />
       {/* {console.log(flagLevel)} */}
-      {flagLevel && <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
-      {flagLevel && <GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>}
+      {flagLevel &&selectedlevel&& <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
+      {flagLevel && selectedlevel&&<GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>}
       {/* {flagLevel &&<button onClick={()=><Quiz idlevelorsubject={selectedlevel.idlevel}></Quiz>}>למעבר לבוחן</button>}     */}
     {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
     {/* selectedlevel.idlevel */}
-    {flagLevel && <button onClick={()=> {return navigate("/Quiz",{idlevelorsubject: selectedlevel.idlevel,idsub:selectedSubject.idsubject,leveldescription:selectedlevel.description})}}>למעבר לבוחן</button>}
+    {flagLevel &&selectedlevel!==null&& <button onClick={()=> {return navigate("/Quiz",{idlevelorsubject: selectedlevel.idlevel,idsub:selectedSubject.idsubject,leveldescription:selectedlevel.description})}}>למעבר לבוחן</button>}
 
       </div>
   );

@@ -111,32 +111,40 @@ import "../styles/Tirgul.css"
 
 export default function UpdateMaterial(props) {
     const [data, setData] = useState(null);
-    const { getDataFunc } = useDataFunctions();
+    const [mmat, setMmat] = useState(" ");
 
+    const { getDataFunc ,updateDataFunc} = useDataFunctions();
+    const mat=props.material;
+   // console.log("mat",mat)
+   let myString=""
     useEffect(()=>{
         const idlevel = props.idlevel;
         getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
           (data) => {
-            setData(data[0].description)
-       console.log(data[0].description)
+            myString = data[0].description
+       console.log(myString);
+      
           }
         );
-    },[])
+    })
+    useEffect(()=>{console.log("fff",data)},[data])
     const toast = useRef(null);
 
     const show = () => {
-        toast.current.show({ severity: 'success', summary: 'Form Submitted', detail: formik.values.description  });
+        toast.current.show({summary: 'עודכן', detail: formik.values.description  });
     };
 
+  
+    
     const formik = useFormik({
         initialValues: {
-            description: data
+            description:myString
         },
         validate: (data) => {
             let errors = {};
 
             if (!data.description) {
-                errors.description = 'Description is required.';
+                errors.description = 'לא היו שינויים';
             }
 
             return errors;
@@ -147,16 +155,29 @@ export default function UpdateMaterial(props) {
         }
     });
 
+
     const isFormFieldInvalid = (name) => !!(formik.touched[name] && formik.errors[name]);
 
     const getFormErrorMessage = (name) => {
         return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : <small className="p-error">&nbsp;</small>;
     };
+    let mm=""
 
+
+    function update(){
+     console.log("dd",mm)
+   //const cc=document.getElementById("description").value;
+     updateDataFunc((`material/${props.idlevel}`),{description:mmat})
+     .then((data)=>{
+        console.log(data)
+       
+     })  
+    }
     return (
         <div className="card flex justify-content-center">
+            <div className="card flex justify-content-center">
             <form onSubmit={formik.handleSubmit} className="flex flex-column gap-2">
-                <label htmlFor="description">חומר</label>
+                <label htmlFor="description">Description</label>
                 <Toast ref={toast} />
                 <InputTextarea
                     inputId="description"
@@ -172,6 +193,26 @@ export default function UpdateMaterial(props) {
                 {getFormErrorMessage('description')}
                 <Button label="Submit" type="submit" icon="pi pi-check" />
             </form>
+        </div>
+            {/* <textarea 
+                      //value={mm} 
+                      rows={4}
+                      cols={30}
+                      defaultValue={"fd"}
+                      onChange={(e) => {
+                        mm= e.target.value
+                        console.log("m",mm) 
+                        setMmat(e.target.value)
+                        formik.setFieldValue('description', e.target.value);
+                        }}
+                        onBlur={(e)=>{
+                            setMmat(mm)
+                            console.log("on blur",mmat)
+                        }}
+                        > </textarea>
+                    <br></br>
+           <Button label="עדכן" type="submit" icon="pi pi-check" onClick={update} style={{marginTop:"5px"}}/> */}
+
         </div>
     )
 }

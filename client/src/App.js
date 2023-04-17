@@ -10,7 +10,8 @@ import GetMarks from './Components/test/GetMarks';
 import Login from './Components/login/Login';
 import Signup from './Components/signup/Signup';
 import StudentList from './Components/manager/StudentList';
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import Statistical from './Components/manager/Statistical';
+import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
     <div style={{"direction":"rtl"}}>
     
     <Router>
-           <div className="App">
+           <div className="App" dir="rtl">
            <Routes>
                  <Route exact path='/' element={< Home />}></Route>
                  <Route exact path='/test' element={< Test />}></Route>
@@ -27,6 +28,7 @@ function App() {
                  <Route exact path='/marks' element={< GetMarks />}></Route>
                  <Route exact path='/Tirgul' element={< Tirgul />}></Route>
                  <Route exact path='/StudentList' element={< StudentList />}></Route>
+                 <Route exact path='/Statistical' element={< Statistical />}></Route>
           </Routes>
           </div>
        </Router>

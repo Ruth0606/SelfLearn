@@ -580,6 +580,7 @@ function deleteFuncll(e){
 
 
       {flag && selectedlevel!==null&&<UpdateMaterial material={mat} idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></UpdateMaterial>}
+      {flag && selectedlevel!==null&&<GetPageQ manager={true} idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>}
 
     {/* {flagLevel && <GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>} */}
     {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz",{idlevelorsubject: selectedlevel.idlevel,idsub:selectedSubject.idsubject,leveldescription:selectedlevel.description})}}>למעבר לבוחן</button>} */}

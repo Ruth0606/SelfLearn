@@ -12,7 +12,7 @@ export default function TirgulQ(props) {
     
     console.log("props.categories", props.categories)
     console.log(props)
-    const [selectedCategory, setSelectedCategory] = useState(props.categories[0]);
+    const [selectedCategory, setSelectedCategory] = useState(props.categories[0])
 
     return (
         <div className="card flex justify-content-center">

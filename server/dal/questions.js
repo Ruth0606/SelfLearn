@@ -15,7 +15,7 @@ class QuestionsDataAccessor {
         const idsubject=ques.idsubject 
         const score=ques.score
         const idquestion_type=ques.idquestion_type
-        await Question.create({description,idlevel,idsubject,idquestion_type,score})
+        return await Question.create({description,idlevel,idsubject,idquestion_type,score})
     }
     ////////////////////////////
     async getQByTypeAndIdSubject(type,id)

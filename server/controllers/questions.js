@@ -245,6 +245,22 @@ getMark=(req,res)=>
           });
         });
       }
+      /////////////////////////
+      getTestBybyStudAndSubject=(req,res)=>{
+        const paramId = req.param.idstudent;
+        const paramSub = req.param.idsubject;
+        QuestionDal.getTestBybyStudAndSubject(paramId,paramSub)
+        .then(data => {
+          res.send(data);
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving Test."
+          });
+        });
+      }
+      /////////////////////////////
       getTestByIdSubject=(req,res)=>
       {
         const idS = req.query.idsubject;

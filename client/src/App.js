@@ -10,13 +10,14 @@ import GetMarks from './Components/test/GetMarks';
 import Login from './Components/login/Login';
 import Signup from './Components/signup/Signup';
 import StudentList from './Components/manager/StudentList';
+import StudStatistical from './Components/students/StudStatistical';
 import Statistical from './Components/manager/Statistical';
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-    <div style={{"direction":"rtl"}}>
+    <><div >
+    {/* style={{"direction":"rtl"}} */}
     
     <Router>
            <div className="App" dir="rtl">
@@ -29,6 +30,7 @@ function App() {
                  <Route exact path='/Tirgul' element={< Tirgul />}></Route>
                  <Route exact path='/StudentList' element={< StudentList />}></Route>
                  <Route exact path='/Statistical' element={< Statistical />}></Route>
+                 <Route exact path='/StudStatistical' element={< StudStatistical />}></Route>
           </Routes>
           </div>
        </Router>

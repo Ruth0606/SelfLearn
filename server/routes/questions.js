@@ -10,8 +10,14 @@ const router = express.Router()
 //router.delete("/",loginCon.Delete)
 router.route("/test/byStudent")
     .get(questCon.getTestByIdStudent) 
+router.route("/test/byStudAndSubject")
+    .get(questCon.getTestBybyStudAndSubject) 
 router.route("/")
+router.route("/test")
+    .get(questCon.getAll)
+    .post(questCon.addTest)
     .post(questCon.addQ)
+
 router.route("/:id")
     .get(questCon.getQuestionById)
     .put(questCon.updateQ)
@@ -21,21 +27,23 @@ router.route("/test/getTestByIdSubject")
 router.route("/test/getLevelTestsByIdStudent")
     .get(questCon.getLevelTestsByIdStudent)
 router.route("/test/getSubjectsTestsByIdStudent")
-    .get(questCon.getSubjectsTestsByIdStudent)       
+    .get(questCon.getSubjectsTestsByIdStudent)   
+ 
+router.route("/test/:id")
+    .get(questCon.getMark)
+    .put(questCon.updateTest)
+    .delete(questCon.deleteTest)
+    
 router.route("/:idquestion_type/:id")
     .get(questCon.getQByTypeAndId)
-router.route("/test")
-    .post(questCon.addTest)
-    .get(questCon.getAll)
+
+    
    
 router.route("/test/mark")
 //    .post(questCon.addMark)
 
 
-router.route("/test/:id")
-    .get(questCon.getMark)
-    .put(questCon.updateTest)
-    .delete(questCon.deleteTest)
+
 
 
  //export default router

@@ -103,6 +103,13 @@ getTestByIdStudent(param){
     var condition = param ? { idstudent: { [Op.like]: `%${param}%` } } : null;
     return Test.findAll({ where: condition })
 }
+///////////////////////
+getTestBybyStudAndSubject(paramId,paramSub){
+    var condition1 = paramId ? { idstudent: { [Op.like]: `%${paramId}%` } } : null;
+    var condition2 = paramSub ? { idsubject: { [Op.like]: `%${paramSub}%` } } : null;
+    return Test.findAll({ where: condition1 && condition2})
+}
+///////////////////////
 async getTestByIdSubject(idS)
 {
     const quest= await Test.findOne({

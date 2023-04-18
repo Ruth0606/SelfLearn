@@ -29,28 +29,7 @@ class MaterialDataAccessor {
         var condition = idlevel ? { idlevel: { [Op.like]: `%${idlevel}%` } } : null;
         return Material.findAll({ where: condition })
     }
-    // async getQByTypeAndClassSubject(type,class_scubject)
-    // {
-    // //     var condition = type ? { idquestion_type: { [Op.like]: `%${type}%` } } : null;
-    // //     var condition2 = class_scubject ? { idclass_subject: { [Op.like]: `%${class_scubject}%` } } : null;
-    // //    return Question.findAll({ where: condition && condition2})
-    //      const quest= await Question.findAll({
-    //     where: {
-    //         [Op.and]: [
-    //             { idquestion_type: type },
-    //             { idclass_subject: class_scubject }
-    //           ]
-    
-    //     }
-    //   });
-
-    //    return(quest)
-    // }
-
-
-
 }
-
 
 const materialDataAccessor = new MaterialDataAccessor();
 

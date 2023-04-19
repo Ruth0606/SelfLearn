@@ -3,8 +3,13 @@ import "../styles/Test.css"
 import TirgulQ from "../tirgul/TirgulQ";
 import GetPageQ from "../tirgul/GetPageQ"
 import { Button } from 'primereact/button';
+import { useParams } from "react-router-dom";
+
 export default function Test(props) {
 
+
+    const {idsub} = useParams();
+    console.log("props.idlevel", props.idsub);
 
 
     // async function fetchData() {
@@ -34,7 +39,7 @@ export default function Test(props) {
         <div>
             <h1 className="title">מבחן</h1>
             {
-             <GetPageQ idlevelorsubject={1} type={2}></GetPageQ>}
+             <GetPageQ idlevelorsubject={idsub} type={2}></GetPageQ>}
             {
               <div style={{margin:"3px"}}className="card flex justify-content-center">
                      <Button label="הגש מבחן" onClick={()=>alert("מבחן הוגש")} />

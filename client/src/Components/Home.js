@@ -7,9 +7,11 @@ import {useNavigate} from "react-router-dom"
 import useGetData from '../Hooks/useGetData'
 import GetMarks from './test/GetMarks';
 import GetPageQ from './tirgul/GetPageQ';
-
-
+//import usePostData from '../Hooks/usePostData';
+import '../Hooks/useDataFunctions'
+import { useDataFunctions } from '../Hooks/useDataFunctions';
 const Home=()=>{
+    const {postDataFunc}=useDataFunctions()
     useGetData("http://localhost:8000/user/2")
     const navigate = useNavigate();
     const items = [
@@ -125,6 +127,12 @@ const Home=()=>{
             ]
         }
     ];
+// useEffect(()=>{
+//      postDataFunc(("http://localhost:8000/user"),{"name":"ee","id":123,"password":23})
+//      .then((data)=>{
+//         console.log(data)
+//      })  
+// },[])
     return(
         <>
         {/* <button  onClick={()=>navigate("/Test")}>click me</button> */}
@@ -138,7 +146,8 @@ const Home=()=>{
         <MegaMenu model={items} breakpoint="960px" />
         <button onClick={() => { navigate('/marks') }}>ציונים</button>
          <button onClick={()=>navigate("/Tirgul")}>למעבר לתרגול</button>
-        {/* <GetMarks  idstudent={1}></GetMarks> */}
+         <button onClick={()=>navigate("/Update")}>מנהל</button>
+     {/* <GetMarks  idstudent={1}></GetMarks> */}
         {/* <button onClick={()=>{return <GetMarks idstudent={1}></GetMarks>}}>לציונים</button> */}
         </>
     )

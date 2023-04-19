@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home';
+import Home2 from './Components/Home/Home2';
 import Material from './Components/tirgul/Material';
 import Select from './Components/tirgul/SelectMaterial';
 import TirgulQ from './Components/tirgul/TirgulQ';
@@ -18,11 +19,12 @@ function App() {
   return (
     <><div >
     {/* style={{"direction":"rtl"}} */}
-    
+    {/* dir="rtl" */}
     <Router>
-           <div className="App" dir="rtl">
+           <div className="App" >
            <Routes>
                  <Route exact path='/' element={< Home />}></Route>
+                 <Route exact path='/Home2' element={< Home2 />}></Route>
                  <Route exact path='/test' element={< Test />}></Route>
                  <Route exact path='/login' element={< Login />}></Route>
                  <Route exact path='/signup' element={< Signup />}></Route>

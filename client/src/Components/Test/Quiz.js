@@ -32,20 +32,20 @@ export default function Quiz(props) {
     //       console.log(error);
     //     }
     //   }
-    // const { idlevelorsubject,leveldescription } = useParams();
-
-    
+       const {idlevelorsubject, idsub,leveldescription} = useParams();
     return (
         <div>
-            <h1 className="title">בוחן {props.leveldescription}</h1>
+            <h1 className="title">בוחן</h1>
             {
-             <GetPageQ idlevelorsubject={props.idlevelorsubject} type={3}></GetPageQ>}
+             <GetPageQ idlevelorsubject={idlevelorsubject} type={3}></GetPageQ>}
             {
               <div style={{margin:"3px"}}className="card flex justify-content-center">
                      <Button label="הגש בוחן" onClick={()=>alert("בוחן הוגש")} />
               </div>
             }
-            {props.leveldescription=="3"&& <button  onClick={()=>navigate("/Test",{idlevelorsubject:props.idsub})}>למבחן</button> }
+            {leveldescription=="3"&&  <Button label="למבחן הסופי" onClick={()=>navigate(`/Test/${idsub}`)} /> }
+
+            {/* {leveldescription=="3"&& <button  onClick={()=>navigate("/Test",{idlevelorsubject:idsub})}>למבחן הסופי</button> } */}
         </div>
     )
 }

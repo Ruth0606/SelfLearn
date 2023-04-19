@@ -22,12 +22,12 @@ function App() {
            <div className="App">
            <Routes>
                  <Route exact path='/' element={< Home />}></Route>
-                 <Route exact path='/test' element={< Test />}></Route>
+                 <Route exact path='/test/:idsub' element={< Test />}></Route>
                  <Route exact path='/login' element={< Login />}></Route>
                  <Route exact path='/signup' element={< Signup />}></Route>
                  <Route exact path='/marks' element={< GetMarks />}></Route>
                  <Route exact path='/Tirgul' element={< Tirgul />}></Route>
-                 <Route exact path='/quiz' element={< Quiz />}></Route>
+                 <Route exact path='/quiz/:idlevelorsubject/:idsub/:leveldescription' element={< Quiz />}></Route>
                  <Route exact path='/update' element={<Update  />}></Route>
 
           </Routes>

@@ -18,7 +18,6 @@ import { Menubar } from 'primereact/menubar';
 import { useDataFunctions } from '../Hooks/useDataFunctions';
 const Home=()=>{
     const {postDataFunc}=useDataFunctions()
-    useGetData("http://localhost:8000/user/2")
     const navigate = useNavigate();
     // const menu = useRef(null);
     const items1 = [

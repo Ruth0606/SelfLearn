@@ -4,12 +4,11 @@ import TirgulQ from "../tirgul/TirgulQ";
 import GetPageQ from "../tirgul/GetPageQ"
 import { Button } from 'primereact/button';
 import { useParams } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 
-export default function Test(props) {
+export default function Quiz(props) {
 
-
-    const {idsub} = useParams();
-    console.log("props.idlevel", props.idsub);
+    const navigate = useNavigate();
 
 
     // async function fetchData() {
@@ -33,18 +32,20 @@ export default function Test(props) {
     //       console.log(error);
     //     }
     //   }
-
-
+       const {idlevelorsubject, idsub,leveldescription} = useParams();
     return (
         <div>
-            <h1 className="title">מבחן</h1>
+            <h1 className="title">בוחן</h1>
             {
-             <GetPageQ idlevelorsubject={idsub} type={2}></GetPageQ>}
+             <GetPageQ idlevelorsubject={idlevelorsubject} type={3}></GetPageQ>}
             {
               <div style={{margin:"3px"}}className="card flex justify-content-center">
-                     <Button label="הגש מבחן" onClick={()=>alert("מבחן הוגש")} />
+                     <Button label="הגש בוחן" onClick={()=>alert("בוחן הוגש")} />
               </div>
             }
+            {leveldescription=="3"&&  <Button label="למבחן הסופי" onClick={()=>navigate(`/Test/${idsub}`)} /> }
+
+            {/* {leveldescription=="3"&& <button  onClick={()=>navigate("/Test",{idlevelorsubject:idsub})}>למבחן הסופי</button> } */}
         </div>
     )
 }

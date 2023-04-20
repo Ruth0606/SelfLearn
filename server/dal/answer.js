@@ -34,8 +34,8 @@ class AnswersDataAccessor {
     }
     getAllAnswersByIdQuestion(idquestion) {
         console.log(idquestion)
-        var condition = idquestion ? { idquestion: { [Op.like]: `%${idquestion}%` } } : null;
-
+        var condition = idquestion ? { idquestion: { [Op.eq]: `%${idquestion}%` } } : null;
+  
         return Answer.findAll({ where: condition })
     }
     async addCorrAns(Corranswer) {

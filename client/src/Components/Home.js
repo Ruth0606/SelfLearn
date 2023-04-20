@@ -10,16 +10,17 @@ import StudentList from './manager/StudentList';
 import StudStatistical from './students/StudStatistical';
 import Statistical from './manager/Statistical';
 import GetPageQ from './tirgul/GetPageQ';
+//import usePostData from '../Hooks/usePostData';
+import '../Hooks/useDataFunctions'
 import { Button } from 'primereact/button';
 import { TieredMenu } from 'primereact/tieredmenu';
 import { Menubar } from 'primereact/menubar';
-
-
-///////////////////////////////
-const Home = () => {
+import { useDataFunctions } from '../Hooks/useDataFunctions';
+const Home=()=>{
+    const {postDataFunc}=useDataFunctions()
     useGetData("http://localhost:8000/user/2")
     const navigate = useNavigate();
-    const menu = useRef(null);
+    // const menu = useRef(null);
     const items1 = [
         {
             label: 'File',
@@ -281,15 +282,16 @@ const Home = () => {
     return (<>
 
          {/* <div className="card" style={{direction:"ltr"}}> */}
-                       <div className="card flex justify-content-center">
+                       {/* <div className="card flex justify-content-center">
                 <TieredMenu model={items1} popup ref={menu} breakpoint="767px" />
                 <Button label="user" icon="pi pi-fw pi-user" onClick={(e) => menu.current.toggle(e)} />
-            </div>
-            <Menubar model={items} />
+            </div> */}
+            {/* <MegaMenu model={items} breakpoint="960px" /> */}
              <button onClick={() => { navigate('/marks') }}>ציונים</button>
             <button onClick={() => navigate("/Tirgul")}>למעבר לתרגול</button>
 
 
+            <button onClick={()=>navigate("/Update")}>מנהל</button>
 
 
 

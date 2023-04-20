@@ -278,9 +278,9 @@ const Home = () => {
         }
     ];
 
-    return (
+    return (<>
 
-        <div className="card" style={{direction:"ltr"}}>
+         {/* <div className="card" style={{direction:"ltr"}}> */}
                        <div className="card flex justify-content-center">
                 <TieredMenu model={items1} popup ref={menu} breakpoint="767px" />
                 <Button label="user" icon="pi pi-fw pi-user" onClick={(e) => menu.current.toggle(e)} />
@@ -296,7 +296,8 @@ const Home = () => {
 
              <button onClick={() => navigate("/StudentList")}>לרשימת תלמידים</button>
            <button onClick={() => navigate("/StudStatistical")}>נתונים סטטיסטיים על תלמיד</button>
-        </div>
+        {/* /</div> */}
+        </>
     )
 
 }

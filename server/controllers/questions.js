@@ -245,7 +245,38 @@ getMark=(req,res)=>
           });
         });
       }
+      /////////////////////////
+      getTestBybyStudAndSubject=(req,res)=>{
+        const paramId = req.param.idstudent;
+        const paramSub = req.param.idsubject;
+        QuestionDal.getTestBybyStudAndSubject(paramId,paramSub)
+        .then(data => {
+          res.send(data);
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving Test."
+          });
+        });
+      }
+      /////////////////////////////
+      getTestByIdSubject=(req,res)=>
+      {
+        const idS = req.query.idsubject;
 
+        QuestionDal.getTestByIdSubject(idS)
+        .then(data => {
+            res.send(data)
+         // res.send({"Answer.id":data[0]["answer.idanswer"],"Answer.description":data[0]["answer.description"]});
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving Test."
+          });
+        });
+      }
       getLevelTestsByIdStudent=(req,res)=>
       {
         const idS = req.query.idstudent;

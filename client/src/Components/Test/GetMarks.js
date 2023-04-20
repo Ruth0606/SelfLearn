@@ -6,7 +6,13 @@ import useGetData from '../../Hooks/useGetData'
 export default function GetMarks() {
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
+    const [flag, setFlag] = useState(true);
+    const[marks,setMarks]=useState([]);
     const { getDataFunc } = useDataFunctions();
+
+    useEffect(()=>{console.log('data',data)},[data]);
+    // useEffect(()=>{console.log('data1',data1)},[data1]);
+    // useEffect(()=>{console.log('flag',flag)},[flag]);
 
     useEffect(() => {
         // getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=1`)
@@ -59,33 +65,26 @@ export default function GetMarks() {
     //   }, [selectedSubject]);
     const a="level.subsubject.subject.description";
     const b="level.subsubject.subject.idsubject";
+    const c="level.subsubject.description";
     return (
         <div>
-            {data&&
-            data.map((item,i)=>{
-                return(
-                    <>
-                <b>{item[a]}</b>
-                {item[b]!==data[i-1][b]&&
-                getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=1`)
-                    .then(
-                        (data1) => {
-                           
-                        }
-                    )
-
-                }
-
-
-                    </>
-                )
-
-            })}
             <h1>ציונים</h1>
-            <button onClick={() => {
-                // const t = [1, 2, 1, 3, 4, 1].sort((a, b) => a - b);
-                // console.log({ t })
-            }}>ציון ע"פ תלמיד</button>
+            {data&&
+             data.map((item,i)=>{
+                const mm=[...marks].push(item.mark);
+                setMarks(mm);
+                 <p>{mm}</p>  
+            })
+
+        }   
+                                                    
+    {/* <button onClick={() => {
+    // const t = [1, 2, 1, 3, 4, 1].sort((a, b) => a - b);
+    // console.log({ t })
+    }}>ציון ע"פ תלמיד</button> */}
         </div>
+      
     )
 }
+
+

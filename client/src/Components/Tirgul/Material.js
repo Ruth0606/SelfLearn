@@ -29,8 +29,8 @@ export default function Material(props) {
   
     return (
         
-        <div className="card">
-            <Fieldset legend={props.subsubject}>
+        <div className="card"  style={{marginRight:"5%"}}>
+            <Fieldset  legend={props.subsubject}>
                 <p className="m-0">{data}</p>
             </Fieldset>
         </div>

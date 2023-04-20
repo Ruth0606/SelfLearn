@@ -1,3 +1,5 @@
+
+
 import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home';
@@ -13,7 +15,7 @@ import Signup from './Components/signup/Signup';
 import Quiz from './Components/test/Quiz';
 import Update from './Components/manager/Updata'
 import StudentList from './Components/manager/StudentList';
-import StudStatistical from './Components/students/StudStatistical';
+// import StudStatistical from './Components/students/StudStatistical';
 import Statistical from './Components/manager/Statistical';
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 
@@ -37,7 +39,7 @@ function App() {
                  <Route exact path='/update' element={<Update  />}></Route>
                  <Route exact path='/StudentList' element={< StudentList />}></Route>
                  <Route exact path='/Statistical' element={< Statistical />}></Route>
-                 <Route exact path='/StudStatistical' element={< StudStatistical />}></Route>
+                 {/* <Route exact path='/StudStatistical' element={< StudStatistical />}></Route> */}
           </Routes>
           </div>
        </Router>

@@ -4,11 +4,12 @@ import { MegaMenu } from "primereact/megamenu";
 import { Avatar } from "primereact/avatar";
 import { InputText } from "primereact/inputtext";
 import { Badge } from "primereact/badge";
-
+// import Bell from './Bell';
 import ReactDOM from "react-dom/client";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; // theme
 import "primereact/resources/primereact.css"; // core css
 import "primeicons/primeicons.css"; // icons
+import "../styles/home.css"
 // import 'primeflex/primeflex.css';                                   // css utility
 //import "./design/index.css";
 //import "./design/flags.css";
@@ -22,18 +23,18 @@ const TabMenuIn = () => {
   const navigate = useNavigate();
   const items = [
     {
-      label: "Home",
-      icon: "pi pi-fw pi-home",
+      label: "צור קשר",
+      // icon: "pi pi-comments",
+      icon: "pi pi-whatsapp",
       command: () => {
-        navigate("/home");
+        navigate("/contact");
       },
     },
     {
-      label: "Reciptions",
-      icon: "pi pi-book",
+      label: "התחל תרגול",
+      icon: "pi pi-file-edit",
       command: () => {
-        navigate("/resiptions");
-      },
+        navigate("/Tirgul")      },
     },
     { label: "Credits", icon: "pi pi-credit-card",command:()=>{navigate("/credits")} },
     { label: "Return Certificates", icon: "pi pi-fw pi-file",command:()=>{navigate("/credits")} },
@@ -52,8 +53,6 @@ const TabMenuIn = () => {
 
   const end = (
     <div className="flex justify-content-start flex-wrap card-container blue-container sm:mr-0 ">
-      
-
       <UserTab></UserTab>
     </div>
   );
@@ -76,7 +75,6 @@ const TabMenuIn = () => {
       
     </React.StrictMode>
     <button onClick={() => { navigate('/marks') }}>ציונים</button>
-            <button onClick={() => navigate("/Tirgul")}>למעבר לתרגול</button>
 
 
             <button onClick={()=>navigate("/Update")}>מנהל</button>
@@ -85,7 +83,7 @@ const TabMenuIn = () => {
 
 
              <button onClick={() => navigate("/StudentList")}>לרשימת תלמידים</button>
-           <button onClick={() => navigate("/StudStatistical")}>נתונים סטטיסטיים על תלמיד</button>
+           {/* <button onClick={() => navigate("/StudStatistical")}>נתונים סטטיסטיים על תלמיד</button> */}
     </>
   );
 };

@@ -8,6 +8,7 @@ import "../styles/Tirgul.css"
 import Material from "./Material";
 import Quiz from '../test/Quiz'
 import {useNavigate} from "react-router-dom"
+import { Button } from "primereact/button";
 
 
 
@@ -138,8 +139,10 @@ export default function SelectMaterial() {
   return loading ? (
     <div>loading</div>
   ) : (
-    <div className="card flex justify-content-center" style={{ margin: "3%"}}>
-      {dataClass.length && (
+    
+    <div style={{ margin: "3%",marginRight:"15%"}}>
+ <div  className="card-container blue-container flex align-items-center justify-content-start" >
+        {dataClass.length && (
         <Dropdown
       
           value={selectedClass}
@@ -162,8 +165,9 @@ export default function SelectMaterial() {
           options={dataClass}
           optionLabel="description"
           placeholder="בחר כיתה"
-          className="Dropdown"
-          style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%",backgroundColor:" #f9f9f9 ",borderColor: "#4CAF50"}}
+          className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+          style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
+          // style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%",backgroundColor:" #f9f9f9 ",borderColor: "#4CAF50"}}
         />
       )}
       <Dropdown
@@ -180,9 +184,9 @@ export default function SelectMaterial() {
         options={arrsubjects}
         optionLabel="description"
         placeholder="בחר מקצוע"
-        className="Dropdown"
-        style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%"}}
-      />
+        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
+        />
       <Dropdown
         disabled={flagSubject}
         value={selectedSubsubject}
@@ -196,9 +200,9 @@ export default function SelectMaterial() {
         options={arrsubsubjects}
         optionLabel="description"
         placeholder="בחר נושא"
-        className="Dropdown"
-        style={{ marginLeft: "3%", marginRight: "3%",width:"15%" }}
-      />
+        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
+        />
       <Dropdown
         disabled={flagSubsubject}
         value={selectedlevel}
@@ -210,16 +214,19 @@ export default function SelectMaterial() {
         options={arrlevels}
         optionLabel="description"
         placeholder="בחר רמה"
-        className="Dropdown"
-        style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%"}}
-      />
+        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
+        />
+
+    </div>
+    
       {/* {console.log(flagLevel)} */}
       {flagLevel &&selectedlevel&& <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
       {flagLevel && selectedlevel&&<GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>}
       {/* {flagLevel &&<button onClick={()=><Quiz idlevelorsubject={selectedlevel.idlevel}idsub={selectedSubject.idsubject}leveldescription={selectedlevel.description}></Quiz>}>למעבר לבוחן</button>}     */}
     {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
     {/* selectedlevel.idlevel */}
-    {flagLevel &&selectedlevel!==null&& <button onClick={()=> {return navigate(`/Quiz/${ selectedlevel.idlevel}/${selectedSubject.idsubject}/${selectedlevel.description}`)}}>למעבר לבוחן</button>}
+    {flagLevel &&selectedlevel!==null&& <Button onClick={()=> {return navigate(`/Quiz/${ selectedlevel.idlevel}/${selectedSubject.idsubject}/${selectedlevel.description}`)}}>למעבר לבוחן</Button>}
 
       </div>
   );

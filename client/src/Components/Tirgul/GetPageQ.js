@@ -101,52 +101,52 @@ export default function GetPageQ(props) {
   );
 
   function add(e) {
-      setVisible(false);
-      const q = document.getElementById("question").value;
-      const ans1 = document.getElementById("ans1").value;
-      const ans2 = document.getElementById("ans2").value;
-      const ans3 = document.getElementById("ans3").value;
-      const score = document.getElementById("score").value;
-      let d = [];
-      postDataFunc("http://localhost:8000/question", {
-        description: q,
-        idlevel: idlevel,
-        idsubject: idsubject,
-        idquestion_type: props.type,
-        score: score,
-      }).then((dataa) => {
-        console.log("qqqqqqqqqqqqqq", dataa);
-        postDataFunc("http://localhost:8000/answer", {
-          description: ans1,
-          idquestion: dataa.idquestion,
-        }).then((data1) => {
-          console.log(data1);
-          console.log("aaaaaaaaaaaaaaaaaaaaaagggggggg", d);
-          d.push(data1);
-        });
-        postDataFunc("http://localhost:8000/answer", {
-          description: ans2,
-          idquestion: dataa.idquestion,
-        }).then((data2) => {
-          console.log(data);
-          d.push(data2);
-        });
-        postDataFunc("http://localhost:8000/answer", {
-          description: ans3,
-          idquestion: dataa.idquestion,
-        }).then((data3) => {
-          console.log(data);
-          d.push(data3);
-          console.log("aaaaaaaaaaaaaaaaaaaaaa", d);
-          dataa.answers=d
-          console.log({dataa});
-
-          data.push(dataa);
-          setdata([...data]);
-          // dataAnswer.push(d);
-          // setdataAnswer([...dataAnswer]);
-        });
+    setVisible(false);
+    const q = document.getElementById("question").value;
+    const ans1 = document.getElementById("ans1").value;
+    const ans2 = document.getElementById("ans2").value;
+    const ans3 = document.getElementById("ans3").value;
+    const score = document.getElementById("score").value;
+    let d = [];
+    postDataFunc("http://localhost:8000/question", {
+      description: q,
+      idlevel: idlevel,
+      idsubject: idsubject,
+      idquestion_type: props.type,
+      score: score,
+    }).then((dataa) => {
+      console.log("qqqqqqqqqqqqqq", dataa);
+      postDataFunc("http://localhost:8000/answer", {
+        description: ans1,
+        idquestion: dataa.idquestion,
+      }).then((data1) => {
+        console.log(data1);
+        console.log("aaaaaaaaaaaaaaaaaaaaaagggggggg", d);
+        d.push(data1);
       });
+      postDataFunc("http://localhost:8000/answer", {
+        description: ans2,
+        idquestion: dataa.idquestion,
+      }).then((data2) => {
+        console.log(data);
+        d.push(data2);
+      });
+      postDataFunc("http://localhost:8000/answer", {
+        description: ans3,
+        idquestion: dataa.idquestion,
+      }).then((data3) => {
+        console.log(data);
+        d.push(data3);
+        console.log("aaaaaaaaaaaaaaaaaaaaaa", d);
+        dataa.answers = d
+        console.log({ dataa });
+
+        data.push(dataa);
+        setdata([...data]);
+        // dataAnswer.push(d);
+        // setdataAnswer([...dataAnswer]);
+      });
+    });
   }
 
   //////////////////question delete
@@ -163,27 +163,30 @@ export default function GetPageQ(props) {
     </div>
   );
   function deleteFuncll(e) {
-      setVisibleQD(false);
-      const questNum = document.getElementById("num").value;
-      const num=data[questNum-1].idquestion
-      deleteDataFunc(`question/${num}`).then((data1) => {
-        console.log(data);
-        data.splice(questNum - 1, 1);
-        setdata([...data]);
-        
-        // dataAnswer.splice(questNum - 1, 1);
-        // setdataAnswer([...dataAnswer]);
-      });
+    setVisibleQD(false);
+    const questNum = document.getElementById("num").value;
+    const num = data[questNum - 1].idquestion
+    deleteDataFunc(`question/${num}`).then((data1) => {
+      console.log(data);
+      data.splice(questNum - 1, 1);
+      setdata([...data]);
+
+      // dataAnswer.splice(questNum - 1, 1);
+      // setdataAnswer([...dataAnswer]);
+    });
   }
 
   return (
     <div style={{ margin: "3%", textAlign: "right" }}>
       {manager && (
-        <div>
+             <div  className="card-container blue-container flex align-items-center justify-content-start"  style={{ marginRight: "6%",marginBottom:"5%" }} >
+
           <Button
             label=" הוסף שאלה "
             icon="pi pi-plus"
             onClick={() => setVisible(true)}
+            className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" 
+            style={{minWidth: "100px", minHeight: "50px" }}
           />
           <Dialog
             header="שאלה"
@@ -217,6 +220,8 @@ export default function GetPageQ(props) {
           </Dialog>
           &nbsp;
           <Button
+            className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" 
+            style={{minWidth: "100px", minHeight: "50px" }}
             label=" מחק שאלה "
             icon="pi pi-trash"
             onClick={() => setVisibleQD(true)}
@@ -236,6 +241,7 @@ export default function GetPageQ(props) {
           </Dialog>
         </div>
       )}
+      <div>
       {data.length > 0 &&
         data.map((q, index) => (
           <TirgulQ
@@ -245,7 +251,7 @@ export default function GetPageQ(props) {
             categories={q.answers}
           />
         ))}
-
+</div>
       {/* {dataAnswer.length > 0 &&
         dataAnswer.map((val, i) => {
           // console.log("dataAnswer in return", dataAnswer)

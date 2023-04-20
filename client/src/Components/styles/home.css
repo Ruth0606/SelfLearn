@@ -1,0 +1,17 @@
+.p-button-label {
+    font-weight: 450;
+}
+.p-button.p-button-secondary:enabled:focus {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #ffffff, 0 1px 2px 0 white;
+}
+.p-sidebar-right .p-sidebar {
+    width: 17rem;
+    height: 100%;
+}
+
+/* .attribute{
+    direction: ltr;
+} */
+.p-card-body{
+    box-shadow: none;
+}

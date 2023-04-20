@@ -6,6 +6,7 @@ import React, { useRef } from 'react';
 import { Badge } from 'primereact/badge';
 import { TiWarningOutline } from "react-icons/ti";
 import { TiWarning } from "react-icons/ti";
+import "../styles/home.css"
 
 const Bell=() =>{
     const menu = useRef(null);

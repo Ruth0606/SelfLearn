@@ -9,7 +9,7 @@ import ReactDOM from "react-dom/client";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; // theme
 import "primereact/resources/primereact.css"; // core css
 import "primeicons/primeicons.css"; // icons
-import 'primeflex/primeflex.css';                                   // css utility
+// import 'primeflex/primeflex.css';                                   // css utility
 //import "./design/index.css";
 //import "./design/flags.css";
 import UserProfile from "./UserProfile";
@@ -19,25 +19,25 @@ import { useNavigate } from "react-router-dom";
 
 
 const TabMenuIn = () => {
-  const nevigate = useNavigate();
+  const navigate = useNavigate();
   const items = [
     {
       label: "Home",
       icon: "pi pi-fw pi-home",
       command: () => {
-        nevigate("/home");
+        navigate("/home");
       },
     },
     {
       label: "Reciptions",
       icon: "pi pi-book",
       command: () => {
-        nevigate("/resiptions");
+        navigate("/resiptions");
       },
     },
-    { label: "Credits", icon: "pi pi-credit-card",command:()=>{nevigate("/credits")} },
-    { label: "Return Certificates", icon: "pi pi-fw pi-file",command:()=>{nevigate("/credits")} },
-    { label: "Credit for Sale", icon: "pi pi-cart-plus",command:()=>{nevigate("/creditForSale")} },
+    { label: "Credits", icon: "pi pi-credit-card",command:()=>{navigate("/credits")} },
+    { label: "Return Certificates", icon: "pi pi-fw pi-file",command:()=>{navigate("/credits")} },
+    { label: "Credit for Sale", icon: "pi pi-cart-plus",command:()=>{navigate("/creditForSale")} },
     { label: "Club", icon: "pi pi-tags" },
   ];
 
@@ -62,10 +62,10 @@ const TabMenuIn = () => {
 
 
   
-  return (
+  return (<>
     <React.StrictMode>
       <div className="card">
-        <MegaMenu
+        <MegaMenu  style={{direction:"ltr"}}
           model={items}
           orientation="horizontal"
           start={start}
@@ -73,7 +73,20 @@ const TabMenuIn = () => {
           breakpoint="960px"
         />
       </div>
+      
     </React.StrictMode>
+    <button onClick={() => { navigate('/marks') }}>ציונים</button>
+            <button onClick={() => navigate("/Tirgul")}>למעבר לתרגול</button>
+
+
+            <button onClick={()=>navigate("/Update")}>מנהל</button>
+
+
+
+
+             <button onClick={() => navigate("/StudentList")}>לרשימת תלמידים</button>
+           <button onClick={() => navigate("/StudStatistical")}>נתונים סטטיסטיים על תלמיד</button>
+    </>
   );
 };
 

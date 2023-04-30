@@ -50,9 +50,14 @@ export default function UpdateMaterial(props) {
         validate: (data) => {
             let errors = {};
 
-            if (!data.blog || data.blog === `n`) {
+            if ( data.blog === "") {
                 
                 errors.blog = 'נדרש מלל';
+            }
+            
+            if ( !data.blog ) {
+                
+                errors.blog = ' לא נמצא שינוי';
             }
 
             return errors;

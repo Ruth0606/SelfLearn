@@ -56,7 +56,7 @@ export default function Signup() {
 
 }}>create</button>
                 {/* <Button label="Submit" type="submit" icon="pi pi-check" style={{ borderRadius: "7px" }}/> */}
-                <p className="message">?Already registered <div onClick={() => { navigate('/login') }} style={{ cursor: "pointer", color: "green" }}>Sign In</div></p>
+                <p className="message">?Already registered <div onClick={() => { navigate('/login') }} style={{ cursor: "pointer", color: "#6366F1" }}>Sign In</div></p>
             </div>
 
         </div>

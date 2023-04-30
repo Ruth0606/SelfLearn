@@ -153,7 +153,7 @@ getLevelTestsByIdStudent(id)
     return Test.findAll({
       where: {
         idstudent: id,
-        idquestion_Type: 1,
+        idquestion_Type: 3,
       },
       include: [
         {
@@ -174,7 +174,7 @@ getLevelTestsByIdStudent(id)
   }
   getSubjectsTestsByIdStudent(id) {
     return Test.findAll({
-      include: { model: db.subjects, attributes: ["description"] }, //'idsubject',
+      include: { model: db.subjects, attributes: ["description","idsubject"] }, //'idsubject',
       where: { idstudent: id, idquestion_Type: 2 },
       raw: true,
       attributes: ["idtest", "mark"],

@@ -27,10 +27,10 @@ import { Button } from 'primereact/button';
 
 export default function Activity() {
         const events = [
-        { status: 'Ordered', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#9C27B0', image: 'game-controller.jpg' },
-        { status: 'Processing', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
-        { status: 'Shipped', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800' },
-        { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
+        { status: 'כניסה למערכת', date: '15/10/2020 10:30', icon: 'pi pi-sign-in', color: '#9C27B0', image: 'game-controller.jpg' },
+        { status: 'בחירת מקצוע חדש', date: '15/10/2020 14:00', icon: 'pi pi-search', color: '#673AB7' },
+        { status: 'נסיגה יזומה', date: '15/10/2020 16:15', icon: 'pi pi-replay', color: '#FF9800' },
+        { status: 'התראות', date: '16/10/2020 10:00', icon: 'pi pi-bell', color: '#607D8B' }
     ];
 
     const customizedMarker = (item) => {
@@ -43,11 +43,12 @@ export default function Activity() {
 
     const customizedContent = (item) => {
         return (
-            <Card title={item.status} subTitle={item.date} className="h-11rem shadow-none justify-content-start" >
-                { item.image && <img src={`https://primefaces.org/cdn/primereact/images/product/${item.image}`} alt={item.name} width={50} className="shadow-1" />}
-                {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p> */}
-                <Button label="Read more" className="p-button-text"></Button>
+            // title={item.status}
+            <Card  subTitle={item.date} className="h-10rem w-11rem shadow-none justify-content-start margin-top: 0rem;" >
+                <p style={{direction:"ltr"}}>{item.status}</p>
+                {/* { item.image && <img src={`https://primefaces.org/cdn/primereact/images/product/${item.image}`} alt={item.name} width={50} className="shadow-1" />} */}
+                
+                <Button label="Read more" className="p-button-text" style={{direction:"ltr",padding: "3%",margin: "5%"}}></Button>
             </Card>
         );
     };

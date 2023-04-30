@@ -4,7 +4,7 @@ import { Dialog } from "primereact/dialog";
 
 import React, { useEffect, useState } from "react";
 import useGetData from "../../Hooks/useGetData";
-
+import Check from "../test/Check";
 import { useDataFunctions } from "../../Hooks/useDataFunctions";
 
 export default function GetPageQ(props) {
@@ -14,6 +14,17 @@ export default function GetPageQ(props) {
   props.manager ? (manager = true) : (manager = false);
   // const [dataAnswer, setdataAnswer] = useState([]);
   const [data, setdata] = useState([]);
+  const [cor, setcor] = useState([]);
+  const [flag,setFlag]=useState("none");
+  const [check,setCheck]=useState(['x','x','x','x','x','x','x','x','x','x']);
+  const [f, setF] = useState(false);
+  const [mark, setMark] = useState(0);
+
+
+
+ // const arr1=[null,null,null,null,null,null,null,null,null,null]
+  const [selected, setSelected] = useState([null,null,null,null,null,null,null,null,null,null]);
+
   let idlevel, idsubject;
   if (props.type == 1 || props.type == 3) {
     idlevel = props.idlevelorsubject;
@@ -25,7 +36,6 @@ export default function GetPageQ(props) {
     ///////////////////////////////////////////////////////////////todo
   }
 
-  console.log("props.idlevel", props.idlevelorsubject);
   const { getDataFunc, deleteDataFunc, postDataFunc } = useDataFunctions();
   // const [flag, setflag] = useState(false);
   // const {
@@ -35,13 +45,34 @@ export default function GetPageQ(props) {
   //   refetch,
   // } = useGetData(`http://localhost:8000/question/1/${props.idlevel}`);
   // useEffect(()=>{console.log("flag",flag)},flag)
+  const correctAns=[];
+
   useEffect(() => {
     getDataFunc(
       `http://localhost:8000/question/${props.type}/${props.idlevelorsubject}`
     ).then((data1) => {
-      console.log({ data1 });
-      setdata(data1);
+      if(data1.length>10&&(props.type==2||props.type==3))
+            data1.splice(10)
+      if (props.type==3){
+        const correctAns=[];
+        data1.forEach((el)=>{
+         const idQ=el.idquestion
+         console.log({idQ});
+         
+         
 
+          getDataFunc(
+            `http://localhost:8000/answer/${idQ}`
+          ).then((dataa) => {
+           correctAns.push(dataa);
+           console.log({dataa});
+           console.log("cccccccccccccccccccccc",correctAns);
+           setcor([...correctAns])
+
+          });
+        })
+    }
+    setdata(data1);
       // data1.forEach((element)  => {
       //   const arr=[]
       //   const idquestion = element.idquestion;
@@ -66,6 +97,64 @@ export default function GetPageQ(props) {
       // // console.log("ffffffff", flag);
     });
   }, []);
+
+
+ 
+  
+
+  useEffect(()=>{
+    console.log(flag);
+    if(flag=="block"){
+      console.log(cor);
+      console.log({selected});
+
+      selected.forEach((el,i)=>{
+
+
+        if(el!=null&&el.idanswer==cor[i]["Answer.id"] ){
+      console.log(i,mark);
+      console.log(i,data[i].score+mark);
+      //mark=data[i].score+mark
+          setMark(data[i].score+mark)
+          console.log(i,mark);
+
+          // mark+=data[i].score;
+          check[i]='v'
+         
+        }
+      })
+     
+      console.log({check});
+
+      console.log({mark});
+      //setFlag("none");
+      // setCheck([['x','x','x','x','x','x','x','x','x','x']])
+      const idstudent=JSON.parse(localStorage.getItem('user')).idstudent
+      const idquestion_type=props.type
+
+      postDataFunc(("http://localhost:8000/question/test"), {idstudent,mark,idquestion_type,idlevel,idsubject})
+      .then((data) => {
+        console.log(data)
+        setF(true);
+       //setMark(0);
+      })
+
+    }
+  },[flag])
+//   useEffect(() => {
+//     if (data&&props.type==3){
+//       data.forEach((el)=>{
+//        const idQ=el.idquestion
+//        console.log({idQ});
+//         getDataFunc(
+//           `http://localhost:8000/answer/${idQ}`
+//         ).then((data1) => {
+//          correctAns.push(data1);
+//         });
+//       })
+//  console.log({correctAns});
+//   }
+//   }, [data]);
 
   // useEffect(() => {
 
@@ -176,8 +265,25 @@ export default function GetPageQ(props) {
     });
   }
 
+  function func(ind,selected1)
+  {
+
+    selected[ind]=selected1;
+   // setSelected([...selected]);
+  }
+
+  function func2(ind)
+  {
+    if(cor[ind]){
+    console.log(cor[ind]);
+    console.log(cor);
+    return cor[ind]["Answer.id"];
+  }
+  }
+
   return (
     <div style={{ margin: "3%", textAlign: "right" }}>
+      {/* {f&&<><Check arr={check}></Check></>} */}
       {manager && (
              <div  className="card-container blue-container flex align-items-center justify-content-start"  style={{ marginRight: "6%",marginBottom:"5%" }} >
 
@@ -185,7 +291,7 @@ export default function GetPageQ(props) {
             label=" הוסף שאלה "
             icon="pi pi-plus"
             onClick={() => setVisible(true)}
-            className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" 
+            className="flex align-items-center justify-content-center font-bold text-white border-round m-2" 
             style={{minWidth: "100px", minHeight: "50px" }}
           />
           <Dialog
@@ -220,7 +326,7 @@ export default function GetPageQ(props) {
           </Dialog>
           &nbsp;
           <Button
-            className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" 
+            className="flex align-items-center justify-content-center font-bold text-white border-round m-2" 
             style={{minWidth: "100px", minHeight: "50px" }}
             label=" מחק שאלה "
             icon="pi pi-trash"
@@ -241,17 +347,52 @@ export default function GetPageQ(props) {
           </Dialog>
         </div>
       )}
-      <div>
-      {data.length > 0 &&
+      {    console.log({selected})
+}
+      {/* {props.flag=="block"&&<div>
+      {cor.length > 0 &&
         data.map((q, index) => (
           <TirgulQ
+
+            correctAns={correctAns[index]["Answer.id"]}
+            flag={props.flag}
+            func={func}
             key={index}
             num={index + 1}
             quest={q}
             categories={q.answers}
           />
         ))}
-</div>
+        
+</div>} */}
+{//props.flag=="none"&&
+}
+{props.type!=1&&f&&<h1>ציונך : {mark}</h1>}
+
+{<div>
+      {data.length > 0 &&
+        data.map((q, index) => (
+          <TirgulQ
+          check={check[index]}
+         
+            flag={flag}
+            func={func}
+            func2={func2}
+
+            key={index}
+            num={index + 1}
+            quest={q}
+            categories={q.answers}
+          />
+        ))}
+        
+</div>}
+{
+             props.type==3&& <div style={{margin:"3px"}}className="card flex justify-content-center">
+                     <Button label="הגש בוחן" onClick={()=>{setFlag("block");}} />
+              </div>
+            }
+
       {/* {dataAnswer.length > 0 &&
         dataAnswer.map((val, i) => {
           // console.log("dataAnswer in return", dataAnswer)

@@ -1,3 +1,4 @@
+import { useEffect , useContext} from "react";
 
 import { Chip } from 'primereact/chip';
 
@@ -9,15 +10,24 @@ import{Avatar} from 'primereact/avatar'
 import { Button } from 'primereact/button';
 import { Menu } from 'primereact/menu';
 import { Toast } from 'primereact/toast';
-import {useNavigate} from 'react-router-dom'
+import {json, useNavigate} from 'react-router-dom'
 import "../styles/home.css"
 import Confirm from './Confirm';
-
+import UserContext from "../user/UserContext";
 
 import React, { useState, useRef } from 'react';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 const UserProfile=()=> {
+    var user = useContext(UserContext);
     const menu = useRef(null);
+
+
+    useEffect(() => {
+       user=JSON.parse(localStorage.getItem('user'))
+       console.log({user});
+    }, []);
+
+
 
 
     const [visible, setVisible] = useState(false);
@@ -47,7 +57,7 @@ const UserProfile=()=> {
                 },
                 {
                     label: 'Settings',
-                    icon: 'pi pi-spin pi-cog',
+                    icon: 'pi pi-cog',
                    
                     command:(e) => {
                         //router.push('/resiptions');
@@ -88,6 +98,8 @@ const UserProfile=()=> {
             ]
         }
     ];
+    const a=localStorage.getItem("user");
+
 
     return (
         <>
@@ -102,9 +114,19 @@ const UserProfile=()=> {
 
             <Menu model={items} popup ref={menu} />
             {/* <Button label="Show" icon="pi pi-bars" onClick={(e) => menu.current.toggle(e)} /> */}
-            <div className="flex align-items-center justify-content-center border-round m-2 ">
-            <Avatar icon="pi pi-user" size="large" shape="circle" style={{"background":"none","color":"orange"}} onClick={(e) => menu.current.toggle(e)}/>
-            </div>
+           
+            {/* <div className="flex align-items-center justify-content-center border-round m-2 flex-column ">
+                <Avatar icon="pi pi-user" size="large" shape="circle" className='m-0 pt-0' style={{"background":"none","color":"orange"}} onClick={(e) => menu.current.toggle(e)}/>
+                {user!=null&&user.ismanager==0&&<p className="text-xs mt-0 text-orange-500">{(JSON.parse(localStorage.getItem('user'))).name}</p>}
+               {/* { JSON.parse(localStorage.getItem('user'))} */}
+               {/* {user.ismanager==1&&<p className="text-xs mt-0 text-orange-500">{JSON.parse(localStorage.getItem('user')).name} - מנהל</p>}   */}
+          {/* </div> */}
+          <div className="flex align-items-center justify-content-center border-round m-2 flex-column ">
+                <Avatar icon="pi pi-user" size="large" shape="circle" className='m-0 pt-0' style={{"background":"none","color":"orange"}} onClick={(e) => menu.current.toggle(e)}/>
+                {a&&JSON.parse(localStorage.getItem('user')).ismanager==0&&<p className="text-xs mt-0 text-orange-500">{(JSON.parse(localStorage.getItem('user'))).name}</p>}
+               {/* { JSON.parse(localStorage.getItem('user'))} */}
+               {a&&JSON.parse(localStorage.getItem('user')).ismanager==1&&<p className="text-xs mt-0 text-orange-500">{JSON.parse(localStorage.getItem('user')).name} - מנהל</p>}  
+          </div>
         </>
     
     )

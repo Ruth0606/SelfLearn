@@ -5,6 +5,8 @@ const Visits_levels = db.visits_levels
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { Op } = require("sequelize");
+const mails = require("../services/mails.js");
+
 class StudentDataAccessor {
     async getAll() {
         const users = await Student.findAll();
@@ -43,6 +45,21 @@ class StudentDataAccessor {
         //   });
         //   return "delete sucsses";
     }
+
+
+
+    // async register(user) {
+    //     const name = user.name
+    //     const grade = user.grade
+    //     const mail = user.mail
+    //     const phone = user.phone
+    //     const id = user.id
+    //     const password = user.password
+    //     const ismanager = user.ismanager
+    //     return await Student.create({ name, grade, mail, phone, id, password, ismanager })
+
+    // }
+
     async register(user) {
         const name = user.name
         const grade = user.grade
@@ -51,15 +68,22 @@ class StudentDataAccessor {
         const id = user.id
         const password = user.password
         const ismanager = user.ismanager
-        // const hashedPwd = await bcrypt.hash(password, 10)
-        // return await Student.create({name,grade,mail,phone,id,password:hashedPwd,ismanager })
-        return await Student.create({ name, grade, mail, phone, id, password, ismanager })
+        const newUser= await Student.create({ name, grade, mail, phone, id, password, ismanager })
+        console.log('maillllll',user.mail)
+        if (newUser) {
+            mails.sendEmail(user.mail, `${user.name} היקרה! `, "נרשמת בהצלחה למערכת 'LetTargel' נשמח לראותך...📖📕📝")}
+        return newUser
     }
+    async sendMail(userName,userMail,content){
+            await mails.sendEmail("36325569028@mby.co.il", `נשלח מאת המשתמש: ${userName} `,`מייל: ${userMail} ,    ${content}`)
+    }
+
     updateById(id, user) {
         return Student.update(user, {
             where: { idstudent: id }
         })
     }
+
     async login(id1, password1) {
         console.log("from login in user dal")
         console.log(id1)

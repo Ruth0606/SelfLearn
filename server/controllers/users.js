@@ -26,6 +26,30 @@ class UserController{
         });
       });
   }
+
+
+  sendMail=(req, res) => 
+  {
+    if (!req.body.userName&&!req.body.userMail &&!req.body.content) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+    
+    StudentDal.sendMail(req.body.userName,req.body.userMail,req.body.content)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while sending the message."
+        });
+      });
+  }
+
+
   login=async(req,res)=>
   {
     const id=req.params.id

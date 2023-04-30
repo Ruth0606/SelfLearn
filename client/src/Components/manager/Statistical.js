@@ -5,6 +5,7 @@ import { DataView } from 'primereact/dataview';
 import { Dropdown } from 'primereact/dropdown';
 import { Rating } from 'primereact/rating';
 import { Tag } from 'primereact/tag';
+
 export default function Statistical() {
 
     // const { data, loading, error, refetch } = useGetData('http://localhost:8000/user');

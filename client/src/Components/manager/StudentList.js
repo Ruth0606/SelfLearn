@@ -262,7 +262,7 @@ export default function StudentList() {
                 {/* <Column field="status" header="Status" showFilterMenu={false} filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={statusBodyTemplate} filter filterElement={statusRowFilterTemplate} /> */}
                 {/* <Column field="ismanager" header="מנהל" dataType="boolean" style={{ minWidth: '6rem' }} body={verifiedBodyTemplate} filter filterElement={verifiedRowFilterTemplate} /> */}
             </DataTable> 
-            <Button icon="pi pi-chart-line" label="לקבלת נתונים סטטיסטיים"  severity="secondary" outlined text raised style={{margin:"40px"}} onClick={()=>navigate("/Statistical")}/>
+            <Button icon="pi pi-chart-line" label="לקבלת נתונים סטטיסטיים"  severity="secondary" outlined text raised style={{margin:"40px"}} onClick={()=>navigate("/Statistic")}/>
            {/* <BasicFilterDemo2/> */}
             {/* <Button label="לקבלת נתונים סטטיסטיים" severity="secondary" text style={{margin:"40px"}} onClick={()=>navigate("/Statistical")}/> */}
         </div>

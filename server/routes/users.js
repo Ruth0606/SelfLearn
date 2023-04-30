@@ -17,6 +17,8 @@ router.route("/")
     .get(loginCon.getAll)
     // .post(verifyJWT,loginCon.register)
     .post(loginCon.register)
+router.route("/sendMail")   
+    .post(loginCon.sendMail)
     //.get(loginCon.getAllByParam);
 router.route("/visit/getLevelsofStudent")
     .get(loginCon.getLevelsofStudent)

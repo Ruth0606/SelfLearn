@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "../styles/Test.css"
 import TirgulQ from "../tirgul/TirgulQ";
 import GetPageQ from "../tirgul/GetPageQ"
@@ -33,16 +33,17 @@ export default function Test(props) {
     //       console.log(error);
     //     }
     //   }
+    const [flag,setFlag]=useState("none");
 
 
     return (
         <div>
             <h1 className="title">מבחן</h1>
             {
-             <GetPageQ idlevelorsubject={idsub} type={2}></GetPageQ>}
+             <GetPageQ idlevelorsubject={idsub} type={2} ></GetPageQ>}
             {
               <div style={{margin:"3px"}}className="card flex justify-content-center">
-                     <Button label="הגש מבחן" onClick={()=>alert("מבחן הוגש")} />
+                     <Button label="הגש מבחן" onClick={()=>{setFlag("block");alert("מבחן הוגש")}} />
               </div>
             }
         </div>

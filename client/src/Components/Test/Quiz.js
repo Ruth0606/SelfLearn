@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "../styles/Test.css"
 import TirgulQ from "../tirgul/TirgulQ";
 import GetPageQ from "../tirgul/GetPageQ"
@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom"
 export default function Quiz(props) {
 
     const navigate = useNavigate();
-
+    // const [flag,setFlag]=useState("none");
 
     // async function fetchData() {
     //     useGetData('https://jsonplaceholder.typicode.com/posts',3)
@@ -38,12 +38,12 @@ export default function Quiz(props) {
             <h1 className="title">בוחן</h1>
             {
              <GetPageQ idlevelorsubject={idlevelorsubject} type={3}></GetPageQ>}
-            {
+            {/* {
               <div style={{margin:"3px"}}className="card flex justify-content-center">
-                     <Button label="הגש בוחן" onClick={()=>alert("בוחן הוגש")} />
+                     <Button label="הגש בוחן" onClick={()=>{setFlag("block"); alert("בוחן הוגש")}} />
               </div>
-            }
-            {leveldescription=="3"&&  <Button label="למבחן הסופי" onClick={()=>navigate(`/Test/${idsub}`)} /> }
+            } */}
+            {leveldescription=="3"&&  <Button label="למבחן הסופי" onClick={()=>{navigate(`/Test/${idsub}`)}} />}
 
             {/* {leveldescription=="3"&& <button  onClick={()=>navigate("/Test",{idlevelorsubject:idsub})}>למבחן הסופי</button> } */}
         </div>

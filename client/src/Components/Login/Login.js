@@ -9,30 +9,31 @@ import {useDataFunctions} from '../../Hooks/useDataFunctions'
 import useGetData from '../../Hooks/useGetData'
 import { Toast } from 'primereact/toast';
 import axios from 'axios';
+// import Home2 from '../Home/Home2'
 
 
-export default function Login() {
+export default function Login(props) {
     const {getDataFunc}= useDataFunctions();
     const navigate = useNavigate()
     const [idUser, setIdUser] = useState('');
     const [passUser, setPassUser] = useState('');
     const [flag1, setFlag1] = useState(false);
 
-    useEffect(()=>{console.log('idUser',idUser)},[idUser]);
-    useEffect(()=>{console.log('passUser',passUser)},[passUser]);
+    // useEffect(()=>{
+    //     if(passUser!='' && idUser!='' ){
+    //         getDataFunc(`http://localhost:8000/user/login/${idUser}/${passUser}`)
+    //         .then(
+    //             (data) => {
+    //             console.log("data")
+    //             console.log(data);
+    //                         }
+    //                       );
+    //                     }
+    // },[flag1])
 
-    useEffect(()=>{
-        if(passUser!='' && idUser!='' ){
-            getDataFunc(`http://localhost:8000/user/login/${idUser}/${passUser}`)
-            .then(
-                (data) => {
-                console.log("data")
-                console.log(data);
-                            }
-                          );
-                        }
-    },[flag1])
+  
     return (
+        <div className="w-700">
         <div className="login-page">
             <div className="form">
                
@@ -73,10 +74,16 @@ export default function Login() {
                             {/* <label htmlFor="input_value">סיסמא</label> */}
                         {/* </span> */}
                     <button type="submit" onClick={()=>{
-                         setFlag1(true);
+                        setFlag1(true);
+                        props.setUserId(idUser)
+                        props.setPassword(passUser)
+                        navigate('/') 
+                            // {<Home2/>}
                     }} style={{borderRadius: "0.25rem"}}>login</button>
-                    <div className="message">?Not registered <p onClick={() => { navigate('/signup') }} style={{ cursor: "pointer", color: "green" }}>Create an account</p></div>
+                    <div className="message">?Not registered <p onClick={() => { navigate('/Register') }} style={{ cursor: "pointer", color: "#6366F1" }}>Create an account</p></div>
             </div>
+        </div>
+
         </div>
     )
 }

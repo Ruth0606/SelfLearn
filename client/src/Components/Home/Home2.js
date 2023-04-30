@@ -1,3 +1,4 @@
+import {useContext} from "react";
 import React from "react";
 import { TabMenu } from "primereact/tabmenu";
 import { MegaMenu } from "primereact/megamenu";
@@ -16,12 +17,68 @@ import "../styles/home.css"
 import UserProfile from "./UserProfile";
 import UserTab from "./UserTab";
 import { useNavigate } from "react-router-dom";
-
+import UserContext from "../user/UserContext";
 
 
 const TabMenuIn = () => {
   const navigate = useNavigate();
-  const items = [
+  const user = useContext(UserContext);
+  let items=[]
+  const a=localStorage.getItem("user");
+
+console.log(a);
+  if(a==undefined){
+
+   items = [
+    {
+      label: "צור קשר",
+      // icon: "pi pi-comments",
+      icon: "pi pi-whatsapp",
+      command: () => {
+        navigate("/contact");
+      },
+    },
+    {
+      label: "התחל תרגול",
+      icon: "pi pi-file-edit",
+      command: () => {
+        JSON.parse(localStorage.getItem('user'))&&
+        navigate("/Tirgul")      },
+    },
+   { label: "השגים", icon: "pi pi-check-square",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate('/marks')} },
+    // pi-chart-line
+    { label: "נתונים סטטיסטיים", icon: "pi pi-chart-line",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate("/StudStatistical")} }
+    // { label: "Credit for Sale", icon: "pi pi-cart-plus",command:()=>{navigate("/creditForSale")} },
+    // { label: "Club", icon: "pi pi-tags" },
+  ];
+}
+else if(JSON.parse(a).ismanager==0){
+    
+  items = [
+   {
+     label: "צור קשר",
+     // icon: "pi pi-comments",
+     icon: "pi pi-whatsapp",
+     command: () => {
+       navigate("/contact");
+     },
+   },
+   {
+     label: "התחל תרגול",
+     icon: "pi pi-file-edit",
+     command: () => {
+       JSON.parse(localStorage.getItem('user'))&&
+       navigate("/Tirgul")      },
+   },
+  { label: "השגים", icon: "pi pi-check-square",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate('/marks')} },
+   // pi-chart-line
+   { label: "נתונים סטטיסטיים", icon: "pi pi-chart-line",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate("/StudStatistical")} }
+   // { label: "Credit for Sale", icon: "pi pi-cart-plus",command:()=>{navigate("/creditForSale")} },
+   // { label: "Club", icon: "pi pi-tags" },
+ ];
+}
+else if(JSON.parse(a).ismanager!=0){
+   items = [
     {
       label: "צור קשר",
       // icon: "pi pi-comments",
@@ -36,12 +93,14 @@ const TabMenuIn = () => {
       command: () => {
         navigate("/Tirgul")      },
     },
-    { label: "Credits", icon: "pi pi-credit-card",command:()=>{navigate("/credits")} },
-    { label: "Return Certificates", icon: "pi pi-fw pi-file",command:()=>{navigate("/credits")} },
-    { label: "Credit for Sale", icon: "pi pi-cart-plus",command:()=>{navigate("/creditForSale")} },
-    { label: "Club", icon: "pi pi-tags" },
+   { label: "השגים", icon: "pi pi-check-square",command:()=>{navigate('/marks')} },
+    // pi-chart-line
+    { label: "נתונים סטטיסטיים", icon: "pi pi-chart-line",command:()=>{navigate("/Statistical")} },
+    { label: "עדכון והוספת חומרים", icon: "pi pi-refresh",command:()=>{navigate("/update")} },
+    { label: "רשימת משתמשים", icon: "pi pi-list" ,command:()=>{navigate("/StudentList")}},
   ];
 
+}
   const start = (
     <img
       alt="logo"
@@ -74,16 +133,6 @@ const TabMenuIn = () => {
       </div>
       
     </React.StrictMode>
-    <button onClick={() => { navigate('/marks') }}>ציונים</button>
-
-
-            <button onClick={()=>navigate("/Update")}>מנהל</button>
-
-
-
-
-             <button onClick={() => navigate("/StudentList")}>לרשימת תלמידים</button>
-           {/* <button onClick={() => navigate("/StudStatistical")}>נתונים סטטיסטיים על תלמיד</button> */}
     </>
   );
 };

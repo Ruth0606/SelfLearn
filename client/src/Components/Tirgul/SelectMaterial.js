@@ -165,7 +165,7 @@ export default function SelectMaterial() {
           options={dataClass}
           optionLabel="description"
           placeholder="בחר כיתה"
-          className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+          className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
           style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
           // style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%",backgroundColor:" #f9f9f9 ",borderColor: "#4CAF50"}}
         />
@@ -184,7 +184,7 @@ export default function SelectMaterial() {
         options={arrsubjects}
         optionLabel="description"
         placeholder="בחר מקצוע"
-        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
         style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
         />
       <Dropdown
@@ -200,7 +200,7 @@ export default function SelectMaterial() {
         options={arrsubsubjects}
         optionLabel="description"
         placeholder="בחר נושא"
-        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
         style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
         />
       <Dropdown
@@ -214,7 +214,7 @@ export default function SelectMaterial() {
         options={arrlevels}
         optionLabel="description"
         placeholder="בחר רמה"
-        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
         style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
         />
 
@@ -222,7 +222,7 @@ export default function SelectMaterial() {
     
       {/* {console.log(flagLevel)} */}
       {flagLevel &&selectedlevel&& <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
-      {flagLevel && selectedlevel&&<GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>}
+      {flagLevel && selectedlevel&&<GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1} ></GetPageQ>}
       {/* {flagLevel &&<button onClick={()=><Quiz idlevelorsubject={selectedlevel.idlevel}idsub={selectedSubject.idsubject}leveldescription={selectedlevel.description}></Quiz>}>למעבר לבוחן</button>}     */}
     {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
     {/* selectedlevel.idlevel */}

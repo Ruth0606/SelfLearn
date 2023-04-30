@@ -429,26 +429,26 @@ export default function SelectMaterial() {
       {/* <Plus></Plus>  */}
       <div className="card-container blue-container flex align-items-center justify-content-start" >
         {/* style={{minHeight: "200px"}} */}
-        <Button icon="pi pi-plus" onClick={() => setVisiblec(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon="pi pi-plus" onClick={() => setVisiblec(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         {/* */}
         {/* label=" הוסף כיתה " */}
         <Dialog header="כיתה" visible={visiblec} style={{ width: '50vw' }} onHide={() => setVisiblec(false)} footer={footerContent}>
           <input type={"text"} id="class" className="m-0"></input>
         </Dialog>
 
-        <Button icon='pi pi-trash' onClick={() => setVisiblecd(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
+        <Button icon='pi pi-trash' onClick={() => setVisiblecd(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
         <Dialog visible={visiblecd} style={{ width: '20vw' }} onHide={() => setVisiblecd(false)} footer={footerContentcd}>
           {/* <input type={"text"} id="class"className="m-0"></input> */}
         </Dialog>
 
-        <Button icon='pi pi-refresh' onClick={() => setVisibleU(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon='pi pi-refresh' onClick={() => setVisibleU(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog header="כיתה" visible={visibleU} style={{ width: '50vw' }} onHide={() => setVisibleU(false)} footer={footerContentU}>
           <input type={"text"} id="class" className="m-0"></input>
         </Dialog>
 
         {dataClass.length && (
           <Dropdown
-            className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+            className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
 
             value={selectedClass}
             onChange={(e) => {
@@ -485,18 +485,18 @@ export default function SelectMaterial() {
 
 
       <div className="card-container blue-container flex align-items-center justify-content-start" >
-        <Button icon="pi pi-plus" onClick={() => setVisibles(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon="pi pi-plus" onClick={() => setVisibles(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog header="מקצוע" visible={visibles} style={{ width: '50vw' }} onHide={() => setVisibles(false)} footer={footerContentSub}>
           <input type={"text"} id="subject" className="m-0" placeholder="תאור"></input>
           <input type={"text"} id="mark" className="m-0" placeholder="ציון עובר"></input>
         </Dialog>
 
-        <Button icon='pi pi-trash' onClick={() => setVisiblecdS(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
+        <Button icon='pi pi-trash' onClick={() => setVisiblecdS(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
         <Dialog visible={visibledS} style={{ width: '20vw' }} onHide={() => setVisiblecdS(false)} footer={footerContentcdS}>
           {/* <input type={"text"} id="class"className="m-0"></input> */}
         </Dialog>
 
-        <Button icon='pi pi-refresh' onClick={() => setVisibleUS(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon='pi pi-refresh' onClick={() => setVisibleUS(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog header="מקצוע" visible={visibleUS} style={{ width: '50vw' }} onHide={() => setVisibleUS(false)} footer={footerContentUS}>
           <input type={"text"} id="subject" className="m-0" placeholder="תאור"></input>
           <input type={"text"} id="mark" className="m-0" placeholder="ציון עובר"></input>
@@ -519,7 +519,7 @@ export default function SelectMaterial() {
           options={arrsubjects}
           optionLabel="description"
           placeholder="בחר מקצוע"
-          className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+          className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
           style={{ marginLeft: "3%", marginRight: "3%", width: "20%", minHeight: "50px" }}
         />
       </div>
@@ -529,17 +529,17 @@ export default function SelectMaterial() {
 
 
       <div className="card-container blue-container flex align-items-center justify-content-start" >
-        <Button icon="pi pi-plus" onClick={() => setVisibless(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon="pi pi-plus" onClick={() => setVisibless(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog header="נושא" visible={visibless} style={{ width: '50vw' }} onHide={() => setVisibless(false)} footer={footerContentSubsub}>
           <input type={"text"} id="subsubject" className="m-0" placeholder="תאור"></input>
         </Dialog>
 
-        <Button icon='pi pi-trash' onClick={() => setVisiblecdss(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
+        <Button icon='pi pi-trash' onClick={() => setVisiblecdss(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
         <Dialog visible={visiblecdss} style={{ width: '20vw' }} onHide={() => setVisiblecdss(false)} footer={footerContentcdss}>
           {/* <input type={"text"} id="class"className="m-0"></input> */}
         </Dialog>
 
-        <Button icon='pi pi-refresh' onClick={() => setVisibleUss(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon='pi pi-refresh' onClick={() => setVisibleUss(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog header="נושא" visible={visibleUss} style={{ width: '50vw' }} onHide={() => setVisibleUss(false)} footer={footerContentUss}>
           <input type={"text"} id="subsubjectU" className="m-0"></input>
         </Dialog>
@@ -561,24 +561,24 @@ export default function SelectMaterial() {
           options={arrsubsubjects}
           optionLabel="description"
           placeholder="בחר נושא"
-          className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+          className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
           style={{ marginLeft: "3%", marginRight: "3%", width: "20%", minHeight: "50px" }}
         />
       </div>
       <br></br>
 
       <div className="card-container blue-container flex align-items-center justify-content-start" >
-        <Button icon="pi pi-plus" onClick={() => setVisiblel(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon="pi pi-plus" onClick={() => setVisiblel(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog header="רמה" visible={visiblel} style={{ width: '50vw' }} onHide={() => setVisiblel(false)} footer={footerContentLevel}>
           <input type={"text"} id="level" className="m-0" placeholder="תאור"></input>
         </Dialog>
 
-        <Button icon='pi pi-trash' onClick={() => setVisiblecdll(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
+        <Button icon='pi pi-trash' onClick={() => setVisiblecdll(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }}></Button>
         <Dialog visible={visiblecdll} style={{ width: '20vw' }} onHide={() => setVisiblecdll(false)} footer={footerContentcdll}>
           {/* <input type={"text"} id="class"className="m-0"></input> */}
         </Dialog>
 
-        <Button icon='pi pi-refresh' onClick={() => setVisibleUll(true)} className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
+        <Button icon='pi pi-refresh' onClick={() => setVisibleUll(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog header="רמה" visible={visibleUll} style={{ width: '50vw' }} onHide={() => setVisibleUll(false)} footer={footerContentUll}>
           <input type={"text"} id="level" className="m-0"></input>
         </Dialog>
@@ -601,7 +601,7 @@ export default function SelectMaterial() {
           options={arrlevels}
           optionLabel="description"
           placeholder="בחר רמה"
-          className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+          className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
           style={{ marginLeft: "3%", marginRight: "3%", width: "20%", minHeight: "50px" }}
 
         //  style={{ marginLeft: "3%", marginRight: "3%", width: "15%" }}
@@ -621,7 +621,7 @@ export default function SelectMaterial() {
       {selectedClass&&!flagQuiz&&!flagTest && flag && <Button
         label=" לעדכון שאלות המבחן "
         onClick={() => setFlagTest(true)}
-        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
         style={{ minWidth: "100px", minHeight: "50px" 
 //         ,color: "#000000",
 //         background: "#ffffff",
@@ -639,7 +639,7 @@ export default function SelectMaterial() {
       {selectedlevel&&!flagQuiz &&!flagTest &&  !flagQuiz && flag && <Button
         label=" לעדכון שאלות הבוחן "
         onClick={() => setFlagQuiz(true)}
-        className="flex align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2"
+        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
         style={{ minWidth: "100px", minHeight: "50px" }}
       />
       }

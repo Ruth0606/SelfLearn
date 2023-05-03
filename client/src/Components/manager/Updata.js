@@ -415,8 +415,8 @@ export default function SelectMaterial() {
 
         <Button icon='pi pi-refresh' onClick={() => setVisibleUS(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog className="text-center w-30rem"  header="מקצוע" visible={visibleUS} style={{ width: '50vw' }} onHide={() => setVisibleUS(false)} footer={footerContentUS}>
-          <input className="m-3 text-xl text-right" type={"text"} id="subject" placeholder="תאור"></input>
-          <input className="m-3 text-xl text-right" type={"text"} id="mark" placeholder="ציון עובר"></input>
+          <input className="m-3 text-xl text-right" type={"text"} id="subject">תאור</input>
+          <input className="m-3 text-xl text-right" type={"text"} id="mark">ציון עובר</input>
         </Dialog>
         <Dropdown
           disabled={flagClass}

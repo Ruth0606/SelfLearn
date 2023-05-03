@@ -1,5 +1,4 @@
 
-        
 import { useDataFunctions } from "../../Hooks/useDataFunctions";
 import  { useEffect, useState } from "react";
 import "../styles/Tirgul.css"
@@ -11,20 +10,12 @@ import { Toast } from 'primereact/toast';
 
 export default function UpdateMaterial(props) {
     const [data, setData] = useState("");
-
+    const [id, setId] = useState(0);
     const { getDataFunc ,updateDataFunc} = useDataFunctions();
-   // console.log("mat",mat)
-    useEffect(()=>{
-        const idlevel = props.idlevel;
-        getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
-          (data1) => {
-            setData( data1[0].description)  
-            console.log(data1[0].description);  
-            console.log(data);
 
-          }
-        );
-    },[])
+
+
+
     const toast = useRef(null);
 
     const show = () => {
@@ -45,7 +36,7 @@ export default function UpdateMaterial(props) {
 
     const formik = useFormik({
         initialValues: {
-            blog: ''
+            blog: data
         },
         validate: (data) => {
             let errors = {};
@@ -62,9 +53,15 @@ export default function UpdateMaterial(props) {
 
             return errors;
         },
-        onSubmit: (data) => {
+        onSubmit:async (data) => {
             data.blog && show();
-            formik.resetForm();
+            // formik.resetForm();
+            await updateDataFunc((`material/${id}`),{description:data.blog})
+            .then((data)=>{
+               console.log(data)
+              
+            })
+            getData()  
         }
     });
 
@@ -73,33 +70,58 @@ export default function UpdateMaterial(props) {
     const getFormErrorMessage = (name) => {
         return isFormFieldInvalid(name) ? <small className="p-error">{formik.errors[name]}</small> : <small className="p-error">&nbsp;</small>;
     };
-    function update(){
-   
-   //const cc=document.getElementById("description").value;
-     updateDataFunc((`material/${props.idlevel}`),{description:data})
-     .then((data)=>{
-        console.log(data)
-       
-     })  
+
+
+    // useEffect(()=>{
+    //     console.log("set field value");
+    //     console.log({data});
+    //     formik.setFieldValue('blog',data)
+    //     // console.log({values:formik.values});
+    // },[data])
+
+    useEffect(()=>{
+        console.log({values:formik.values});
+
+    },[formik.values.blog])
+
+    const getData=()=>{
+        const idlevel = props.idlevel;
+        getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+          (data1) => {
+            console.log("===",{data1});
+            if(data1){
+                console.log("=====",data1[0].description);
+                formik.setFieldValue('blog',data1[0].description)
+                console.log({blog:formik.values.blog});
+                setId(data1[0].idmaterial)
+        }
+          }
+        );
     }
+   // console.log("mat",mat)
+    useEffect(()=>{
+        getData()
+    },[])
+
+
     return (<>
-        {data!==""&&<div className="card" style={{ width:'50%'}}>
+        {<div className="card" style={{ width:'50%'}}>
             <form onSubmit={formik.handleSubmit}>
                 <Toast ref={toast} />
                 <Editor
                     id="blog"
                     name="blog"
-                    value={data}
+                    value={formik.values.blog}
                     headerTemplate={header}
                     onTextChange={(e) => {
                         formik.setFieldValue('blog', e.textValue);
-                        setData( e.textValue)
+                        // setData( e.textValue)
                     }}
                     style={{ height: '320px',fontSize:'30px',direction:'ltr'}}
                 />
                 <div className="flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
                     {getFormErrorMessage('blog')}
-                    <Button type="submit" label="עדכן" onClick={update} />
+                    <Button type="submit" label="עדכן" />
                 </div>
             </form>
         </div>}

@@ -14,9 +14,11 @@ const UserProvider = ({ children, userId,password }) => {
             getDataFunc(`http://localhost:8000/user/login/${userId}/${password}`)
             .then(
                 (user) => { 
+
                     setUser(user);
                     console.log(user);
                     user&&localStorage.setItem("user",JSON.stringify(user))
+                 
                    
                             }
                           );

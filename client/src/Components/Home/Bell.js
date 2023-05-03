@@ -64,7 +64,7 @@ const Bell=() =>{
             <Menu model={items} popup ref={menu} />
            
             <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '1.5rem',"color":"orange" }} onClick={(e) => menu.current.toggle(e)} >
-                <Badge value="2" style={{"fontSize":"0.5rem","boxSizing":"0.5rem"}}></Badge>
+                <Badge value="2" style={{"fontSize":"0.5rem","boxSizing":"0.5rem","background":"#444b70"}}></Badge>
             </i>
             </>
     )

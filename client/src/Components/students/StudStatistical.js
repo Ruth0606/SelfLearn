@@ -13,7 +13,7 @@ export default function StudStatistical() {
     const [chartOptionsQ, setChartOptionsQ] = useState({});
     const { getDataFunc } = useDataFunctions();
 
-    const user = useContext(UserContext);
+    const user=JSON.parse(localStorage.getItem('user'))
     
 
     useEffect(() => {
@@ -30,9 +30,6 @@ export default function StudStatistical() {
         
 
         })
-        console.log(lables);
-
-        console.log(marks);
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');

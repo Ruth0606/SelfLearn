@@ -52,7 +52,7 @@ const UserProfile=()=> {
                     icon: 'pi pi-user',
                     command:(e) => {
                         //router.push('/resiptions');
-                        nevigate('/profile')
+                        nevigate('/setprofil')
                     }
                 },
                 {

@@ -41,11 +41,11 @@ export default function Test(props) {
             <h1 className="title">מבחן</h1>
             {
              <GetPageQ idlevelorsubject={idsub} type={2} ></GetPageQ>}
-            {
+            {/* {
               <div style={{margin:"3px"}}className="card flex justify-content-center">
                      <Button label="הגש מבחן" onClick={()=>{setFlag("block");alert("מבחן הוגש")}} />
               </div>
-            }
+            } */}
         </div>
     )
 }

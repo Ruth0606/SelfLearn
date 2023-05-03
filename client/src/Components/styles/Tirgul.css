@@ -13,34 +13,37 @@ textarea{
     width: 15%;
     background-color:  #f9f9f9 ;
     /* border-color: #4CAF50; */
-    border-color: #4CAF50;
+    border-color:#3d4052;
 }
 .p-fieldset{
     margin:5%;
-    background-color: #d6e7d7;
+    background-color: #9ac6e0;
 }
 .ml-2{
     font-size:34px;
-    color: #29672b ;
+    color:#3d4052 ;
+    margin-right: 1%;
 
 }
 .p-radiobutton .p-radiobutton-box.p-highlight {
-    border-color: #044b0bf1;
-    background:  #4CAF50;
+    border-color:#3d4052;
+    background:  #3d4052;
+   
 }
 /* .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
-    width: 25px;
+     margin-left: 33%;
+    /* width: 25px;
     height: 25px;
     transition-duration: 0.2s;
-    background-color: #ffffff;
-} */
+    background-color: #ffffff; */
+
 #numq{
     font-size: 30px;
-    color: #29672b ;
+    color: #3d4052 ;
 }
 #quest{
     font-size: 35px;
-    color: #29672b ;
+    color:#3d4052;
 
 }
 /* .p-radiobutton-box	{

@@ -219,7 +219,7 @@ export default function SelectMaterial() {
         />
 
     </div>
-    
+    <div style={{marginLeft: "10rem"}} >
       {/* {console.log(flagLevel)} */}
       {flagLevel &&selectedlevel&& <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
       {flagLevel && selectedlevel&&<GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1} ></GetPageQ>}
@@ -227,99 +227,7 @@ export default function SelectMaterial() {
     {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
     {/* selectedlevel.idlevel */}
     {flagLevel &&selectedlevel!==null&& <Button onClick={()=> {return navigate(`/Quiz/${ selectedlevel.idlevel}/${selectedSubject.idsubject}/${selectedlevel.description}`)}}>למעבר לבוחן</Button>}
-
+</div>
       </div>
   );
 }
-
-// export default function Select() {
-//     const [value, setValue] = useState('');
-//     const [items, setItems] = useState([]);
-
-//     const [value2, setValue2] = useState('');
-//     const [items2, setItems2] = useState([]);
-
-//     const [value3, setValue3] = useState('');
-//     const [items3, setItems3] = useState([]);
-
-//     const [value4, setValue4] = useState('');
-//     const [items4, setItems4] = useState([]);
-//     const search = (event) => {
-//         let _items = [...Array(10).keys()];
-//         setItems(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items);
-//     }
-//     const search2 = (event) => {
-//         let _items2 = [...Array(10).keys()];
-//         setItems2(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items2);
-//     }
-//     const search3= (event) => {
-//         let _items3 = [...Array(10).keys()];
-//         setItems3(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items3);
-//     }
-//     const search4 = (event) => {
-//         let _items4 = [...Array(10).keys()];
-//         setItems4(event.query ? [...Array(10).keys()].map(item => event.query + '-' + item) : _items4);
-//     }
-
-//     return (
-//         <div className="card flex justify-content-center"  placeholder="בחר מקצוע">
-//             <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value} suggestions={items} completeMethod={search}  placeholder="בחר כיתה" onChange={(e) => setValue(e.value)} dropdown />
-//             <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value2} suggestions={items2} completeMethod={search2}  placeholder="בחר מקצוע" onChange={(e) => setValue2(e.value)} dropdown />
-//             <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value3} suggestions={items3} completeMethod={search3}  placeholder="בחר נושא" onChange={(e) => setValue3(e.value)} dropdown />
-//             <AutoComplete style={{"marginLeft":"2%","marginRight":"2%"}} value={value4} suggestions={items4} completeMethod={search4}  placeholder="בחר רמה" onChange={(e) => setValue4(e.value)} dropdown />
-
-//         </div>
-
-//     )
-// }
-// import React, { useState } from "react";
-// import { Dropdown } from 'primereact/dropdown';
-
-// export default function Select() {
-//     const [selectedCity, setSelectedCity] = useState(null);
-//     const [selectedCity2, setSelectedCity2] = useState(null);
-//     const [selectedCity3, setSelectedCity3] = useState(null);
-//     const [selectedCity4, setSelectedCity4] = useState(null);
-
-//     const cities = [
-//         { name: 'New York', code: 'NY' },
-//         { name: 'Rome', code: 'RM' },
-//         { name: 'London', code: 'LDN' },
-//         { name: 'Istanbul', code: 'IST' },
-//         { name: 'Paris', code: 'PRS' }
-//     ];
-//     const cities2 = [
-//         { name: 'New York', code: 'NY' },
-//         { name: 'Rome', code: 'RM' },
-//         { name: 'London', code: 'LDN' },
-//         { name: 'Istanbul', code: 'IST' },
-//         { name: 'Paris', code: 'PRS' }
-//     ];
-//     const cities3 = [
-//         { name: 'New York', code: 'NY' },
-//         { name: 'Rome', code: 'RM' },
-//         { name: 'London', code: 'LDN' },
-//         { name: 'Istanbul', code: 'IST' },
-//         { name: 'Paris', code: 'PRS' }
-//     ];
-//     const cities4 = [
-//         { name: 'New York', code: 'NY' },
-//         { name: 'Rome', code: 'RM' },
-//         { name: 'London', code: 'LDN' },
-//         { name: 'Istanbul', code: 'IST' },
-//         { name: 'Paris', code: 'PRS' }
-//     ];
-
-//     return (
-//         <div className="card flex justify-content-center">
-//             <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name"
-//                 placeholder="בחר כיתה" className="w-full md:w-14rem" style={{"marginLeft":"3%","marginRight":"3%"}}/>
-//              <Dropdown value={selectedCity2} onChange={(e) => setSelectedCity2(e.value)} options={cities2} optionLabel="name"
-//                 placeholder="בחר מקצוע" className="w-full md:w-14rem" style={{"marginLeft":"3%" }}/>
-//             <Dropdown value={selectedCity3} onChange={(e) => setSelectedCity3(e.value)} options={cities3} optionLabel="name"
-//                 placeholder="בחר נושא" className="w-full md:w-14rem" style={{"marginLeft":"3%" }}/>
-//             <Dropdown value={selectedCity4} onChange={(e) => setSelectedCity3(e.value)} options={cities4} optionLabel="name"
-//                 placeholder="בחר רמה" className="w-full md:w-14rem" style={{"marginLeft":"3%" }}/>
-//         </div>
-//     )
-// }

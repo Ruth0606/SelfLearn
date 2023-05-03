@@ -75,7 +75,7 @@ class StudentDataAccessor {
         return newUser
     }
     async sendMail(userName,userMail,content){
-            await mails.sendEmail("36325569028@mby.co.il", `נשלח מאת המשתמש: ${userName} `,`מייל: ${userMail} ,    ${content}`)
+            await mails.sendEmail("36325569028@mby.co.il", `נשלח מאת המשתמש: ${userName}  מייל: ${userMail}  `,  ` ${content}`)
     }
 
     updateById(id, user) {

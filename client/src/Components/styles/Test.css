@@ -1,8 +1,14 @@
 .title{
-    color:black ;
-    background-color: #ffffff;
+    color:#3d4052 ;
+    background-color: #9ac6e0;
     /* background-color: #4CAF50; */
     font-size: 70px;
     margin-left: 5%;
     margin-right: 5%;
+}
+.mark{
+    font-size: 55px;
+    color:#3d4052 ;
+    text-align: center;
+
 }

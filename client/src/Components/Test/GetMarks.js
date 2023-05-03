@@ -20,7 +20,7 @@ export default function GetMarks(props) {
           return b["level.subsubject.subject.idsubject"]-a["level.subsubject.subject.idsubject"]
     }
 
-    const user = useContext(UserContext);
+    const user=JSON.parse(localStorage.getItem('user'))
     const idstudent=user.idstudent
 
     useEffect(() => {
@@ -34,6 +34,7 @@ export default function GetMarks(props) {
                 getDataFunc(`http://localhost:8000/question/test/getLevelTestsByIdStudent?idstudent=${idstudent}`)
                     .then((data1) => {
                         data1=data1.sort(compareFunction)
+                        console.log(data1);
                         setDataQ(data1)
                     })
                 },[])           
@@ -47,11 +48,11 @@ export default function GetMarks(props) {
     <h2>המבחנים שלי</h2>
         { data.map((el)=>{return <div>מבחן ב{el[s]}, ציונך : {el["mark"]}</div>})}
         <br></br>
-
-    <h2>הבחנים שלי</h2>
-        { dataQ.map((el)=>{return <div> בוחן ב{el["level.subsubject.subject.description"]} - {el["level.subsubject.description"]} - רמה {el["level.description"]}, ציונך : {el["mark"]}</div>})}
-    </>}
-    {data[0]==null&&<h1>אין לך עדין ציונים, התחל להבחן!!!</h1>}
+</>}
+{dataQ.length!=0&&<><h2>הבחנים שלי</h2>
+        { dataQ.map((el)=>{return <div> בוחן ב{el["level.subsubject.subject.description"]} - {el["level.subsubject.description"]} - רמה {el["level.description"]}, ציונך : {el["mark"]}</div>})}</>}
+    
+    {data[0]==null&&dataQ.length==0&&<h1>אין לך עדין ציונים, התחל להבחן!!!</h1>}
         </>
      )           
 }

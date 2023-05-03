@@ -18,20 +18,12 @@ export default function Material(props) {
        console.log(data[0].description)
           }
         );
-    })
-
-    // const {
-    //     data,
-    //     error,
-    //     loading,
-    //     refetch,
-    // } = useGetData(`http://localhost:8000/material/byidlevel/${props.idlevel}`);
-  
+    },[])
     return (
         
-        <div className="card"  style={{marginRight:"5%"}}>
+        <div className="card"  style={{marginRight:"-3rem",marginLeft:"-4rem"}}>
             <Fieldset  legend={props.subsubject}>
-                <p className="m-0">{data}</p>
+                <p className="mx-0">{data}</p>
             </Fieldset>
         </div>
     )

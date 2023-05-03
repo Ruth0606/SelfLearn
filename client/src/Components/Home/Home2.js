@@ -18,7 +18,7 @@ import UserProfile from "./UserProfile";
 import UserTab from "./UserTab";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../user/UserContext";
-
+import logoC from "../../img/logoC.png";
 
 const TabMenuIn = () => {
   const navigate = useNavigate();
@@ -103,9 +103,9 @@ else if(JSON.parse(a).ismanager!=0){
 }
   const start = (
     <img
-      alt="logo"
-      src="https://primefaces.org/cdn/primereact/images/logo.png"
-      height="40"
+       alt="logo"
+      src={logoC}
+      height="100"
       className="mr-2"
     ></img>
   );
@@ -122,8 +122,8 @@ else if(JSON.parse(a).ismanager!=0){
   
   return (<>
     <React.StrictMode>
-      <div className="card">
-        <MegaMenu  style={{direction:"ltr"}}
+      <div className="card border-top-2 border-orange-300 surface-overlay justify-content-center">
+        <MegaMenu style={{direction:"ltr"}}//,position:"fixed",width:"100%",zIndex:"5",marginTop:"0rem"
           model={items}
           orientation="horizontal"
           start={start}
@@ -133,6 +133,7 @@ else if(JSON.parse(a).ismanager!=0){
       </div>
       
     </React.StrictMode>
+    
     </>
   );
 };

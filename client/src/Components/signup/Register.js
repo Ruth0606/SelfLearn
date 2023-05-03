@@ -164,7 +164,7 @@ export const Register = (props) => {
             <div className="flex justify-content-center">
                 <div className="card shadow-4 p-5 w-30rem m-8 rtl">
                     <h5 className="text-center">Register</h5>
-                    <Form onSubmit={onSubmit} initialValues={{name: '',name1: '', grade: '',email: '',phone: '',id: '', password: '',pass_valid: '', accept: false }} validate={validate} render={({ handleSubmit }) => (
+                    <Form onSubmit={onSubmit} initialValues={{name: '', grade: '',email: '',phone: '',id: '', password: '',pass_valid: '', accept: false }} validate={validate} render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit} className="p-fluid">
                             <Field name="name" render={({ input, meta }) => (
                                 <div className="field">

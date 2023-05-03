@@ -12,7 +12,8 @@ import { useDataFunctions } from '../../Hooks/useDataFunctions'
 import { Button } from 'primereact/button';
 import useGetData from '../../Hooks/useGetData';
 import {useNavigate} from "react-router-dom"
-import BasicFilterDemo2 from './StudentList2';
+import List from '../styles/List.css'
+import HomeClick from '../HomeClick.js/HomeClick';
 
 
 export default function StudentList() {
@@ -247,8 +248,8 @@ export default function StudentList() {
     return (
         <div className="card">
             <DataTable value={studData} paginator showGridlines rows={10} dataKey="id" filters={filters} filterDisplay="row" loading={studLoading}
-                globalFilterFields={['name', 'classes.description', 'mail', 'phone', 'id', 'password']} header={header} emptyMessage="No students found" style={{ textAlign: "right" }}>
-                <Column className="text-right" field="name" header="שם" sortable filter filterPlaceholder="Search by name" style={{ minWidth: '10rem', textAlign: "right" }} />
+                globalFilterFields={['name', 'classes.description', 'mail', 'phone', 'id', 'password']} header={header} emptyMessage="No students found" style={{ textAlign: "right"}}>
+                <Column className="text-right" field="name" header="שם" sortable filter filterPlaceholder="Search by name" style={{ minWidth: '10rem', textAlign: "right"}} />
                 {/* <Column header="grade" filterField="representative" showFilterMenu={false} filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '14rem' }}
                     body={gradeItemTemplate} filter filterElement={gradeRowFilterTemplate} /> */}
                 <Column className="text-right" field="grade" filter filterElement={gradeRowFilterTemplate} style={{ minWidth: '2rem', textAlign: "right" }} header="כיתה" sortable showFilterMenu={false}></Column>
@@ -265,6 +266,8 @@ export default function StudentList() {
             <Button icon="pi pi-chart-line" label="לקבלת נתונים סטטיסטיים"  severity="secondary" outlined text raised style={{margin:"40px"}} onClick={()=>navigate("/Statistic")}/>
            {/* <BasicFilterDemo2/> */}
             {/* <Button label="לקבלת נתונים סטטיסטיים" severity="secondary" text style={{margin:"40px"}} onClick={()=>navigate("/Statistical")}/> */}
+            <br></br> 
+            <HomeClick></HomeClick>
         </div>
     );
 }

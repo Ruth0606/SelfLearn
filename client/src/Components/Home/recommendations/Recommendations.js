@@ -108,6 +108,7 @@ export default function Recommendations(props) {
             <Carousel value={products} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
             autoplayInterval={3000} itemTemplate={productTemplate} style={{ direction: "ltr"}}/>
         </div>
+        {/* hgsa */}
 
 
         

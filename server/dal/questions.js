@@ -6,7 +6,7 @@ const Subject = db.subjects;
 const { Op } = require("sequelize");
 const levels = require("../models/levels");
 const subsubjects = require("../models/subsubjects");
-const { subjects } = require("../models/index");
+const { subjects, Sequelize } = require("../models/index");
 class QuestionsDataAccessor {
   async addQ(ques) {
     const description = ques.description;
@@ -108,6 +108,20 @@ class QuestionsDataAccessor {
     const tests = await Test.findAll();
     console.log(tests.every((test) => test instanceof Test)); // true
     console.log("All tests:", JSON.stringify(tests, null, 2));
+    return tests;
+  }
+
+  async getCountTestsforSubject() {
+    const tests = await Test.findAll(
+      {
+      where:{idquestion_Type:2},
+        group:['idsubject'],
+        attributes:['idsubject',[Sequelize.fn('COUNT','idsubject'),'count'],[Sequelize.fn('AVG',Sequelize.col('mark')),'avg']],
+        raw:true,
+        include: [{ model: db.subjects, attributes: ["description"] }]
+      }
+    );
+
     return tests;
   }
   updateTestById(id, test) {

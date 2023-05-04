@@ -53,14 +53,14 @@ export default function SelectMaterial() {
     error,
     loading,
     refetch,
-  } = useGetData("http://localhost:8000/data/class");
+  } = useGetData("data/class");
 
   useEffect(() => { setArrClass(dataClass) }, selectedClass)
 
   useEffect(() => {
     if (selectedClass != null) {
       const idclass = selectedClass.idclass;
-      getDataFunc(`http://localhost:8000/data/subject/${idclass}`).then(
+      getDataFunc(`data/subject/${idclass}`).then(
         (data) => {
           setArrsubjects(data);
         }
@@ -72,7 +72,7 @@ export default function SelectMaterial() {
   useEffect(() => {
     if (selectedSubject != null) {
       const idsubject = selectedSubject.idsubject;
-      getDataFunc(`http://localhost:8000/data/subsubject/${idsubject}`).then(
+      getDataFunc(`data/subsubject/${idsubject}`).then(
         (data) => {
           setArrsubsubjects(data);
         }
@@ -84,7 +84,7 @@ export default function SelectMaterial() {
   useEffect(() => {
     if (selectedSubsubject != null) {
       const idsubsubject = selectedSubsubject.idsubsubject;
-      getDataFunc(`http://localhost:8000/data/level/${idsubsubject}`).then(
+      getDataFunc(`data/level/${idsubsubject}`).then(
         (data) => {
 
           setArrlevels(data);
@@ -96,7 +96,7 @@ export default function SelectMaterial() {
   useEffect(() => {
     if (selectedlevel != null) {
       const idlevel = selectedlevel.idlevel;
-      getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+      getDataFunc(`material/${idlevel}`).then(
         (data) => {
           mat = data.length !== 0 ? data[0].description : "";
           console.log("maattttt", mat);
@@ -117,7 +117,7 @@ export default function SelectMaterial() {
   function addClass(e) {
     setVisiblec(false);
     const r = document.getElementById("class").value;
-    postDataFunc(("http://localhost:8000/data/class"), { description: r })
+    postDataFunc(("data/class"), { description: r })
       .then((data) => {
         var newArr = arrclass;
         newArr.push(data)
@@ -179,7 +179,7 @@ export default function SelectMaterial() {
     setVisibles(false);
     const sub = document.getElementById("subject").value;
     const mark = document.getElementById("mark").value;
-    postDataFunc(("http://localhost:8000/data/subject"), { description: sub, idclass: selectedClass.idclass, passing_grade: mark })
+    postDataFunc(("data/subject"), { description: sub, idclass: selectedClass.idclass, passing_grade: mark })
       .then((data) => {
         console.log(data)
         setArrsubjects([...arrsubjects, data])
@@ -245,7 +245,7 @@ export default function SelectMaterial() {
   function addSubsubject(e) {
     setVisibless(false);
     const sub = document.getElementById("subsubject").value;
-    postDataFunc(("http://localhost:8000/data/subsubject"), { description: sub, idsubject: selectedSubject.idsubject })
+    postDataFunc(("data/subsubject"), { description: sub, idsubject: selectedSubject.idsubject })
       .then((data) => {
         console.log(data)
         setArrsubsubjects([...arrsubsubjects, data])
@@ -306,7 +306,7 @@ export default function SelectMaterial() {
   function addLevel(e) {
     setVisiblel(false);
     const lev = document.getElementById("level").value;
-    postDataFunc(("http://localhost:8000/data/level"), { description: lev, idsubsubject: selectedSubsubject.idsubsubject })
+    postDataFunc(("data/level"), { description: lev, idsubsubject: selectedSubsubject.idsubsubject })
       .then((data) => {
         console.log(data)
         setArrlevels([...arrlevels, data])
@@ -415,8 +415,8 @@ export default function SelectMaterial() {
 
         <Button icon='pi pi-refresh' onClick={() => setVisibleUS(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px" }} />
         <Dialog className="text-center w-30rem"  header="מקצוע" visible={visibleUS} style={{ width: '50vw' }} onHide={() => setVisibleUS(false)} footer={footerContentUS}>
-          <input className="m-3 text-xl text-right" type={"text"} id="subject">תאור</input>
-          <input className="m-3 text-xl text-right" type={"text"} id="mark">ציון עובר</input>
+          <input className="m-3 text-xl text-right" type={"text"} id="subject" placeholder="תאור"></input>
+          <input className="m-3 text-xl text-right" type={"text"} id="mark" placeholder="ציון עובר"></input>
         </Dialog>
         <Dropdown
           disabled={flagClass}

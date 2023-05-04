@@ -20,7 +20,7 @@ export default function StudStatistical() {
         console.log(user);
 
         const idstudent=user.idstudent
-        getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=${idstudent}`)
+        getDataFunc(`question/test/getSubjectsTestsByIdStudent?idstudent=${idstudent}`)
         .then((data1) => {
             let lables=[],marks=[]
             data1.length>0&&data1.forEach(element => {
@@ -114,7 +114,7 @@ export default function StudStatistical() {
 
     useEffect(() => {
         const idstudent=user.idstudent
-        getDataFunc(`http://localhost:8000/question/test/getLevelTestsByIdStudent?idstudent=${idstudent}`)
+        getDataFunc(`question/test/getLevelTestsByIdStudent?idstudent=${idstudent}`)
         .then((data1) => {
             let lables=[],marks=[]
             data1.length>0&&data1.forEach(element => {

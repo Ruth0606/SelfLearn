@@ -4,6 +4,7 @@ import TirgulQ from "../tirgul/TirgulQ";
 import GetPageQ from "../tirgul/GetPageQ"
 import { Button } from 'primereact/button';
 import { useParams } from "react-router-dom";
+import BackButton  from "../BackButton"
 
 export default function Test(props) {
 
@@ -39,13 +40,18 @@ export default function Test(props) {
     return (
         <div>
             <h1 className="title">מבחן</h1>
+
+
+
             {
              <GetPageQ idlevelorsubject={idsub} type={2} ></GetPageQ>}
+            
             {/* {
               <div style={{margin:"3px"}}className="card flex justify-content-center">
                      <Button label="הגש מבחן" onClick={()=>{setFlag("block");alert("מבחן הוגש")}} />
               </div>
             } */}
+                         
         </div>
     )
 }

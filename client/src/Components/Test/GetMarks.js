@@ -24,14 +24,14 @@ export default function GetMarks(props) {
     const idstudent=user.idstudent
 
     useEffect(() => {
-                getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=${idstudent}`)
+                getDataFunc(`question/test/getSubjectsTestsByIdStudent?idstudent=${idstudent}`)
                     .then((data1) => {
                         data1=data1.sort(compareFunction1)
                         setData(data1)
                     })
                 },[])
     useEffect(() => {
-                getDataFunc(`http://localhost:8000/question/test/getLevelTestsByIdStudent?idstudent=${idstudent}`)
+                getDataFunc(`question/test/getLevelTestsByIdStudent?idstudent=${idstudent}`)
                     .then((data1) => {
                         data1=data1.sort(compareFunction)
                         console.log(data1);
@@ -75,7 +75,7 @@ export default function GetMarks(props) {
 //     // useEffect(()=>{console.log('flag',flag)},[flag]);
 
 //     useEffect(() => {
-//         // getDataFunc(`http://localhost:8000/question/test/getSubjectsTestsByIdStudent?idstudent=1`)
+//         // getDataFunc(`question/test/getSubjectsTestsByIdStudent?idstudent=1`)
 //         //     .then(
 //         //         (data1) => {
 //         //             // console.log("data")
@@ -88,7 +88,7 @@ export default function GetMarks(props) {
 //         //             console.log({ test1 })
 //         //         }
 //         //     );
-//         getDataFunc(`http://localhost:8000/question/test/getLevelTestsByIdStudent?idstudent=1`)
+//         getDataFunc(`question/test/getLevelTestsByIdStudent?idstudent=1`)
 //             .then(
 //                 (data) => {
 //                     // console.log("data")
@@ -114,7 +114,7 @@ export default function GetMarks(props) {
 //     // useEffect(() => {
 //     //     if (selectedSubject != null) {
 //     //       const idsubject = selectedSubject.idsubject;
-//     //       getDataFunc(`http://localhost:8000/data/subsubject/${idsubject}`).then(
+//     //       getDataFunc(`data/subsubject/${idsubject}`).then(
 //     //         (data) => {
 
 //     //           setArrsubsubjects (data) ;

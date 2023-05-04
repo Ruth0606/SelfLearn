@@ -19,6 +19,7 @@ import StudStatistical from './Components/students/StudStatistical';
 import Contact from './Components/contact/Contact';
 import Statistical from './Components/manager/Statistical';
 import SetProfil from './Components/profil/SetProfil';
+import ContactNotRegister from "./Components/contact/ContactNotRegister"
 
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 import { useState ,useEffect} from "react";
@@ -31,6 +32,7 @@ function App() {
   const [password, setPassword] = useState(null);
   const [click, setClick] = useState(null);
 
+  const a=localStorage.getItem("user");
 
   useEffect(() => {
     console.log(localStorage.getItem("user"));
@@ -76,9 +78,12 @@ function App() {
                  <Route exact path='/StudentList' element={< StudentList />}></Route>
                  <Route exact path='/Statistical' element={< Statistical />}></Route>
                  <Route exact path='/StudStatistical' element={< StudStatistical />}></Route>
+                 <Route exact path='/ContactNotRegister' element={< ContactNotRegister />}></Route>
+
           </Routes>
           </div>
        </Router>
+
     </UserProvider> }
     </div>
     </>

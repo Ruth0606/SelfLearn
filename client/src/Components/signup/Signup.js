@@ -46,7 +46,7 @@ export default function Signup() {
                     else{
                         if(name!=''&& pass!=''&&pass2!=''&& id!='')
                  
-                    postDataFunc(("http://localhost:8000/user"),{"name":name,"grade":grade,"mail":mail,"phone":phone,"id":id,"password":pass})
+                    postDataFunc(("user"),{"name":name,"grade":grade,"mail":mail,"phone":phone,"id":id,"password":pass})
                     .then((data)=>{
                     console.log(data)
                         })  

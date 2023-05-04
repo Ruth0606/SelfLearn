@@ -21,7 +21,7 @@
 
 //     const addUser = (x) => {
 //         console.log("😍", x)
-//         const cookies = axios.post(`http://localhost:8000/users/register`, x)
+//         const cookies = axios.post(`users/register`, x)
 
 //             .then(function (response) {
 //                 console.log(response);

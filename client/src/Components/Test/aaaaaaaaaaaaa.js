@@ -10,7 +10,7 @@
             
         {/* {item[b]!==data[i-1][b]&& */}
         {
-        getDataFunc(`http://localhost:8000/question/test/getTestByIdSubject?idsubject=${item["level.subsubject.subject.idsubject"]}`)
+        getDataFunc(`question/test/getTestByIdSubject?idsubject=${item["level.subsubject.subject.idsubject"]}`)
             .then(
                 (data1) => {
                     setData1(data1) 

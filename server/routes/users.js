@@ -5,6 +5,9 @@ const verifyJWT = require("../middleware.js/verifyJWT")
 
 const router = express.Router()
 
+
+router.get("/getStudentsWithMarks",loginCon.getStudentsWithMarks)
+
 router.get("/login/:id/:password",loginCon.login)
 //router.get("/:id",loginCon.get)
 //router.delete("/",loginCon.Delete)
@@ -19,6 +22,8 @@ router.route("/")
     .post(loginCon.register)
 router.route("/sendMail")   
     .post(loginCon.sendMail)
+router.route("/sendMailforNotRegist")   
+    .post(loginCon.sendMailforNotRegist)
     //.get(loginCon.getAllByParam);
 router.route("/visit/getLevelsofStudent")
     .get(loginCon.getLevelsofStudent)

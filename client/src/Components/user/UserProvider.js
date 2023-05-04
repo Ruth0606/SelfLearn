@@ -11,9 +11,10 @@ const UserProvider = ({ children, userId,password }) => {
 
     useEffect(() => {
         if(userId){
-            getDataFunc(`http://localhost:8000/user/login/${userId}/${password}`)
+            getDataFunc(`user/login/${userId}/${password}`)
             .then(
                 (user) => { 
+              
 
                     setUser(user);
                     console.log(user);

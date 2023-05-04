@@ -19,6 +19,7 @@ export default function UpdateMaterial(props) {
     const toast = useRef(null);
 
     const show = () => {
+        // toast.current.show
         toast.current.show({ severity: 'success', detail: 'עודכן בהצלחה!!' });
     };
 
@@ -86,7 +87,7 @@ export default function UpdateMaterial(props) {
 
     const getData=()=>{
         const idlevel = props.idlevel;
-        getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+        getDataFunc(`material/${idlevel}`).then(
           (data1) => {
             console.log("===",{data1});
             if(data1){
@@ -150,7 +151,7 @@ export default function UpdateMaterial(props) {
 //    // console.log("mat",mat)
 //     useEffect(()=>{
 //         const idlevel = props.idlevel;
-//         getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+//         getDataFunc(`material/${idlevel}`).then(
 //           (data1) => {
 //             setData(data1[0].description)
   
@@ -270,7 +271,7 @@ export default function UpdateMaterial(props) {
 
 //     useEffect(()=>{
 //         const idlevel = props.idlevel;
-//         getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+//         getDataFunc(`material/${idlevel}`).then(
 //           (data) => {
 //             setData(data[0].description)
 //        console.log(data[0].description)
@@ -300,7 +301,7 @@ export default function UpdateMaterial(props) {
 //     var data1;
 //     useEffect(()=>{
 //         const idlevel = props.idlevel;
-//         getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+//         getDataFunc(`material/${idlevel}`).then(
 //           (data) => {
 //             data1=data[0].description
 //        console.log(data[0].description)
@@ -333,7 +334,7 @@ export default function UpdateMaterial(props) {
 
 //     useEffect(()=>{
 //         const idlevel = props.idlevel;
-//         getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+//         getDataFunc(`material/${idlevel}`).then(
 //           (data) => {
 //             setData(data[0].description)
 //        console.log(data[0].description)
@@ -369,7 +370,7 @@ export default function UpdateMaterial(props) {
     
 //    await useEffect(()=>{
 //         const idlevel = props.idlevel;
-//         getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+//         getDataFunc(`material/${idlevel}`).then(
 //           (data) => {
 //             setData(data[0].description)
 //        console.log(data[0].description)

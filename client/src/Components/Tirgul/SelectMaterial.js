@@ -55,9 +55,9 @@ export default function SelectMaterial() {
     error,
     loading,
     refetch,
-  } = useGetData("http://localhost:8000/data/class");
+  } = useGetData("data/class");
 
-  //     useGetData("http://localhost:8000/data/class").then((data)=>{
+  //     useGetData("data/class").then((data)=>{
   //     //console.log(data)
   //     data.forEach(element => {   //   console.log(element);
   //         arrclasses.push({"description":element.description,"id":element.idclass})
@@ -79,7 +79,7 @@ export default function SelectMaterial() {
       //   );
       //   const idclass = arr[0].idclass;
       const idclass = selectedClass.idclass;
-      getDataFunc(`http://localhost:8000/data/subject/${idclass}`).then(
+      getDataFunc(`data/subject/${idclass}`).then(
         (data) => {
           // console.log(data);
        
@@ -91,13 +91,13 @@ export default function SelectMaterial() {
           // console.log("arrsubjects", arrsubjects);
         }
       );
-      //const { data: dataSubject, error,  loading,refetch,} = useGetData(`http://localhost:8000/data/subject/${idclass}`);
+      //const { data: dataSubject, error,  loading,refetch,} = useGetData(`data/subject/${idclass}`);
 
       // const arr=arrclasses.filter((el)=>el.description==selectedClass.description);
       // console.log(arrclasses)
       // console.log(arr)
       // const idclass=arr[0].id;
-      // getDataFunc(`http://localhost:8000/data/subject/${idclass}`).then((data)=>{
+      // getDataFunc(`data/subject/${idclass}`).then((data)=>{
       //     console.log(data)
       //     arrsubjects=data;
       //     // data.forEach(element => {
@@ -111,7 +111,7 @@ export default function SelectMaterial() {
   useEffect(() => {
     if (selectedSubject != null) {
       const idsubject = selectedSubject.idsubject;
-      getDataFunc(`http://localhost:8000/data/subsubject/${idsubject}`).then(
+      getDataFunc(`data/subsubject/${idsubject}`).then(
         (data) => {
          
           setArrsubsubjects (data) ;
@@ -125,7 +125,7 @@ export default function SelectMaterial() {
   useEffect(() => {
     if (selectedSubsubject != null) {
       const idsubsubject = selectedSubsubject.idsubsubject;
-      getDataFunc(`http://localhost:8000/data/level/${idsubsubject}`).then(
+      getDataFunc(`data/level/${idsubsubject}`).then(
         (data) => {
         
           setArrlevels (data) ;
@@ -153,7 +153,6 @@ export default function SelectMaterial() {
              setflagSubsubject(true);
             setflagLevel(true);
             setSelectedSubject(null)
-
             setSelectedSubsubject(null)
             setSelectedlevel(null)
 

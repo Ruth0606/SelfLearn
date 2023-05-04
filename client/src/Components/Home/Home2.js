@@ -19,6 +19,9 @@ import UserTab from "./UserTab";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../user/UserContext";
 import logoC from "../../img/logoC.png";
+import ContactNotRegister from "../contact/ContactNotRegister"
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
 
 const TabMenuIn = () => {
   const navigate = useNavigate();
@@ -35,7 +38,11 @@ console.log(a);
       // icon: "pi pi-comments",
       icon: "pi pi-whatsapp",
       command: () => {
-        navigate("/contact");
+        if(JSON.parse(localStorage.getItem('user')))
+              navigate("/contact");
+        // else{      
+        //   navigate("/ContactNotRegister");
+        // }      
       },
     },
     {
@@ -60,6 +67,7 @@ else if(JSON.parse(a).ismanager==0){
      // icon: "pi pi-comments",
      icon: "pi pi-whatsapp",
      command: () => {
+     
        navigate("/contact");
      },
    },

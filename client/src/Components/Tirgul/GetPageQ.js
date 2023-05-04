@@ -8,6 +8,7 @@ import Check from "../test/Check";
 import { useDataFunctions } from "../../Hooks/useDataFunctions";
 import {useNavigate} from "react-router-dom"
 import { HiOutlineCursorArrowRays } from "react-icons/hi2";
+import BackButton from "../BackButton";
 
 export default function GetPageQ(props) {
  
@@ -42,7 +43,7 @@ export default function GetPageQ(props) {
 
   useEffect(() => {
     getDataFunc(
-      `http://localhost:8000/question/${props.type}/${props.idlevelorsubject}`
+      `question/${props.type}/${props.idlevelorsubject}`
     ).then((data1) => {
       console.log({data1});
       if(data1.length>10&&(props.type==2||props.type==3))
@@ -55,7 +56,7 @@ export default function GetPageQ(props) {
          const idQ=el.idquestion
          console.log({idQ});
           getDataFunc(
-            `http://localhost:8000/answer/${idQ}`
+            `answer/${idQ}`
           ).then((dataa) => {
            correctAns.push(dataa);
            console.log({dataa});
@@ -93,7 +94,7 @@ export default function GetPageQ(props) {
       const idstudent=JSON.parse(localStorage.getItem('user')).idstudent
       const idquestion_type=props.type
       const mark=m;
-      postDataFunc(("http://localhost:8000/question/test"), {idstudent,mark,idquestion_type,idlevel,idsubject})
+      postDataFunc(("question/test"), {idstudent,mark,idquestion_type,idlevel,idsubject})
       .then((data) => {
         console.log(data)
         setF(true);
@@ -126,7 +127,7 @@ export default function GetPageQ(props) {
     const correctAns = document.getElementById("correctAns").value;
 
     let d = [];
-    postDataFunc("http://localhost:8000/question", {
+    postDataFunc("question", {
       description: q,
       idlevel: idlevel,
       idsubject: idsubject,
@@ -134,27 +135,27 @@ export default function GetPageQ(props) {
       score: score,
     }).then((dataa) => {
       console.log("qqqqqqqqqqqqqq", dataa);
-      postDataFunc("http://localhost:8000/answer", {
+      postDataFunc("answer", {
         description: ans1,
         idquestion: dataa.idquestion,
       }).then((data1) => {
         console.log(data1);
         console.log("aaaaaaaaaaaaaaaaaaaaaagggggggg", d);
         if(correctAns==="1"){
-          postDataFunc("http://localhost:8000/answer/correctanswer", {
+          postDataFunc("answer/correctanswer", {
             idquestion: dataa.idquestion,
             idanswer:data1.idanswer
           }).then((data1) => {})
         }
         d.push(data1);
       });
-      postDataFunc("http://localhost:8000/answer", {
+      postDataFunc("answer", {
         description: ans2,
         idquestion: dataa.idquestion,
       }).then((data2) => {
         console.log(correctAns);
         if(correctAns==="2"){
-          postDataFunc("http://localhost:8000/answer/correctanswer", {
+          postDataFunc("answer/correctanswer", {
             idquestion: dataa.idquestion,
             idanswer:data2.idanswer
           }).then((data) => {console.log(data);})
@@ -162,13 +163,13 @@ export default function GetPageQ(props) {
         d.push(data2);
         
       });
-      postDataFunc("http://localhost:8000/answer", {
+      postDataFunc("answer", {
         description: ans3,
         idquestion: dataa.idquestion,
       }).then((data3) => {
         console.log(data);
         if(correctAns==="3"){
-          postDataFunc("http://localhost:8000/answer/correctanswer", {
+          postDataFunc("answer/correctanswer", {
             idquestion: dataa.idquestion,
             idanswer:data3.idanswer
           }).then((data1) => {})
@@ -374,8 +375,11 @@ export default function GetPageQ(props) {
 {//props.flag=="none"&&
 }
 {props.type!=1&&f&&<h1 className="mark">ציונך : {mark}</h1>}
-{!manager&&<div className="text-2xl"><HiOutlineCursorArrowRays className=""/> בכל שאלה בחר את התשובה הנכונה </div>
-}{<div>
+{!manager&&<div className="text-2xl" style={{color:"orange"}}><HiOutlineCursorArrowRays/> בכל שאלה בחר את התשובה הנכונה </div>
+
+}
+<br></br>
+{<div>
       {data.length > 0 &&
         data.map((q, index) => (
           <TirgulQ
@@ -398,11 +402,15 @@ export default function GetPageQ(props) {
                      <Button label="הגש בוחן" onClick={()=>{setFlag("block");  }} />
               </div>
             }
-{
-            !manager&& props.type==2&& <div style={{margin:"3px"}}className="card flex justify-content-center">
+
+
+
+        {
+            !manager&&props.type==2&& <div style={{margin:"3px"}}className="card flex justify-content-center">
                      <Button label="הגש מבחן" onClick={()=>{setFlag("block");}} />
               </div>
-            }
+}
+
 
       {/* {dataAnswer.length > 0 &&
         dataAnswer.map((val, i) => {
@@ -484,13 +492,13 @@ export default function GetPageQ(props) {
 //   //   error,
 //   //   loading,
 //   //   refetch,
-//   // } = useGetData(`http://localhost:8000/question/1/${props.idlevel}`);
+//   // } = useGetData(`question/1/${props.idlevel}`);
 //   // useEffect(()=>{console.log("flag",flag)},flag)
 //   const correctAns = [];
 
 //   useEffect(() => {
 //     getDataFunc(
-//       `http://localhost:8000/question/${props.type}/${props.idlevelorsubject}`
+//       `question/${props.type}/${props.idlevelorsubject}`
 //     ).then((data1) => {
 //       console.log({ data1 });
 //       if (data1.length > 10 && (props.type == 2 || props.type == 3))
@@ -503,7 +511,7 @@ export default function GetPageQ(props) {
 //           const idQ = el.idquestion
 //           console.log({ idQ });
 //           getDataFunc(
-//             `http://localhost:8000/answer/${idQ}`
+//             `answer/${idQ}`
 //           ).then((dataa) => {
 //             correctAns.push(dataa);
 //             console.log({ dataa });
@@ -518,7 +526,7 @@ export default function GetPageQ(props) {
 //       //   const arr=[]
 //       //   const idquestion = element.idquestion;
 //       //   getDataFunc(
-//       //     `http://localhost:8000/answer/byidquestion/${idquestion}`
+//       //     `answer/byidquestion/${idquestion}`
 //       //   ).then((data2) => {
 //       //     // dataAnswer.push(data2);
 
@@ -562,7 +570,7 @@ export default function GetPageQ(props) {
 //       const idstudent = JSON.parse(localStorage.getItem('user')).idstudent
 //       const idquestion_type = props.type
 //       const mark = m;
-//       postDataFunc(("http://localhost:8000/question/test"), { idstudent, mark, idquestion_type, idlevel, idsubject })
+//       postDataFunc(("question/test"), { idstudent, mark, idquestion_type, idlevel, idsubject })
 //         .then((data) => {
 //           console.log(data)
 //           setF(true);
@@ -577,7 +585,7 @@ export default function GetPageQ(props) {
 //   //        const idQ=el.idquestion
 //   //        console.log({idQ});
 //   //         getDataFunc(
-//   //           `http://localhost:8000/answer/${idQ}`
+//   //           `answer/${idQ}`
 //   //         ).then((data1) => {
 //   //          correctAns.push(data1);
 //   //         });
@@ -596,7 +604,7 @@ export default function GetPageQ(props) {
 //   //     data.forEach((element) => {
 //   //       const idquestion = element.idquestion;
 //   //       getDataFunc(
-//   //         `http://localhost:8000/answer/byidquestion/${idquestion}`
+//   //         `answer/byidquestion/${idquestion}`
 //   //       ).then((data) => {
 //   //         console.log("answers", data);
 //   //         dataAnswer = data;
@@ -629,7 +637,7 @@ export default function GetPageQ(props) {
 //     const correctAns = document.getElementById("correctAns").value;
 
 //     let d = [];
-//     postDataFunc("http://localhost:8000/question", {
+//     postDataFunc("question", {
 //       description: q,
 //       idlevel: idlevel,
 //       idsubject: idsubject,
@@ -637,27 +645,27 @@ export default function GetPageQ(props) {
 //       score: score,
 //     }).then((dataa) => {
 //       console.log("qqqqqqqqqqqqqq", dataa);
-//       postDataFunc("http://localhost:8000/answer", {
+//       postDataFunc("answer", {
 //         description: ans1,
 //         idquestion: dataa.idquestion,
 //       }).then((data1) => {
 //         console.log(data1);
 //         console.log("aaaaaaaaaaaaaaaaaaaaaagggggggg", d);
 //         if (correctAns === "1") {
-//           postDataFunc("http://localhost:8000/answer/correctanswer", {
+//           postDataFunc("answer/correctanswer", {
 //             idquestion: dataa.idquestion,
 //             idanswer: data1.idanswer
 //           }).then((data1) => { })
 //         }
 //         d.push(data1);
 //       });
-//       postDataFunc("http://localhost:8000/answer", {
+//       postDataFunc("answer", {
 //         description: ans2,
 //         idquestion: dataa.idquestion,
 //       }).then((data2) => {
 //         console.log(correctAns);
 //         if (correctAns === "2") {
-//           postDataFunc("http://localhost:8000/answer/correctanswer", {
+//           postDataFunc("answer/correctanswer", {
 //             idquestion: dataa.idquestion,
 //             idanswer: data2.idanswer
 //           }).then((data) => { console.log(data); })
@@ -665,13 +673,13 @@ export default function GetPageQ(props) {
 //         d.push(data2);
 
 //       });
-//       postDataFunc("http://localhost:8000/answer", {
+//       postDataFunc("answer", {
 //         description: ans3,
 //         idquestion: dataa.idquestion,
 //       }).then((data3) => {
 //         console.log(data);
 //         if (correctAns === "3") {
-//           postDataFunc("http://localhost:8000/answer/correctanswer", {
+//           postDataFunc("answer/correctanswer", {
 //             idquestion: dataa.idquestion,
 //             idanswer: data3.idanswer
 //           }).then((data1) => { })

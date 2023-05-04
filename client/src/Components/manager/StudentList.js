@@ -17,8 +17,8 @@ import HomeClick from '../HomeClick.js/HomeClick';
 
 
 export default function StudentList() {
-    const { data: studData, loading: studLoading, error: studErr, refetch: studRefetch } = useGetData('http://localhost:8000/user');
-    const { data: classData, loading: classLoading, error: classErr, refetch: classRefetch } = useGetData('http://localhost:8000/data/class');
+    const { data: studData, loading: studLoading, error: studErr, refetch: studRefetch } = useGetData('user');
+    const { data: classData, loading: classLoading, error: classErr, refetch: classRefetch } = useGetData('data/class');
     const [classes, setClasses] = useState([]);
     const { getDataFunc } = useDataFunctions();
     const navigate = useNavigate();
@@ -263,7 +263,7 @@ export default function StudentList() {
                 {/* <Column field="status" header="Status" showFilterMenu={false} filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }} body={statusBodyTemplate} filter filterElement={statusRowFilterTemplate} /> */}
                 {/* <Column field="ismanager" header="מנהל" dataType="boolean" style={{ minWidth: '6rem' }} body={verifiedBodyTemplate} filter filterElement={verifiedRowFilterTemplate} /> */}
             </DataTable> 
-            <Button icon="pi pi-chart-line" label="לקבלת נתונים סטטיסטיים"  severity="secondary" outlined text raised style={{margin:"40px"}} onClick={()=>navigate("/Statistic")}/>
+            <Button icon="pi pi-chart-line" label="לקבלת נתונים סטטיסטיים"  severity="secondary" outlined text raised style={{margin:"40px"}} onClick={()=>navigate("/Statistical")}/>
            {/* <BasicFilterDemo2/> */}
             {/* <Button label="לקבלת נתונים סטטיסטיים" severity="secondary" text style={{margin:"40px"}} onClick={()=>navigate("/Statistical")}/> */}
             <br></br> 

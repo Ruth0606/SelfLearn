@@ -7,115 +7,82 @@ import { DataView } from 'primereact/dataview';
 import { Dropdown } from 'primereact/dropdown';
 import { Rating } from 'primereact/rating';
 import { Tag } from 'primereact/tag';
+import StatPie1 from "./StatPie1"
+import StatPie2 from "./StatPie2"
 
 export default function Statistical() {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
 
-    /////get the material
+
     const [f, setf] = useState(false);
 
-    // const [marks, setMarks] = useState([]);
-    // const [students, setStudents] = useState([]);
+
 
     const { getDataFunc } = useDataFunctions();
-        // const { data, loading, error, refetch } = useGetData('http://localhost:8000/user');
+        // const { data, loading, error, refetch } = useGetData('user');
     const [numStud, setNumStud] = useState([]);
     const [subjects, setSubjects] = useState([]);
 
     useEffect(() => {   //קבלת נתוני תלמידים(לקוחות)
-        getDataFunc('http://localhost:8000/user').then((data) => {
+        getDataFunc('user').then((data) => {
             setNumStud(data);
         });
     }, []);
 
     useEffect(() => {   //קבלת נתוני תלמידים(לקוחות)
-        getDataFunc('http://localhost:8000/data/subject').then((data) => {
+        getDataFunc('data/subject').then((data) => {
             setSubjects(data);
         });
     }, []);
 
-    // useEffect(()=>{
-    //     console.log(students);
-    //    // if(f){
-    //         setf(false);
-    //     getDataFunc(`http://localhost:8000/user`).then(
-    //       (studentss) => {
-    //         console.log(studentss);
-    //         studentss.forEach(element => {
-    //             const m=[];
-    //             let sum=0;
-                
-    //             getDataFunc(`http://localhost:8000/question/test/byStudent?idstudent=${element.idstudent}`).then(
-    //            (markss) => {  
-                
-    //             if(markss.length>0) 
-    //              {
-                    
-    //                   markss.forEach(element1 => {
-    //                     m.push(element1.mark);
-    //                     sum+=element1.mark;
-
-    //               });
-    //               const n=element.name;
-    //              if(students.includes(n)==false){
-    //               const k=sum/m.length;
-    //               marks.push(k);
-    //               students.push(element.name);
-    //              }
-
-                  
-    //             }    
-                                      
-    //       }
-    //     );
-
-    
-    //         });
-    //       }
-    //     );
-    // },[])
-
+   
     useEffect(() => {
-
-            getDataFunc(`http://localhost:8000/user`).then(
-
+            /////////////////get the material
+            getDataFunc(`user/getStudentsWithMarks`).then(
               (studentss) => {
-                const marks=[];
-                const students=[];
-                console.log(studentss);
-                studentss.forEach(element => {
-                    const m=[];
-                    let sum=0;
+               const marks=[];
+               const students=[];
+               studentss.forEach(element => {
+                let sum=0,count=0;     
+                if(element.ss.length>0){
+                    element.ss.forEach(el=>{
+                        sum+=el.mark;
+                        count+=1;
+                    }) 
+                    students.push(element.name);
+                    marks.push(sum/count);
+                }   
+               });
+            //     console.log(studentss);
+            //     studentss.forEach(element => {
+            //         const m=[];
+            //         let sum=0;
                     
-                    getDataFunc(`http://localhost:8000/question/test/byStudent?idstudent=${element.idstudent}`).then(
-                   (markss) => {  
+            //         getDataFunc(`question/test/byStudent?idstudent=${element.idstudent}`).then(
+            //        (markss) => {  
                     
-                    if(markss.length>0) 
-                     {
+            //         if(markss.length>0) 
+            //          {
                         
-                          markss.forEach(element1 => {
-                            m.push(element1.mark);
-                            sum+=element1.mark;
+            //               markss.forEach(element1 => {
+            //                 m.push(element1.mark);
+            //                 sum+=element1.mark;
     
-                      });
-                      const n=element.name;
-                     if(students.includes(n)==false){
-                      const k=sum/m.length;
-                      marks.push(k);
-                      students.push(element.name);
-                      console.log(students);
-                console.log(marks);
-                      setf(true)
-                     }                    
-                    }                           
-              }
-            );    
-                });
-      
-                console.log(students);
-                console.log(marks);
-
+            //           });
+            //           const n=element.name;
+            //          if(students.includes(n)==false){
+            //           const k=sum/m.length;
+            //           marks.push(k);
+            //           students.push(element.name);
+            //           console.log(students);
+            //     console.log(marks);
+            //           setf(true)
+            //          }                    
+            //         }                           
+            //   }
+            // );    
+            //     });
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
@@ -176,15 +143,32 @@ export default function Statistical() {
 
     return ( 
         <>
-         <Button type="button"  icon="pi pi-users" outlined badge={numStud.length} badgeClassName="p-badge-danger" label="משתמשים" />
+         {/* <Button type="button"  icon="pi pi-users" outlined badge={numStud.length} badgeClassName="p-badge-danger" label="משתמשים" />
          <Button label="פירוט מקצועות" severity="secondary" text raised onClick={()=>{
-        } }/>
+        } }/> */}
     <div className="card m-8">
         <h2> ממוצע הציונים של מבחנים עבור כל תלמיד </h2>
         <div className="card">
             <Chart type="line" data={chartData} options={chartOptions} />
         </div>
-        </div> </>)
+        </div>
+
+        <div class="card">
+    <div class="flex card-container indigo-container">
+        <div class="flex-1 h-4rem  font-bold text-center p-4 border-round">
+        <h2> ממוצע הציונים של מבחנים עבור כל מקצוע </h2> 
+             <StatPie1  ></StatPie1>
+        </div>
+        <div class="flex-1 h-4rem  text-center p-4 border-round ">
+        <h2> כמות המבחנים עבור כל מקצוע </h2> 
+             <StatPie2 ></StatPie2>
+        </div>
+    </div>
+</div>
+  
+          
+             
+         </>)
 }
 
         
@@ -198,19 +182,19 @@ export default function Statistical() {
 
 // export default function Statistical() {
 
-//     // const { data, loading, error, refetch } = useGetData('http://localhost:8000/user');
+//     // const { data, loading, error, refetch } = useGetData('user');
 //     const [numStud, setNumStud] = useState([]);
 //     const { getDataFunc } = useDataFunctions();
 //     const [subjects, setSubjects] = useState([]);
 
 //     useEffect(() => {   //קבלת נתוני תלמידים(לקוחות)
-//         getDataFunc('http://localhost:8000/user').then((data) => {
+//         getDataFunc('user').then((data) => {
 //             setNumStud(data);
 //         });
 //     }, []);
 
 //     useEffect(() => {   //קבלת נתוני תלמידים(לקוחות)
-//         getDataFunc('http://localhost:8000/data/subject').then((data) => {
+//         getDataFunc('data/subject').then((data) => {
 //             setSubjects(data);
 //         });
 //     }, []);

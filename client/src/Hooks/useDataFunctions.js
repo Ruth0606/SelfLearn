@@ -6,7 +6,7 @@ const url1="http://localhost:8000/";
      const getDataFunc = async (url) => {
     console.log( {url});
     try {
-        const response = await axios.get(url);
+        const response = await axios.get(`${url1}${url}`);
      //   console.log(response.data);
         return response.data;
     } catch (error) {
@@ -15,7 +15,7 @@ const url1="http://localhost:8000/";
 }
 const postDataFunc = async (url,data) => {
     try {  
-        const response = await axios.post(url, data);
+        const response = await axios.post(`${url1}${url}`, data);
         console.log(response.data);
         return response.data;
       } catch (error) {

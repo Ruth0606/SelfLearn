@@ -187,6 +187,12 @@ getMark=(req,res)=>
       res.send(await QuestionDal.getAll());
     }
 
+    getCountTestsforSubject = async(req,res)=>
+    {
+      res.send(await QuestionDal.getCountTestsforSubject());
+    }
+
+
     updateTest=(req,res)=>
     {
       const id=req.params.id

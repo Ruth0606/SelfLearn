@@ -12,7 +12,7 @@ export default function Material(props) {
 
     useEffect(()=>{
         const idlevel = props.idlevel;
-        getDataFunc(`http://localhost:8000/material/${idlevel}`).then(
+        getDataFunc(`material/${idlevel}`).then(
           (data) => {
             setData(data[0].description)
        console.log(data[0].description)

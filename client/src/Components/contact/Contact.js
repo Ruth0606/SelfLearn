@@ -99,7 +99,7 @@ export default function HookFormDoc() {
                                 if (localStorage.getItem('user')) {
                                     setLoading(true)
                                     load()
-                                    await postDataFunc(("http://localhost:8000/user/sendMail"), { userName: JSON.parse(localStorage.getItem('user')).name, userMail: JSON.parse(localStorage.getItem('user')).mail, content: val })
+                                    await postDataFunc(("user/sendMail"), { userName: JSON.parse(localStorage.getItem('user')).name, userMail: JSON.parse(localStorage.getItem('user')).mail, content: val })
                                     setLoading(false)
                                 }
                                 else{

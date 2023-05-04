@@ -28,7 +28,10 @@ router.route("/test/getTestByIdSubject")
 router.route("/test/getLevelTestsByIdStudent")
     .get(questCon.getLevelTestsByIdStudent)
 router.route("/test/getSubjectsTestsByIdStudent")
-    .get(questCon.getSubjectsTestsByIdStudent)   
+    .get(questCon.getSubjectsTestsByIdStudent) 
+    
+router.route("/test/getCountTestsforSubject")   
+    .get(questCon.getCountTestsforSubject)
  
 router.route("/test/:id")
     .get(questCon.getMark)

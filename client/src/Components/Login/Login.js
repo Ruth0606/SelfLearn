@@ -20,7 +20,7 @@ export default function Login(props) {
 
     // useEffect(()=>{
     //     if(passUser!='' && idUser!='' ){
-    //         getDataFunc(`http://localhost:8000/user/login/${idUser}/${passUser}`)
+    //         getDataFunc(`user/login/${idUser}/${passUser}`)
     //         .then(
     //             (data) => {
     //             console.log("data")

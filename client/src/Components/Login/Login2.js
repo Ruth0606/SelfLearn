@@ -100,7 +100,7 @@ if(localStorage.getItem("user"))
                             <Field name="id" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText id="id" {...input} autoFocus />
+                                        <InputText id="id" {...input}  />
                                         <label htmlFor="id" className={classNames({ 'p-error': isFormFieldValid(meta) })}>תעודת זהות</label>
                                     </span>
                                     {getFormErrorMessage(meta)}

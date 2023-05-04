@@ -18,7 +18,8 @@ class ClassDataAccessor {
           })
     }
     async getAllClasses(){
-        const classes = await Classes.findAll();
+        //{order:[['description','DESC']]}
+        const classes = await Classes.findAll({order:[['description','ASC']]});
         console.log(classes.every(class1 => class1  instanceof Classes)); // true
         console.log("All classes:", JSON.stringify(classes, null, 2));
         return(classes)
@@ -45,7 +46,7 @@ class ClassDataAccessor {
        return await Subjects.create({description,idclass,passing_grade})
     }
     async getAllSubjects(){
-        const subjects = await Subjects.findAll();
+        const subjects = await Subjects.findAll({order:[['description','ASC']]});
         console.log(subjects.every(subjects => subjects  instanceof Subjects)); // true
         console.log("All subjects:", JSON.stringify(subjects, null, 2));
         return(subjects)
@@ -54,7 +55,7 @@ class ClassDataAccessor {
     async getByIdClass(idclass){
         var condition = idclass ? { idclass: { [Op.like]: `%${idclass}%` } } : null;
 
-        return await Subjects.findAll({ where: condition })
+        return await Subjects.findAll({ where: condition ,order:[['description','ASC']]})
     }
     updateSubjectById(id,subject)
     {
@@ -72,7 +73,7 @@ class ClassDataAccessor {
     async getByIdSubject(idsubject){
         var condition = idsubject ? { idsubject: { [Op.like]: `%${idsubject}%` } } : null;
 
-        return await Subsubjects.findAll({ where: condition })
+        return await Subsubjects.findAll({ where: condition ,order:[['description','ASC']]})
     }
     updateSubsubjectById(id,subsubject)
     {
@@ -96,7 +97,7 @@ class ClassDataAccessor {
     async getByIdSubsubject(idsubsubject){
         var condition = idsubsubject ? { idsubsubject: { [Op.like]: `%${idsubsubject}%` } } : null;
 
-        return await Levels.findAll({ where: condition })
+        return await Levels.findAll({ where: condition ,order:[['description','ASC']]})
     }
     updateLevelById(id,level)
     {

@@ -50,6 +50,30 @@ class UserController{
   }
 
 
+
+
+  sendMailforNotRegist=(req, res) => 
+  {
+    if (!req.body.userName&&!req.body.userMail&&!req.body.userPhone) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+    
+    StudentDal.sendMailforNotRegist(req.body.userName,req.body.userMail,req.body.userPhone,req.body.content)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while sending the message."
+        });
+      });
+  }
+
+
   login=async(req,res)=>
   {
     const id=req.params.id
@@ -219,6 +243,26 @@ class UserController{
         });
       });  
   }
+
+  getStudentsWithMarks=(req,res)=>{
+    StudentDal.getStudentsWithMarks()
+    .then(data => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Students`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Students"
+      });
+    });
+ }
+  
+
   // getLevelsByIdStudent=(req,res)=>
   // {
   //     const idL = req.params.id;

@@ -89,7 +89,7 @@ export const Register = (props) => {
     // };
     const addUser = (x) => {
         console.log("😍", x)
-        postDataFunc(("http://localhost:8000/user"), x)
+        postDataFunc(("user"), x)
 
             .then(function (response) {
                 console.log(response);
@@ -129,7 +129,7 @@ export const Register = (props) => {
         return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
     };
 
-    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></div>;
+    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text"  onClick={() => setShowMessage(false)} /></div>;
     const passwordHeader = <h6>Pick a password</h6>;
     const passwordFooter = (
         <React.Fragment>
@@ -146,7 +146,7 @@ export const Register = (props) => {
 
     return (
         <div className="form-demo">
-            <Dialog visible={showMessage} onClick={()=>{  props.setUserId(idUser)
+            <Dialog visible={showMessage} onClick={()=>{  props.setUserId(idUser);
                         props.setPassword(passUser);setFlag1(true); navigate('/')}} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                 <div className="flex align-items-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
@@ -169,7 +169,7 @@ export const Register = (props) => {
                             <Field name="name" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText id="name" {...input} autoFocus className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                                        <InputText id="name" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                                         <label htmlFor="name" className={classNames({ 'p-error': isFormFieldValid(meta) })}>שם*</label>
                                     </span>
                                     {getFormErrorMessage(meta)}
@@ -178,7 +178,7 @@ export const Register = (props) => {
                             <Field name="grade" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText id="grade" {...input} autoFocus className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
+                                        <InputText id="grade" {...input}  className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                                         <label htmlFor="grade" className={classNames({ 'p-error': isFormFieldValid(meta) })}>כיתה*</label>
                                     </span>
                                     {getFormErrorMessage(meta)}
@@ -198,7 +198,7 @@ export const Register = (props) => {
                             <Field name="phone" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText id="phone" {...input} autoFocus />
+                                        <InputText id="phone" {...input}  />
                                         <label htmlFor="phone" className={classNames({ 'p-error': isFormFieldValid(meta) })}>טלפון</label>
                                     </span>
                                     {getFormErrorMessage(meta)}
@@ -207,7 +207,7 @@ export const Register = (props) => {
                             <Field name="id" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <InputText id="id" {...input} autoFocus />
+                                        <InputText id="id" {...input}  />
                                         <label htmlFor="id" className={classNames({ 'p-error': isFormFieldValid(meta) })}>תעודת זהות</label>
                                     </span>
                                     {getFormErrorMessage(meta)}

@@ -17,14 +17,14 @@ const Bell=() =>{
             label: 'התראות מערכת',
             items: [
                 {
-                    label: '  1 Week',
+                    label: 'נוסף מקצוע חדש',
                     icon: <TiWarningOutline size={"18"}/> ,
                     command: () => {
                         
                     }
                 },
                 {
-                    label: '  3 Week',
+                    label: '!!  מבחן התבטל',
                     icon: <TiWarning size={"18"}/> ,
                     command: () => {
                         

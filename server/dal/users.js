@@ -1,6 +1,8 @@
 const db = require("../models/index")
 const Student = db.students
 const Visit_student = db.visits_students
+const Test = db.tests;
+
 const Visits_levels = db.visits_levels
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -77,6 +79,9 @@ class StudentDataAccessor {
     async sendMail(userName,userMail,content){
             await mails.sendEmail("36325569028@mby.co.il", `נשלח מאת המשתמש: ${userName}  מייל: ${userMail}  `,  ` ${content}`)
     }
+    async sendMailforNotRegist(userName,userMail,userPhone,content){
+        await mails.sendEmail("36325569028@mby.co.il", `נשלח מאת המשתמש: ${userName}  מייל: ${userMail}  טלפון: ${userPhone} `,  ` ${content}`)
+}
 
     updateById(id, user) {
         return Student.update(user, {
@@ -158,6 +163,25 @@ class StudentDataAccessor {
         })
 
     }
+
+    async getStudentsWithMarks() {
+        const students = await Student.findAll();
+        const studentsWithAnswers = await Promise.all(
+            students.map(async (q) => {
+            const condition = q.dataValues.idstudent
+              ? { idstudent: { [Op.eq]: q.dataValues.idstudent } }
+              : null;
+    
+    
+            const ss = await Test.findAll({ where: condition });
+            return { ...q.dataValues, ss };
+          })
+        );
+    
+        
+    
+        return studentsWithAnswers;
+      }
 }
 const studentDataAccessor = new StudentDataAccessor();
 

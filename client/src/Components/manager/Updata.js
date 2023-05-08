@@ -390,7 +390,7 @@ export default function SelectMaterial() {
               setFlagQuiz(false)
               setFlagTest(false)
 
-              ////////////////////////////////////////////////////////////////////todo
+              
             }}
             options={arrclass}
             optionLabel="description"
@@ -529,14 +529,7 @@ export default function SelectMaterial() {
         className="flex align-items-center justify-content-center font-bold text-white border-round m-2 w-15rem"
         style={{
           minWidth: "100px", minHeight: "50px"
-          //         ,color: "#000000",
-          //         background: "#ffffff",
-          //          border: "1px" ,"solid" :"#d9d9d9",
-          // /* padding: 0.75rem 1.25rem; */
-          // fontSize: "1rem",
-          // /* transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s; */
-          // borderRadius: "6px",
-          // borderColor: "#ffffff"
+      
         }}
 
       />
@@ -558,9 +551,21 @@ export default function SelectMaterial() {
       {!flagQuiz && !flagTest && flag && selectedlevel !== null && <UpdateMaterial material={mat} idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></UpdateMaterial>}
       {!flagQuiz && !flagTest && flag && selectedlevel !== null && <GetPageQ manager={true} idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>}
 
-      {/* {flagLevel && <GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>} */}
-      {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz",{idlevelorsubject: selectedlevel.idlevel,idsub:selectedSubject.idsubject,leveldescription:selectedlevel.description})}}>למעבר לבוחן</button>} */}
 
     </div>
   );
 }
+
+
+
+      {/* {flagLevel && <GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1}></GetPageQ>} */}
+      {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz",{idlevelorsubject: selectedlevel.idlevel,idsub:selectedSubject.idsubject,leveldescription:selectedlevel.description})}}>למעבר לבוחן</button>} */}
+
+    //         ,color: "#000000",
+          //         background: "#ffffff",
+          //          border: "1px" ,"solid" :"#d9d9d9",
+          // /* padding: 0.75rem 1.25rem; */
+          // fontSize: "1rem",
+          // /* transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s; */
+          // borderRadius: "6px",
+          // borderColor: "#ffffff"

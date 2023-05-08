@@ -31,8 +31,8 @@ console.log(a);
      <img src={three} alt="three" width={"80%"} height={"70%"}/>
      <div className="bg-white h-500rem h-5rem"></div>
 
-     <div id="con"><ContactNotRegister></ContactNotRegister></div>
-   
+{     !a&& <div id="con"><ContactNotRegister></ContactNotRegister></div>
+}   
      <div className="bg-white h-500rem h-24rem"></div>
      <Recommendations></Recommendations>
    </>)

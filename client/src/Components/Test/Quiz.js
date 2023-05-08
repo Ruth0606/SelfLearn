@@ -51,7 +51,7 @@ export default function Quiz(props) {
 
             {leveldescription=="3"&&  <Button label="למבחן הסופי" onClick={()=>{navigate(`/Test/${idsub}`)}} />}
 
-                 <BackButton></BackButton>
+            <BackButton ></BackButton>
 
             {/* {leveldescription=="3"&& <button  onClick={()=>navigate("/Test",{idlevelorsubject:idsub})}>למבחן הסופי</button> } */}
         </div>

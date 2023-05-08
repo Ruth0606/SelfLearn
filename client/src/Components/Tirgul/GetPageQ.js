@@ -374,7 +374,19 @@ export default function GetPageQ(props) {
 </div>} */}
 {//props.flag=="none"&&
 }
+
+{/* <div class="card">
+    <div class="card-container blue-container flex align-items-center justify-content-start">
+        <div class="hidden w-4rem h-4rem ">{props.type!=1&&f&&<h1 className="mark">ציונך : {mark}</h1>}
+</div>
+        <div class="w-4rem h-4rem  ">{props.type!=1&&f&& <BackButton ></BackButton>}
+</div>
+    </div>
+</div> */}
 {props.type!=1&&f&&<h1 className="mark">ציונך : {mark}</h1>}
+{/* {props.type!=1&&f&&<div style={{justifyContent:" flex-end"}}> <BackButton ></BackButton>חזור</div>
+} */}
+
 {!manager&&<div className="text-2xl" style={{color:"orange"}}><HiOutlineCursorArrowRays/> בכל שאלה בחר את התשובה הנכונה </div>
 
 }
@@ -397,6 +409,7 @@ export default function GetPageQ(props) {
         ))}
         
 </div>}
+
 {
              !manager&&props.type==3&& <div style={{margin:"3px"}}className="card flex justify-content-center">
                      <Button label="הגש בוחן" onClick={()=>{setFlag("block");  }} />

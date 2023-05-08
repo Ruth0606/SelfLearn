@@ -10,7 +10,8 @@ const BackButton = () => {
   return (<>
   {/* <button onClick={handleBack}></button> */}
   
- <HiArrowSmallLeft style={{cursor: "pointer",position:"fixed",fontSize:"40px",color:"black",zIndex:10,left:"2%"}} onClick={handleBack}/>
+ <HiArrowSmallLeft style={{cursor: "pointer",fontSize:"40px",color:"black",zIndex:10,marginLeft:"1px"}} onClick={handleBack}/>
+ {/* //position:"fixed", */}
 
 {/* style={{position:"fixed", fontSize:"25px",color:"black",marginTop:"43%",left:"2%",zIndex:10}}  */}
 </>  );

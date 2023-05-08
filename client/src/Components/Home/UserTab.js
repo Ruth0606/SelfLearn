@@ -10,6 +10,7 @@ import Position from './Position';
 import { useNavigate } from "react-router-dom";
 import "../styles/home.css"
 import UserContext from '../user/UserContext';
+import BackToHome from './BackToHome';
 
 const UserTab = () => {
     const navigate = useNavigate()
@@ -23,9 +24,12 @@ const UserTab = () => {
 
         <div className="flex-grow-1 flex-shrink-1 flex align-items-center justify-content-end ">
             <div className="flex align-items-center justify-content-center border-round m-2 ">
-
-
+            
+                  {/* <button onClick={navigate("/")}>חזור לדף הבית</button> */}
             </div>
+            {/* <div className="flex align-items-center  border-round m-2 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
+                <BackToHome></BackToHome>
+            </div> */}
             <div className="flex align-items-center  border-round m-2 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
                 <Bell />
             </div>

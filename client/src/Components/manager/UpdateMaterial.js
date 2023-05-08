@@ -11,7 +11,7 @@ import { Toast } from 'primereact/toast';
 export default function UpdateMaterial(props) {
     const [data, setData] = useState("");
     const [id, setId] = useState(0);
-    const { getDataFunc ,updateDataFunc} = useDataFunctions();
+    const { getDataFunc ,updateDataFunc,postDataFunc} = useDataFunctions();
 
 
 
@@ -19,7 +19,7 @@ export default function UpdateMaterial(props) {
     const toast = useRef(null);
 
     const show = () => {
-        // toast.current.show
+        
         toast.current.show({ severity: 'success', detail: 'עודכן בהצלחה!!' });
     };
 
@@ -57,11 +57,16 @@ export default function UpdateMaterial(props) {
         onSubmit:async (data) => {
             data.blog && show();
             // formik.resetForm();
+            if(id!=0){
             await updateDataFunc((`material/${id}`),{description:data.blog})
             .then((data)=>{
                console.log(data)
               
-            })
+            })}
+            else{
+               // console.log(data.blog);
+                await  postDataFunc((`material`),{idlevel:props.idlevel,description:data.blog})
+            }        
             getData()  
         }
     });
@@ -90,16 +95,18 @@ export default function UpdateMaterial(props) {
         getDataFunc(`material/${idlevel}`).then(
           (data1) => {
             console.log("===",{data1});
-            if(data1){
-                console.log("=====",data1[0].description);
+            if(data1.length>0){
+                setData(data1[0].description)
+
                 formik.setFieldValue('blog',data1[0].description)
-                console.log({blog:formik.values.blog});
                 setId(data1[0].idmaterial)
+        }
+        else{
+            //  postDataFunc((`material`),{idlevel:props.idlevel,description:""})
         }
           }
         );
     }
-   // console.log("mat",mat)
     useEffect(()=>{
         getData()
     },[])
@@ -107,6 +114,7 @@ export default function UpdateMaterial(props) {
 
     return (<>
         {<div className="card" style={{ width:'50%'}}>
+            {/* //formik.values.blog&& */}
             <form onSubmit={formik.handleSubmit}>
                 <Toast ref={toast} />
                 <Editor
@@ -116,7 +124,7 @@ export default function UpdateMaterial(props) {
                     headerTemplate={header}
                     onTextChange={(e) => {
                         formik.setFieldValue('blog', e.textValue);
-                        // setData( e.textValue)
+                      setData( e.textValue)
                     }}
                     style={{ height: '320px',fontSize:'30px',direction:'ltr'}}
                 />

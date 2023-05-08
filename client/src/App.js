@@ -26,6 +26,7 @@ import { useState ,useEffect} from "react";
 import { useNavigate, useLocation } from "react-router-dom"
 
 import './App.css';
+import BackToHome from './Components/Home/BackToHome';
 function App() {
   
   const [userId, setUserId] = useState(null);
@@ -33,6 +34,7 @@ function App() {
   const [click, setClick] = useState(null);
 
   const a=localStorage.getItem("user");
+
 
   useEffect(() => {
     console.log(localStorage.getItem("user"));
@@ -54,14 +56,13 @@ function App() {
   const setPasswordCallback = (password) => {
     setPassword(password);
   }
-
   return (<>
   <div style={{"direction":"rtl"}}>
         { <UserProvider userId={userId} password={password}>
 
       <Router>
            <div className="App" >
-            <header> <Home2></Home2> </header>
+            <header > <Home2></Home2> {<BackToHome></BackToHome>}</header><br></br>
        <Routes>
 
                  <Route exact path='/' element={< Home />}></Route>
@@ -72,7 +73,7 @@ function App() {
                  <Route exact path='/signup' element={< Signup />}></Route>
                  <Route exact path='/marks' element={< GetMarks />}></Route>
                  <Route exact path='/Tirgul' element={< Tirgul />}></Route>
-                 <Route exact path='/setprofil' element={< SetProfil />}></Route>
+                 <Route exact path='/setprofil' element={< SetProfil setUserId={setUserIdCallback}  setPassword={setPasswordCallback}/>}></Route>
                  <Route exact path='/quiz/:idlevelorsubject/:idsub/:leveldescription' element={< Quiz />}></Route>
                  <Route exact path='/update' element={<Update  />}></Route>
                  <Route exact path='/StudentList' element={< StudentList />}></Route>
@@ -83,7 +84,7 @@ function App() {
           </Routes>
           </div>
        </Router>
-
+       {/* <footer><button>navigate</button></footer> */}
     </UserProvider> }
     </div>
     </>

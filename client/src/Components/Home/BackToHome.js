@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom"
-import homeLogo from "../../img/homeLogo.png"
+import homeLogo from "../../img/niceHome.png"
  
 export default function BackToHome() {
 
@@ -8,7 +8,7 @@ export default function BackToHome() {
         }
         const navigate=useNavigate();
 
-    return(<div style={{textAlign:"left",marginTop:"1%"}}>
+    return(<div style={{textAlign:"right",marginTop:"1%",marginRight:"12px"}}>
             {/* <button > */}
             <img
        alt="logo"
@@ -16,8 +16,9 @@ export default function BackToHome() {
       height="60"
       className="mr-2"
       onClick={func}
-      style={{cursor: "pointer"}}
+      style={{cursor:"pointer",marginBottom:"0px",width:"40px",height:"40px"}}
     ></img>
+    <h5 style={{marginTop:"0px",marginRight:"8px",color:"orange",fontSize:"11px",fontWeight:"lighter",marginBottom:"0px"}}>לדף הבית</h5>
      {/* </button> */}
 
     </div>)

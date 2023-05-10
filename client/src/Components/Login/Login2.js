@@ -58,8 +58,6 @@ if(localStorage.getItem("user"))
         setPassUser(data.password)
         setFormData(data);
         setShowMessage(true);
-        console.log('id', data.id)
-        console.log('password', data.password)
         setFlag11(true);
         props.setUserId(data.id)
         props.setPassword(data.password)
@@ -94,7 +92,7 @@ if(localStorage.getItem("user"))
 
             <div className="flex justify-content-center">
                 <div className="card shadow-4 p-5 w-30rem m-8 rtl">
-                    <h5 className="text-center">Login</h5>
+                    <h3 className="text-center">כניסה</h3>
                     <Form onSubmit={onSubmit} initialValues={{ id: '', password: '' }} validate={validate} render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit} className="p-fluid">
                             <Field name="id" render={({ input, meta }) => (
@@ -118,8 +116,8 @@ if(localStorage.getItem("user"))
                             )} />
 
 
-                            <Button type="submit" label="כניסה" className="mt-2" />
-                            <div className="message mt-4 text-sm text-400">?Not registered <p onClick={() => { navigate('/Register') }} style={{ cursor: "pointer", color: "#6366F1" }}>Create an account</p></div>
+                            <Button type="submit" label="כניסה" className="mt-2" style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}} />
+                            <div className="message mt-4 text-sm text-400">?Not registered <p onClick={() => { navigate('/Register') }} style={{ cursor: "pointer", color: "#4caffe" }}>Create an account</p></div>
                         </form>
                     )} />
                 </div>

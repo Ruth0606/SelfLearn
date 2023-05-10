@@ -34,7 +34,7 @@ console.log(a);
 
    items = [
     {
-      label: "צור קשר",
+      label: "יצירת קשר",
       // icon: "pi pi-comments",
       icon: "pi pi-whatsapp",
       command: () => {
@@ -46,7 +46,7 @@ console.log(a);
       },
     },
     {
-      label: "התחל תרגול",
+      label: "בואו נתרגל",
       icon: "pi pi-file-edit",
       command: () => {
         JSON.parse(localStorage.getItem('user'))&&
@@ -54,7 +54,7 @@ console.log(a);
     },
    { label: "השגים", icon: "pi pi-check-square",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate('/marks')} },
     // pi-chart-line
-    { label: "נתונים סטטיסטיים", icon: "pi pi-chart-line",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate("/StudStatistical")} }
+    { label: " סטטיסטיקה", icon: "pi pi-chart-line",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate("/StudStatistical")} }
     // { label: "Credit for Sale", icon: "pi pi-cart-plus",command:()=>{navigate("/creditForSale")} },
     // { label: "Club", icon: "pi pi-tags" },
   ];
@@ -63,7 +63,7 @@ else if(JSON.parse(a).ismanager==0){
     
   items = [
    {
-     label: "צור קשר",
+     label: "יצירת קשר",
      // icon: "pi pi-comments",
      icon: "pi pi-whatsapp",
      command: () => {
@@ -72,7 +72,7 @@ else if(JSON.parse(a).ismanager==0){
      },
    },
    {
-     label: "התחל תרגול",
+     label: "בואו נתרגל",
      icon: "pi pi-file-edit",
      command: () => {
        JSON.parse(localStorage.getItem('user'))&&
@@ -80,7 +80,7 @@ else if(JSON.parse(a).ismanager==0){
    },
   { label: "השגים", icon: "pi pi-check-square",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate('/marks')} },
    // pi-chart-line
-   { label: "נתונים סטטיסטיים", icon: "pi pi-chart-line",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate("/StudStatistical")} }
+   { label: " סטטיסטיקה", icon: "pi pi-chart-line",command:()=>{JSON.parse(localStorage.getItem('user'))&&navigate("/StudStatistical")} }
    // { label: "Credit for Sale", icon: "pi pi-cart-plus",command:()=>{navigate("/creditForSale")} },
    // { label: "Club", icon: "pi pi-tags" },
  ];
@@ -88,7 +88,7 @@ else if(JSON.parse(a).ismanager==0){
 else if(JSON.parse(a).ismanager!=0){
    items = [
     {
-      label: "צור קשר",
+      label: "יצירת קשר",
       // icon: "pi pi-comments",
       icon: "pi pi-whatsapp",
       command: () => {
@@ -96,16 +96,16 @@ else if(JSON.parse(a).ismanager!=0){
       },
     },
     {
-      label: "התחל תרגול",
+      label: "בואו נתרגל",
       icon: "pi pi-file-edit",
       command: () => {
         navigate("/Tirgul")      },
     },
    { label: "השגים", icon: "pi pi-check-square",command:()=>{navigate('/marks')} },
     // pi-chart-line
-    { label: "נתונים סטטיסטיים", icon: "pi pi-chart-line",command:()=>{navigate("/Statistical")} },
-    { label: "עדכון והוספת חומרים", icon: "pi pi-refresh",command:()=>{navigate("/update")} },
-    { label: "רשימת משתמשים", icon: "pi pi-list" ,command:()=>{navigate("/StudentList")}},
+    { label: "סטטיסטיקה", icon: "pi pi-chart-line",command:()=>{navigate("/Statistical")} },
+    { label: "חומרים", icon: "pi pi-refresh",command:()=>{navigate("/update")} },
+    { label: "משתמשים", icon: "pi pi-list" ,command:()=>{navigate("/StudentList")}},
   ];
 
 }

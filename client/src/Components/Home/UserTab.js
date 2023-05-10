@@ -30,7 +30,7 @@ const UserTab = () => {
             {/* <div className="flex align-items-center  border-round m-2 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
                 <BackToHome></BackToHome>
             </div> */}
-            <div className="flex align-items-center  border-round m-2 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
+            <div className="flex align-items-center border-round m-2 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
                 <Bell />
             </div>
 
@@ -39,7 +39,7 @@ const UserTab = () => {
                     <UserProfile />
                 </div>
                 {a?<div className="flex align-items-center  border-round m-2 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
-            <Button label="צא מהחשבון" severity="secondary" text onClick={() => { navigate(''); localStorage.clear();}} />
+            <Button label="יציאה" severity="secondary" text onClick={() => { navigate(''); localStorage.clear();}} />
         </div>:<>
         <div className="flex align-items-center  border-round m-0 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
         <Button label="הכנס" severity="secondary" text onClick={() => { navigate('/login'); localStorage.clear();}} />

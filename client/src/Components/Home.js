@@ -33,7 +33,7 @@ console.log(a);
 
 {     !a&& <div id="con"><ContactNotRegister></ContactNotRegister></div>
 }   
-     <div className="bg-white h-500rem h-24rem"></div>
+     <div className="bg-white h-500rem h-5rem"></div>
      <Recommendations></Recommendations>
    </>)
 }

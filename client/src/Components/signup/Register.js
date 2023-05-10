@@ -163,7 +163,7 @@ export const Register = (props) => {
 
             <div className="flex justify-content-center">
                 <div className="card shadow-4 p-5 w-30rem m-8 rtl">
-                    <h5 className="text-center">Register</h5>
+                    <h3 className="text-center">רישום</h3>
                     <Form onSubmit={onSubmit} initialValues={{name: '', grade: '',email: '',phone: '',id: '', password: '',pass_valid: '', accept: false }} validate={validate} render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit} className="p-fluid">
                             <Field name="name" render={({ input, meta }) => (
@@ -240,8 +240,8 @@ export const Register = (props) => {
                                 </div>
                             )} />
 
-                            <Button type="submit" label="Submit" className="mt-2" />
-                            <p className="message mt-4 text-sm text-400">?Already registered <div onClick={() => { navigate('/login') }} style={{ cursor: "pointer", color: "#6366F1" }}>Sign In</div></p>
+                            <Button type="submit" label="Submit" className="mt-2"  style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}} />
+                            <p className="message mt-4 text-sm text-400">?Already registered <div onClick={() => { navigate('/login') }} style={{ cursor: "pointer", color: "#4caffe" }}>Sign In</div></p>
                         </form>
                     )} />
                 </div>

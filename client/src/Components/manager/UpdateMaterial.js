@@ -130,7 +130,7 @@ export default function UpdateMaterial(props) {
                 />
                 <div className="flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
                     {getFormErrorMessage('blog')}
-                    <Button type="submit" label="עדכן" />
+                    <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}} type="submit" label="עדכן" />
                 </div>
             </form>
         </div>}

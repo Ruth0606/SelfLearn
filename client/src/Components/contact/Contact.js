@@ -73,7 +73,8 @@ export default function HookFormDoc() {
     };
 
     return (
-        <div style={{ direction: "rtl" }}>
+   
+        <div style={{ direction: "rtl" }}>  
             <div className="card my-6 mx-6">
                 <h1>יצירת קשר</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -95,6 +96,7 @@ export default function HookFormDoc() {
 
                         <Button type="submit" label="שלח" loading={loading} icon="pi pi-check"
                         // disabled={true}
+                        style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe",direction:"ltr"}}
                             onClick={async () => {
                                 if (localStorage.getItem('user')) {
                                     setLoading(true)

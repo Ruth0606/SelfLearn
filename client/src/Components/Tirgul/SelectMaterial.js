@@ -31,7 +31,7 @@ export default function SelectMaterial() {
   const [arrsubsubjects, setArrsubsubjects] = useState([]);
   const [arrlevels, setArrlevels] = useState([]);
 
-
+  const [flag, setFlag] = useState(false);
   //useEffect(()=>setf(true),[selectedlevel])
 
   // const classes = [
@@ -134,6 +134,14 @@ export default function SelectMaterial() {
       );
     }
   }, [selectedSubsubject]);
+
+  useEffect(() => {
+    if (selectedlevel != null) {
+     
+          setFlag(true)
+
+    }
+  }, [selectedlevel]);
   
 
   return loading ? (
@@ -209,6 +217,7 @@ export default function SelectMaterial() {
           setSelectedlevel(e.value);
           setflagLevel(true);
           idlevel = e.value.idlevel;
+          setFlag(false)
         }}
         options={arrlevels}
         optionLabel="description"
@@ -221,11 +230,11 @@ export default function SelectMaterial() {
     <div style={{marginLeft: "10rem"}} >
       {/* {console.log(flagLevel)} */}
       {flagLevel &&selectedlevel&& <Material idlevel={selectedlevel.idlevel} subsubject={selectedSubsubject.description}></Material>}
-      {flagLevel && selectedlevel&&<GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1} ></GetPageQ>}
+      {flagLevel &&flag&& selectedlevel&&<GetPageQ idlevelorsubject={selectedlevel.idlevel} type={1} ></GetPageQ>}
       {/* {flagLevel &&<button onClick={()=><Quiz idlevelorsubject={selectedlevel.idlevel}idsub={selectedSubject.idsubject}leveldescription={selectedlevel.description}></Quiz>}>למעבר לבוחן</button>}     */}
     {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
     {/* selectedlevel.idlevel */}
-    {flagLevel &&selectedlevel!==null&& <Button onClick={()=> {return navigate(`/Quiz/${ selectedlevel.idlevel}/${selectedSubject.idsubject}/${selectedlevel.description}`)}}>למעבר לבוחן</Button>}
+    {flagLevel &&selectedlevel!==null&& <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe"}}onClick={()=> {return navigate(`/Quiz/${ selectedlevel.idlevel}/${selectedSubject.idsubject}/${selectedlevel.description}`)}}>למעבר לבוחן</Button>}
 </div>
       </div>
   );

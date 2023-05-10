@@ -39,39 +39,25 @@ export default function Recommendations(props) {
             </p>
         },
         {
-            name:<p>               
-            הבת שלי מתרגלת הרבה באתר הנפלא הזה 
-            {<br></br>}  
-            והרמה הלימודית שלה משתפרת מיום ליום
-            {<br></br>}  
-            !!
-            אני ממליצה לכל אחד
-            {<br></br>}
-            גילה ח. בית שמש
+            name:<p>      
+                !!         
+           באתר הזה כל לימוד הופך לחויה
+           {<br></br>}  
+                יפה שטרן בני ברק
         </p>
         },
+        // {
+        //     name:<p>               
+          
+        // </p>
+        // },
         {
             name:<p>               
-            הבת שלי מתרגלת הרבה באתר הנפלא הזה 
-            {<br></br>}  
-            והרמה הלימודית שלה משתפרת מיום ליום
-            {<br></br>}  
-            !!
-            אני ממליצה לכל אחד
-            {<br></br>}
-            גילה ח. בית שמש
-        </p>
-        },
-        {
-            name:<p>               
-            הבת שלי מתרגלת הרבה באתר הנפלא הזה 
-            {<br></br>}  
-            והרמה הלימודית שלה משתפרת מיום ליום
-            {<br></br>}  
-            !!
-            אני ממליצה לכל אחד
-            {<br></br>}
-            גילה ח. בית שמש
+           מאז שהכרתי את האתר
+           {<br></br>} 
+           אני לא צריכה ללמוד עם הבת שלי למבחנים
+           {<br></br>} 
+                         נעמה ר. אשדוד
         </p>
         },
         // {
@@ -128,7 +114,7 @@ export default function Recommendations(props) {
 
     const productTemplate = (product) => {
         return (
-            <div className="border-1 surface-border border-round m-2 text-center py-5 px-3">
+            <div className="border-1 surface-border border-round m-2 text-center py-5 px-3" >
                 <div>
                     <h4 className="mb-1">{product.name}</h4>
                     {/* <h6 className="mt-0 mb-3">${product.price}</h6> */}

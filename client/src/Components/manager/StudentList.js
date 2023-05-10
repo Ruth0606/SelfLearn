@@ -13,8 +13,6 @@ import { Button } from 'primereact/button';
 import useGetData from '../../Hooks/useGetData';
 import {useNavigate} from "react-router-dom"
 import List from '../styles/List.css'
-import HomeClick from '../HomeClick.js/HomeClick';
-
 
 export default function StudentList() {
     const { data: studData, loading: studLoading, error: studErr, refetch: studRefetch } = useGetData('user');
@@ -183,7 +181,7 @@ export default function StudentList() {
                 placeholder="בחר כיתה"
                 className="p-column-filter"
                 maxSelectedLabels={1}
-                style={{ minWidth: '14rem' }}
+                style={{ minWidth: '14rem'}}
             />
         );
     };
@@ -224,14 +222,14 @@ export default function StudentList() {
     //         />
     //     );
     // };
-    const representativesItemTemplate = (option) => {
-        return (
-            <div className="flex align-items-center gap-2">
-                <img alt={option.name} src={`https://primefaces.org/cdn/primereact/images/avatar/${option.image}`} width="32" />
-                <span>{option.map((e) => e.description)}</span>
-            </div>
-        );
-    };
+    // const representativesItemTemplate = (option) => {
+    //     return (
+    //         <div className="flex align-items-center gap-2">
+    //             <img alt={option.name} src={`https://primefaces.org/cdn/primereact/images/avatar/${option.image}`} width="32" />
+    //             <span>{option.map((e) => e.description)}</span>
+    //         </div>
+    //     );
+    // };
     /////////
     // const statusRowFilterTemplate = (options) => {
     //     return (
@@ -267,7 +265,7 @@ export default function StudentList() {
            {/* <BasicFilterDemo2/> */}
             {/* <Button label="לקבלת נתונים סטטיסטיים" severity="secondary" text style={{margin:"40px"}} onClick={()=>navigate("/Statistical")}/> */}
             <br></br> 
-            <HomeClick></HomeClick>
+    
         </div>
     );
 }

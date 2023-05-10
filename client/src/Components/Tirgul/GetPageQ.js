@@ -241,7 +241,7 @@ export default function GetPageQ(props) {
             icon="pi pi-plus"
             onClick={() => setVisible(true)}
             className="flex align-items-center justify-content-center font-bold text-white border-round m-2" 
-            style={{minWidth: "100px", minHeight: "50px" }}
+            style={{minWidth: "100px", minHeight: "50px" ,backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}}
           />
           {/* <Dialog
             header="שאלה"
@@ -332,7 +332,7 @@ export default function GetPageQ(props) {
           &nbsp;
           <Button
             className="flex align-items-center justify-content-center font-bold text-white border-round m-2" 
-            style={{minWidth: "100px", minHeight: "50px" }}
+            style={{minWidth: "100px", minHeight: "50px" ,backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}}
             label=" מחק שאלה "
             icon="pi pi-trash"
             onClick={() => setVisibleQD(true)}
@@ -412,7 +412,7 @@ export default function GetPageQ(props) {
 
 {
              !manager&&props.type==3&& <div style={{margin:"3px"}}className="card flex justify-content-center">
-                     <Button label="הגש בוחן" onClick={()=>{setFlag("block");  }} />
+                     <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe"}}label="הגש בוחן" onClick={()=>{setFlag("block");  }} />
               </div>
             }
 
@@ -420,7 +420,7 @@ export default function GetPageQ(props) {
 
         {
             !manager&&props.type==2&& <div style={{margin:"3px"}}className="card flex justify-content-center">
-                     <Button label="הגש מבחן" onClick={()=>{setFlag("block");}} />
+                     <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe"}} label="הגש מבחן" onClick={()=>{setFlag("block");}} />
               </div>
 }
 

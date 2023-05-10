@@ -587,11 +587,11 @@ const SetProfil = (props) => {
             props.setPassword(x.password)
             // debugger;
         // }
-        toast.current.show({ severity: 'info', summary: 'מאושר', detail: 'המידע נשלח בהצלחה', life: 3000 });
+        toast.current.show({ severity: 'info', summary: 'מאושר', detail: 'המידע נשמר בהצלחה', life: 3000 });
     };
 
     const reject = () => {
-        toast.current.show({ severity: 'warn', summary: 'נדחה', detail: 'המידע לא נשלח', life: 3000 });
+        toast.current.show({ severity: 'warn', summary: 'נדחה', detail: 'המידע לא נשמר', life: 3000 });
     };
 
     return (
@@ -600,6 +600,7 @@ const SetProfil = (props) => {
         // !paymentSettings?
         <div className="flex justify-content-center" style={{ padding: "5%" }}>
             <Card title="הגדרות פרופיל" style={{ width: "530px" }}>
+                <div >
                 <div className="flex flex-column gap-3">
                 <span>
                         <span style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "0.5rem" ,direction:"ltr"}}> שם: </span>
@@ -638,7 +639,7 @@ const SetProfil = (props) => {
                                 setMail(e.target.value)
                                 handleChange(e.target.value, "mail")
                             }}
-                            style={{width:"290px",direction:"rtl"}}
+                            style={{width:"300px",direction:"rtl"}}
                         />
                     </span>
                     <span>
@@ -724,7 +725,7 @@ const SetProfil = (props) => {
                         />
                     </span> */}
                    
-                </div><br />
+                </div></div><br />
                 {
                     edit ?
                         <Button type="submit" label="עריכת הגדרות" className="mt-2" icon="pi pi-file-edit" style={{direction: "ltr"}} onClick={() => { setEdit(false); }} /> :
@@ -732,7 +733,7 @@ const SetProfil = (props) => {
                         <>
                         <Toast ref={toast} />
                         <ConfirmPopup target={buttonEl.current} visible={visible} onHide={() => setVisible(false)}
-                            message="האם הנך בטוח/ה שברצונך ליצור הצבעה חדשה" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
+                            message="האם הנך בטוח/ה שברצונך לשנות את ההגדרות" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
                         <div>
                             <Button
                                 ref={buttonEl}

@@ -4,8 +4,10 @@ import { Chip } from 'primereact/chip';
 
 import { Badge } from 'primereact/badge';
 import{Avatar} from 'primereact/avatar'
-//import Bell from '../bell/Bell';
+//import Bell from '../bell/Bell'
+import { Password } from 'primereact/password';
 
+import { Form, Field } from 'react-final-form';
 //import { useRouter } from 'next/router';
 import { Button } from 'primereact/button';
 import { Menu } from 'primereact/menu';
@@ -15,22 +17,34 @@ import "../styles/home.css"
 import Confirm from './Confirm';
 import UserContext from "../user/UserContext";
 
+
+
 import React, { useState, useRef } from 'react';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { Dialog } from "primereact/dialog";
 const UserProfile=()=> {
+    const[password,setPassword]=useState("")
     var user = useContext(UserContext);
     const menu = useRef(null);
-
+    const [value, setValue] = useState('');
 
     useEffect(() => {
        user=JSON.parse(localStorage.getItem('user'))
        console.log({user});
     }, []);
 
+    useEffect(() => {
+        // console.log("storage",JSON.parse(localStorage.getItem('user').password)); 
+        // console.log("storage",JSON.parse(localStorage.getItem('user').password)); 
+        // console.log("storage",JSON.parse(localStorage.getItem('user').password)); 
+        console.log("passwordddddddd",password);
+     }, [password]);
+
 
 
 
     const [visible, setVisible] = useState(false);
+    const [visibleProfile, setVisibleProfile] = useState(false);
     const toast = useRef(null);
 
     const accept = () => {
@@ -45,18 +59,18 @@ const UserProfile=()=> {
    const nevigate=useNavigate();;
     const items = [
         {
-            label: 'Options',
+            label: 'הגדרות',
             items: [
                 {
-                    label: 'Profile',
+                    label: 'פרופיל',
                     icon: 'pi pi-user',
                     command:(e) => {
-                        //router.push('/resiptions');
-                        nevigate('/setprofil')
+                    localStorage.getItem("user") &&setVisibleProfile(true)
+                        //  nevigate('/setprofil')
                     }
                 },
                 {
-                    label: 'Settings',
+                    label: 'הגדרות',
                     icon: 'pi pi-cog',
                    
                     command:(e) => {
@@ -67,10 +81,10 @@ const UserProfile=()=> {
             ]
         },
         {
-            label: 'Navigate',
+            label: 'ניתוב',
             items: [
                 {
-                    label: 'Calendar',
+                    label: 'יומן',
                     icon: 'pi pi-calendar',
                     command:(e) => {
                         //router.push('/resiptions');
@@ -78,7 +92,7 @@ const UserProfile=()=> {
                     }
                 },
                 {
-                    label: 'Inbox',
+                    label: 'תיבת הדואר הנכנס',
                     icon: 'pi pi-inbox',
                     command:(e) => {
                         //router.push('/resiptions');
@@ -86,7 +100,7 @@ const UserProfile=()=> {
                     }
                 },
                 {
-                    label: 'Logout',
+                    label: 'התנתקות',
                     icon: 'pi pi-power-off',
                     command:(e) => {
                     setVisible(true) 
@@ -99,10 +113,57 @@ const UserProfile=()=> {
         }
     ];
     const a=localStorage.getItem("user");
-
+const footerContent = (
+        <div>
+            <Button label="יציאה" icon="pi pi-times" onClick={() => setVisibleProfile(false)} className="p-button-text" />
+            <Button label="אישור" icon="pi pi-check" onClick={() => {setVisibleProfile(false); 
+            if(JSON.parse(localStorage.getItem('user')).id)
+            {
+                if(JSON.parse(localStorage.getItem('user')).password===password)
+                nevigate('/setprofil')
+                else{
+                    console.log("alerttttt");
+                    alert("סיסמה שגויה")
+                }
+            }
+         
+            }}  autoFocus />
+        </div>
+    );
 
     return (
         <>
+
+            <Dialog  visible={visibleProfile} modal={false} style={{ width: '50vw' }} onHide={() => setVisibleProfile(false)} footer={footerContent} >
+               <div>
+                <p className="m-3" style={{textAlign:"center"}}>
+                על מנת לשנות הגדרות פרופיל עליך להכניס סיסמה לאימות 
+                </p>
+                <div className="flex justify-content-center"> 
+                <div className="card flex justify-content-center">
+            <Password value={value} onChange={(e) => setValue(e.target.value)} feedback={false} toggleMask  onBlur={(e)=>{
+                setPassword(e.target.value)
+                }} style={{direction:"rtl"}}/>
+        </div>
+                {/* <input type="password" placeholder="סיסמה" style={{width: "300px",height:"30px",marginTop:"10px",marginRight:"0px",}} onBlur={(e)=>{
+                setPassword(e.target.value)
+                }}></input> */}
+
+
+
+
+
+
+   
+
+
+       
+    
+
+
+                </div>
+                </div>
+            </Dialog>
             <Toast ref={toast}></Toast>
 
 

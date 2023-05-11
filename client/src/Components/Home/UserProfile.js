@@ -148,6 +148,7 @@ const footerContent = (
                 {/* <input type="password" placeholder="סיסמה" style={{width: "300px",height:"30px",marginTop:"10px",marginRight:"0px",}} onBlur={(e)=>{
                 setPassword(e.target.value)
                 }}></input> */}
+                {/* hjgjhg */}
 
 
 

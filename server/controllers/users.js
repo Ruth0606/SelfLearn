@@ -74,6 +74,27 @@ class UserController{
   }
 
 
+  sendMailforResetPass=(req, res) => 
+  {
+    if (!req.body.userId&&!req.body.userMail&&!req.body.userPass) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+    
+    StudentDal.sendMailforResetPass(req.body.userId,req.body.userMail,req.body.userPass)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while sending the message."
+        });
+      });
+  }
+
   login=async(req,res)=>
   {
     const id=req.params.id
@@ -81,6 +102,13 @@ class UserController{
     const user=await StudentDal.login(id,password);
     res.send(user);
   }
+  getStud=async(req,res)=>
+  {
+    const id=req.params.id
+    const user=await StudentDal.getStud(id);
+    res.send(user);
+  }
+
 
   getAll = async(req,res)=>
   {

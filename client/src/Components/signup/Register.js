@@ -150,9 +150,9 @@ export const Register = (props) => {
                         props.setPassword(passUser);setFlag1(true); navigate('/')}} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                 <div className="flex align-items-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
-                    <h5>הרשמתך לאתר בוצעה בהצלחה!</h5>
+                    <b> {formData.name} </b>  <h5>!הרשמתך לאתר בוצעה בהצלחה</h5>
                     <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-                        Your account is registered under name <b>{formData.name}</b> ; it'll be valid next 30 days without activation. Please check <b>{formData.email}</b> for activation instructions.
+                        {/* Your account is registered under name ; it'll be valid next 30 days without activation. Please check <b>{formData.email}</b> for activation instructions. */}
                     </p>
                     {/* כעת הינך נעשה שותף בפיענוח כתב יד קדשו של המהריל על ידי העלאת הצעות לתיקון התמלול <br></br>
 //                         וכן תוכל להעלות פירושים ותגובות לאתר

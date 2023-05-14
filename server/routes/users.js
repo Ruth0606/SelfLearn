@@ -9,6 +9,7 @@ const router = express.Router()
 router.get("/getStudentsWithMarks",loginCon.getStudentsWithMarks)
 
 router.get("/login/:id/:password",loginCon.login)
+router.get("/getUser/:id",loginCon.getStud)
 //router.get("/:id",loginCon.get)
 //router.delete("/",loginCon.Delete)
 router.route("/sendMail")   
@@ -25,6 +26,8 @@ router.route("/")
 
 router.route("/sendMailforNotRegist")   
     .post(loginCon.sendMailforNotRegist)
+router.route("/sendMailforResetPass")   
+    .post(loginCon.sendMailforResetPass)
     //.get(loginCon.getAllByParam);
 router.route("/visit/getLevelsofStudent")
     .get(loginCon.getLevelsofStudent)

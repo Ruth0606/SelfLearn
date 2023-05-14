@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom"
 import homeLogo from "../../img/niceHome.png"
- 
+import AllData from "../tirgul/newTirgul/AllData"
+
 export default function BackToHome() {
 
     const func=()=>{
@@ -20,6 +21,7 @@ export default function BackToHome() {
     ></img>
     <h5 style={{marginTop:"0px",marginRight:"8px",color:"orange",fontSize:"11px",fontWeight:"lighter",marginBottom:"0px"}}>לדף הבית</h5>
      {/* </button> */}
+
 
     </div>)
 }

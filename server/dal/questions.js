@@ -138,13 +138,13 @@ class QuestionsDataAccessor {
     });
   }
   getTestByIdStudent(param) {
-    var condition = param ? { idstudent: { [Op.like]: `%${param}%` } } : null;
+    var condition = param ? { idstudent: { [Op.eq]: `${param}` } } : null;
     return Test.findAll({ where: condition })
 }
 ///////////////////////
 getTestBybyStudAndSubject(paramId,paramSub){
-    var condition1 = paramId ? { idstudent: { [Op.like]: `%${paramId}%` } } : null;
-    var condition2 = paramSub ? { idsubject: { [Op.like]: `%${paramSub}%` } } : null;
+    var condition1 = paramId ? { idstudent: { [Op.eq]: `${paramId}` } } : null;
+    var condition2 = paramSub ? { idsubject: { [Op.eq]: `${paramSub}` } } : null;
     return Test.findAll({ where: condition1 && condition2})
 }
 ///////////////////////

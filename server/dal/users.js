@@ -82,6 +82,9 @@ class StudentDataAccessor {
     async sendMailforNotRegist(userName,userMail,userPhone,content){
         await mails.sendEmail("36325569028@mby.co.il", `נשלח מאת המשתמש: ${userName}  מייל: ${userMail}  טלפון: ${userPhone} `,  ` ${content}`)
 }
+async sendMailforResetPass(userId,userMail,userPass){
+    await mails.sendEmail(userMail,`נשלח מאת LetTargel`,`הסיסמה שלך היא: ${userPass}`)
+}
 
     updateById(id, user) {
         return Student.update(user, {
@@ -103,28 +106,24 @@ class StudentDataAccessor {
 
             }
         });
-        // const match = await bcrypt.compare(password1,found.password)
-        // if (match)
-        // {
-        //     const userInfo= {id:found.id,name:found.username,
-        //         grade:found.grade,mail:found.mail,phone:found.phone,ismanager:found.ismanager}
-        //         //Create the token
-        //         const accessToken = jwt.sign(userInfo,process.env.ACCESS_TOKEN_SECRET)
-        //         //res.setHeader('Authorization', `Bearer ${accessToken}`)
-        //        return {accessToken:accessToken}
-        // }
 
-
-        // return await Student.findAll({
-        //     where: {
-        //         [Op.and]: [
-        //             { id:id1 },
-        //             // { password:hashedPwd }
-        //           ],
-        //          match:true 
-        //     }
-        //   });
     }
+
+    async getStud(id1) {
+        console.log("from login in user dal")
+        console.log(id1)
+        // const found=await Student.findOne({
+        return await Student.findOne({
+            where: {
+                [Op.and]: [
+                    { id: parseInt(id1) }
+                ]
+
+            }
+        });
+    }
+
+
     getByIdVisit(id) {
         return Visit_student.findByPk(id)
     }

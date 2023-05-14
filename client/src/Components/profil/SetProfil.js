@@ -375,13 +375,11 @@ import { useNavigate } from "react-router-dom";
 import { useDataFunctions } from "../../Hooks/useDataFunctions";
 import useGetData from '../../Hooks/useGetData';
 
-
-
-
 const tenant = { building_id: 1, apartment_id:1 }
 
 
 const SetProfil = (props) => {
+    const navigate = useNavigate()
 
     const {
         data: dataUser,
@@ -599,8 +597,9 @@ const SetProfil = (props) => {
         {
         // !paymentSettings?
         <div className="flex justify-content-center" style={{ padding: "5%" }}>
-            <Card title="הגדרות פרופיל" style={{ width: "530px" }}>
+            <Card  style={{ width: "530px" }}>
                 <div >
+                    <h2>הגדרות פרופיל</h2>
                 <div className="flex flex-column gap-3">
                 <span>
                         <span style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "0.5rem" ,direction:"ltr"}}> שם: </span>
@@ -673,8 +672,8 @@ const SetProfil = (props) => {
                         />
                     </span>
                     <span>
-                        <span style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "0.5rem" ,direction:"ltr"}}>סיסמה: </span>
-                        <InputText 
+                        <span style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "0.5rem" ,direction:"ltr", cursor: "pointer"}}  onClick={()=>{ navigate('/ChangePassword')}}>לשינוי סיסמה</span>
+                        {/* <InputText 
                             readOnly={edit}
                             id="password" 
                             value={password}
@@ -684,7 +683,7 @@ const SetProfil = (props) => {
                             }}
                             style={{width:"290px",direction:"rtl"}}
 
-                        />
+                        /> */}
                     </span>
                     {/* <span>
                         <span style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "0.5rem" }}>מספר חשבון: </span>
@@ -728,7 +727,7 @@ const SetProfil = (props) => {
                 </div></div><br />
                 {
                     edit ?
-                        <Button type="submit" label="עריכת הגדרות" className="mt-2" icon="pi pi-file-edit" style={{direction: "ltr"}} onClick={() => { setEdit(false); }} /> :
+                        <Button type="submit" label="עריכת הגדרות" className="mt-2" icon="pi pi-file-edit" style={{direction: "ltr", backgroundColor: "#4caffe", borderBlock: "#4caffe", border: "#4caffe"}} onClick={() => { setEdit(false); }} /> :
                         // !isFirst ?
                         <>
                         <Toast ref={toast} />
@@ -743,7 +742,7 @@ const SetProfil = (props) => {
                                 }}
                                 icon="pi pi-check-circle"
                                 label="שמור"
-                                style={{direction: "ltr"}}
+                                style={{direction: "ltr", backgroundColor: "#4caffe", borderBlock: "#4caffe", border: "#4caffe"}}
                             />
                         </div>
                         </>

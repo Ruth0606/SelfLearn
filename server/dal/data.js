@@ -4,6 +4,8 @@ const Subjects=db.subjects
 const Subsubjects=db.subsubjects
 const Levels=db.levels
 const { Op } = require("sequelize");
+const subjects = require("../models/subjects")
+const levels = require("../models/levels")
 class ClassDataAccessor {
     /////////////////////////////class
     async addClass(class2)
@@ -111,7 +113,62 @@ class ClassDataAccessor {
             where: { idlevel: id }
           })
     }
-}
+
+    async getAllData(){
+        return Levels.findAll({
+            include: [
+              {
+                model: db.subsubjects,
+                attributes: ["idsubsubject","description"],
+                include: [
+                  {
+                    model: db.subjects,
+                    attributes: ["idsubject","passing_grade","description"],
+                    include: [{ model: db.classes }],
+                  },
+                ],
+              },
+            ],
+            raw: true,
+            attributes: ["idlevel", "description"],
+          // order:['description','ASC']
+          });
+        }
+    }
+    //     const arrr=[];
+    //     const classess=await this.getAllClasses();
+    //    // await //const questionWithAnswers = await Promise.all(
+    //     await  classess.map(async (q) => {
+    //             const condition = q.dataValues.idclass
+    //             ? { idclass: { [Op.eq]: q.dataValues.idclass } }
+    //             : null;
+    //           const subjectss = await Subjects.findAll({ where: condition });
+    //           console.log("ffffffffffffffff",subjectss);
+    //         //   const  = await getByIdClass(q.dataValues.idclass);
+    //           subjectss.map(async(s)=>{
+    //             const condition = q.dataValues.idsubject
+    //             ? { idsubject: { [Op.eq]: s.dataValues.idsubject } }
+    //             : null;
+    //           const subsubjectss = await Subsubjects.findAll({ where: condition });
+    //             // const  =await getByIdSubject(s.idsubject);
+    //             subsubjectss.map(async(ss)=>{
+    //                 const condition = q.dataValues.idsubsubject
+    //                 ? { idsubsubject: { [Op.eq]: ss.dataValues.idsubsubject } }
+    //                 : null;
+    //               const levelss = await Levels.findAll({ where: condition });
+    //                 // const levels=await getByIdSubsubject(ss.idsubsubject);
+    //                 levelss.map(async(l)=>{
+    //                     arrr.push({idclass:q.idclass,class:q.description,idsubject:s.idsubject,subject:s.description,idsubsubject:ss.idsubsubject,subsubject:ss.description,idlevel:l.idlevel,level:l.description})
+    //                      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",arr);
+    //                 })
+    //             })
+    //           })
+    //         //   return { ...q.dataValues, answers };
+    //         })
+    //     //   );
+    //       return arr;
+    
+
 const classDataAccessor = new ClassDataAccessor();
 
 module.exports = classDataAccessor;

@@ -10,6 +10,7 @@ import Quiz from '../test/Quiz'
 import {useNavigate} from "react-router-dom"
 import { Button } from "primereact/button";
 
+import CardDesign from "../tirgul/newTirgul/CardDesign"
 
 
 export default function SelectMaterial() {
@@ -146,11 +147,12 @@ export default function SelectMaterial() {
 
   return loading ? (
     <div>loading</div>
-  ) : (
-    
+  ) : (<>
     <div style={{ margin: "3%",marginRight:"15%"}}>
  <div  className="card-container blue-container flex align-items-center justify-content-start" >
         {dataClass.length && (
+              <div className="card flex justify-content-center" style={{textAlign:"right"}} >
+              <span className="p-float-label">
         <Dropdown
       
           value={selectedClass}
@@ -169,14 +171,21 @@ export default function SelectMaterial() {
             // setArrsubsubjects([...arrsubsubjects])
             //console.log(e.value);
           }}
+          inputId="dd1-city"
           options={dataClass}
           optionLabel="description"
           placeholder="בחר כיתה"
-          className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
-          style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
+          className="w-full md:w-14rem flex align-items-center justify-content-center font-bold text-white border-round mr-2 ml-2"
+          // className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
+          style={{ marginLeft: "3%", marginRight: "3%", width: "25%",minHeight: "50px",direction:"ltr"}}
           // style={{ marginLeft: "3%", marginRight: "3%" ,width:"15%",backgroundColor:" #f9f9f9 ",borderColor: "#4CAF50"}}
         />
+            <label htmlFor="dd1-city" style={{textAlign:"right"}} >כיתה</label>
+        </span>
+        </div>
       )}
+         <div className="card flex justify-content-center" style={{textAlign:"right"}} >
+        <span className="p-float-label ">
       <Dropdown
         disabled={flagClass}
         value={selectedSubject}
@@ -188,12 +197,20 @@ export default function SelectMaterial() {
           setSelectedSubsubject(null)
           setSelectedlevel(null)
         }}
+        inputId="dd-city"
         options={arrsubjects}
         optionLabel="description"
         placeholder="בחר מקצוע"
-        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
-        style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
-        />
+        className="w-full md:w-14rem flex align-items-center justify-content-center font-bold text-white border-round mr-2 ml-2"
+    //    className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
+        style={{ marginLeft: "3%", marginRight: "3%", width: "25%",minHeight: "50px",direction:"ltr"}}
+        />            
+        <label htmlFor="dd-city" style={{textAlign:"right"}} >מקצוע</label>
+        </span>
+        </div>
+
+        <div className="card flex justify-content-center" style={{textAlign:"right"}} >
+        <span className="p-float-label ">
       <Dropdown
         disabled={flagSubject}
         value={selectedSubsubject}
@@ -207,9 +224,18 @@ export default function SelectMaterial() {
         options={arrsubsubjects}
         optionLabel="description"
         placeholder="בחר נושא"
-        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
-        style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
+        className="w-full md:w-14rem flex align-items-center justify-content-center font-bold text-white border-round mr-2 ml-2"
+        inputId="dd3-city"
+
+        // className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
+        style={{ marginLeft: "3%", marginRight: "3%", width: "25%",minHeight: "50px",direction:"ltr"}}
         />
+         <label htmlFor="dd3-city" style={{textAlign:"right"}} >נושא</label>
+        </span>
+        </div>
+
+        <div className="card flex justify-content-center" style={{textAlign:"right"}} >
+        <span className="p-float-label ">
       <Dropdown
         disabled={flagSubsubject}
         value={selectedlevel}
@@ -222,9 +248,16 @@ export default function SelectMaterial() {
         options={arrlevels}
         optionLabel="description"
         placeholder="בחר רמה"
-        className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
-        style={{ marginLeft: "3%", marginRight: "3%", width: "20%",minHeight: "50px"}}
+        className="w-full md:w-14rem flex align-items-center justify-content-center font-bold text-white border-round mr-2 ml-2"
+        inputId="dd4-city"
+
+        // className="flex align-items-center justify-content-center font-bold text-white border-round m-2"
+        style={{ marginLeft: "3%", marginRight: "3%", width: "25%",minHeight: "50px",direction:"ltr"}}
         />
+               <label htmlFor="dd4-city" style={{textAlign:"right"}} >רמה</label>
+        </span>
+        </div>
+
 
     </div>
     <div style={{marginLeft: "10rem"}} >
@@ -234,8 +267,10 @@ export default function SelectMaterial() {
       {/* {flagLevel &&<button onClick={()=><Quiz idlevelorsubject={selectedlevel.idlevel}idsub={selectedSubject.idsubject}leveldescription={selectedlevel.description}></Quiz>}>למעבר לבוחן</button>}     */}
     {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
     {/* selectedlevel.idlevel */}
-    {flagLevel &&selectedlevel!==null&& <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe"}}onClick={()=> {return navigate(`/Quiz/${ selectedlevel.idlevel}/${selectedSubject.idsubject}/${selectedlevel.description}`)}}>למעבר לבוחן</Button>}
+    {flagLevel &&selectedlevel!==null&& <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}}onClick={()=> {return navigate(`/Quiz/${ selectedlevel.idlevel}/${selectedSubject.idsubject}/${selectedlevel.description}/${selectedSubsubject.description}`)}}>למעבר לבוחן</Button>}
 </div>
-      </div>
-  );
+      </div>    
+ {/* <CardDesign></CardDesign> */}
+ {/* <CardDesign class={d["subsubject.subject.class.description"]} subject={d["subsubject.subject.description"]}subsubject={d["subsubject.description"]} level={d.description}></CardDesign> */}
+      </> );
 }

@@ -35,6 +35,8 @@ const router = express.Router()
         .delete(dataCon.deleteLevelById)
     router.route("/level")
         .post(dataCon.addLevel)
+    router.route("/getAllData")
+        .get(dataCon.getAllData)
 
 module.exports=router
 

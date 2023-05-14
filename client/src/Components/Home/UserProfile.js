@@ -48,12 +48,14 @@ const UserProfile=()=> {
     const toast = useRef(null);
 
     const accept = () => {
-        toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'יציאה', life: 3000 });
-        nevigate('/xxxx')
+        toast.current.show({ severity: 'info', summary: 'התקבל', detail: 'יציאה', life: 3000 });
+        localStorage.clear();
+        nevigate(''); 
+                    
     }
 
     const reject = () => {
-        toast.current.show({ severity: 'warn', summary: 'Rejected', detail: 'נדחה', life: 3000 });
+        toast.current.show({ severity: 'warn', summary: 'נדחה', detail: 'נשארת בחשבון', life: 3000 });
     }
    // const router = useRouter();
    const nevigate=useNavigate();;
@@ -104,6 +106,7 @@ const UserProfile=()=> {
                     icon: 'pi pi-power-off',
                     command:(e) => {
                     setVisible(true) 
+                   
         //    icon="pi pi-check" label="Confirm" 
                         //router.push('/resiptions');
                         // nevigate('/logout')

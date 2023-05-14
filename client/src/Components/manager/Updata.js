@@ -359,7 +359,7 @@ export default function SelectMaterial() {
         <Button icon="pi pi-plus" onClick={() => setVisiblec(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px",backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}} />
      
         <Dialog className="text-center w-30rem" header="כיתה" visible={visiblec} style={{ width: '50vw' }} onHide={() => setVisiblec(false)} footer={footerContent}>
-          <input type={"text"} id="class" className="m-3 text-3xl text-right"></input>
+          <input type={"text"} id="class" className="m-3 text-3xl text-right" ></input>
         </Dialog>
 
         <Button icon='pi pi-trash' onClick={() => setVisiblecd(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{ minWidth: "50px", minHeight: "50px",backgroundColor:"#4caffe" ,borderBlock:"#4caffe" ,border:"#4caffe"}}></Button>

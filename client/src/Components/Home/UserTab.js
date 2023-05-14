@@ -42,10 +42,10 @@ const UserTab = () => {
             <Button label="יציאה" severity="secondary" text onClick={() => { navigate(''); localStorage.clear();}} />
         </div>:<>
         <div className="flex align-items-center  border-round m-0 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
-        <Button label="הכנס" severity="secondary" text onClick={() => { navigate('/login'); localStorage.clear();}} />
+        <Button label="כניסה" severity="secondary" text onClick={() => { navigate('/login'); localStorage.clear();}} />
     </div>
       <div className="flex align-items-center  border-round m-0 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>
-      <Button label="הרשם" severity="secondary" text onClick={() => { navigate('/Register'); localStorage.clear();}} />
+      <Button label="רישום" severity="secondary" text onClick={() => { navigate('/Register'); localStorage.clear();}} />
   </div></>
         }
            {/* {user.idstudent&&<div className="flex align-items-center  border-round m-2 " style={{ paddingLeft: "0rem", paddingRight: "0rem", margin: "0rem" }}>

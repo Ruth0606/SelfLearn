@@ -331,6 +331,12 @@ updateLevel=(req,res)=>
         });
       });
   }
+  getAllData=async(req,res)=>
+  {
+   
+      res.send(await DataDal.getAllData());
+    
+  }
 
 }
 

@@ -9,7 +9,6 @@ import Tirgul from "./Components/tirgul/Tirgul"
 import Test from './Components/test/Test';
 import GetMarks from './Components/test/GetMarks';
 import Login from './Components/login/Login';
-import Login2 from './Components/login/Login2';
 import Signup from './Components/signup/Signup';
 import Register from './Components/signup/Register';
 import Quiz from './Components/test/Quiz';
@@ -19,7 +18,9 @@ import StudStatistical from './Components/students/StudStatistical';
 import Contact from './Components/contact/Contact';
 import Statistical from './Components/manager/Statistical';
 import SetProfil from './Components/profil/SetProfil';
-import ContactNotRegister from "./Components/contact/ContactNotRegister"
+import ContactNotRegister from "./Components/contact/ContactNotRegister";
+import ResetPassword from "./Components/login/ResetPassword";
+import ChangePassword from "./Components/profil/ChangePassword";
 
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 import { useState ,useEffect} from "react";
@@ -62,25 +63,26 @@ function App() {
 
       <Router>
            <div className="App" >
-            <header > <Home2></Home2> {<BackToHome></BackToHome>}</header><br></br>
+            <header > <Home2></Home2> <BackToHome></BackToHome> </header><br></br>
        <Routes>
 
                  <Route exact path='/' element={< Home />}></Route>
                  <Route exact path='/test/:idsub' element={< Test />}></Route>
                  <Route exact path='/Register' element={< Register setUserId={setUserIdCallback}  setPassword={setPasswordCallback}/>}></Route>
-                 <Route exact path='/login' element={< Login2 setUserId={setUserIdCallback}  setPassword={setPasswordCallback} setClick={setClickCallback}/>}></Route>
+                 <Route exact path='/login' element={< Login setUserId={setUserIdCallback}  setPassword={setPasswordCallback} setClick={setClickCallback}/>}></Route>
                  <Route exact path='/contact' element={< Contact />}></Route>
                  <Route exact path='/signup' element={< Signup />}></Route>
                  <Route exact path='/marks' element={< GetMarks />}></Route>
                  <Route exact path='/Tirgul' element={< Tirgul />}></Route>
                  <Route exact path='/setprofil' element={< SetProfil setUserId={setUserIdCallback}  setPassword={setPasswordCallback}/>}></Route>
-                 <Route exact path='/quiz/:idlevelorsubject/:idsub/:leveldescription' element={< Quiz />}></Route>
+                 <Route exact path='/quiz/:idlevelorsubject/:idsub/:leveldescription/:subsubjectDescription' element={< Quiz />}></Route>
                  <Route exact path='/update' element={<Update  />}></Route>
                  <Route exact path='/StudentList' element={< StudentList />}></Route>
                  <Route exact path='/Statistical' element={< Statistical />}></Route>
                  <Route exact path='/StudStatistical' element={< StudStatistical />}></Route>
-                 <Route exact path='/ContactNotRegister' element={< ContactNotRegister />}></Route>
-
+                 <Route exact path='/ContactNotRegister' element={< ContactNotRegister />}></Route>    
+                 <Route exact path='/ResetPassword' element={< ResetPassword />}></Route>
+                 <Route exact path='/ChangePassword' element={< ChangePassword />}></Route>
           </Routes>
           </div>
        </Router>

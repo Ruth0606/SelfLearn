@@ -10,9 +10,14 @@ module.exports = (sequelize,DataTypes)=>{
                     },
         name:DataTypes.STRING,
         grade:DataTypes.STRING,
-        mail:DataTypes.STRING,
+        mail:{
+            type:DataTypes.STRING,
+            uniqe:true
+        },
         phone: DataTypes.INTEGER,
-        id: DataTypes.INTEGER,
+        id:{type:DataTypes.INTEGER,
+            uniqe:true
+        } ,
         password: DataTypes.STRING,
         ismanager: DataTypes.INTEGER
     },

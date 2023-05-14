@@ -60,6 +60,9 @@ db.visits_levels.belongsTo(db.visits_students,{foreignKey:'idvisit_student',as:"
 db.levels.hasMany(db.visits_levels,{foreignKey:'idlevel'});
 db.visits_levels.belongsTo(db.levels,{foreignKey:'idlevel'});
 
+db.classes.hasMany(db.subjects,{foreignKey:'idclass'});
+db.subjects.belongsTo(db.classes,{foreignKey:'idclass'});
+
 // db.visits_students.belongsTo(db.visits_levels,{foreignKey:'idvisit_student'});
 // db.visits_levels.hasMany(db.visits_students,{foreignKey:'idvisit_student'});//, as:"description"
 

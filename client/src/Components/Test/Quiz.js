@@ -35,10 +35,10 @@ export default function Quiz(props) {
     //     }
     //   }
 
-       const {idlevelorsubject, idsub,leveldescription} = useParams();
+       const {idlevelorsubject, idsub,leveldescription,subsubjectDescription} = useParams();
     return (
         <div>
-            <h1 className="title">בוחן</h1>
+            <h1 className="title">בוחן ב{subsubjectDescription} רמה {leveldescription}</h1>
       
             {
              <GetPageQ idlevelorsubject={idlevelorsubject} type={3}></GetPageQ>}

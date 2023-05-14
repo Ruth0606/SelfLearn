@@ -9,7 +9,7 @@ import { useDataFunctions } from "../../Hooks/useDataFunctions";
 import {useNavigate} from "react-router-dom"
 import { HiOutlineCursorArrowRays } from "react-icons/hi2";
 import BackButton from "../BackButton";
-
+import pointer from '../../img/pointer.png'
 export default function GetPageQ(props) {
  
   let manager;
@@ -231,6 +231,10 @@ export default function GetPageQ(props) {
   }
 
   return (
+
+<>
+
+   
     <div style={{ margin: "3%", textAlign: "right" }}>
       {/* {f&&<><Check arr={check}></Check></>} */}
       {manager && (
@@ -387,7 +391,9 @@ export default function GetPageQ(props) {
 {/* {props.type!=1&&f&&<div style={{justifyContent:" flex-end"}}> <BackButton ></BackButton>חזור</div>
 } */}
 
-{!manager&&<div className="text-2xl" style={{color:"orange"}}><HiOutlineCursorArrowRays/> בכל שאלה בחר את התשובה הנכונה </div>
+{/* {!manager&&<div className="text-2xl" style={{color:"orange"}}><HiOutlineCursorArrowRays/> בכל שאלה בחר את התשובה הנכונה </div> */}
+{!manager&&<><img src={pointer} alt="pointer" width={"1.5%"} height={"5%"} className="p-0rem m-0px"/><span className="text-2xl" style={{color:"orange"}}> בכל שאלה בחר את התשובה הנכונה </span></>
+
 
 }
 <br></br>
@@ -443,7 +449,7 @@ export default function GetPageQ(props) {
           );
         })} */}
     </div>
-  );
+    </>);
 }
 
 

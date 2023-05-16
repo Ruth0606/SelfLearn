@@ -118,7 +118,7 @@ const UserProfile=()=> {
     const a=localStorage.getItem("user");
 const footerContent = (
         <div>
-            <Button label="יציאה" icon="pi pi-times" onClick={() => setVisibleProfile(false)} className="p-button-text" />
+            <Button  label="יציאה" icon="pi pi-times" onClick={() => setVisibleProfile(false)} className="p-button-text text-blue-300" style={{ borderBlock: "#4caffe", border: "#4caffe"}}/>
             <Button label="אישור" icon="pi pi-check" onClick={() => {setVisibleProfile(false); 
             if(JSON.parse(localStorage.getItem('user')).id)
             {
@@ -130,7 +130,7 @@ const footerContent = (
                 }
             }
          
-            }}  autoFocus />
+            }}  autoFocus style={{backgroundColor: "#4caffe", borderBlock: "#4caffe", border: "#4caffe",boxShadow:"#bbe0ff"}}/>
         </div>
     );
 
@@ -172,8 +172,8 @@ const footerContent = (
 
 
 
-            <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to logout?" 
-                header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
+            <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="?האם אתה בטוח שאתה רוצה להתנתק" 
+                header="אישור" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
 
 
 

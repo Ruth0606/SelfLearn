@@ -418,7 +418,7 @@ export default function GetPageQ(props) {
 
 {
              !manager&&props.type==3&& <div style={{margin:"3px"}}className="card flex justify-content-center">
-                     <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe"}}label="הגש בוחן" onClick={()=>{setFlag("block");  }} />
+                     <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}}label="הגש בוחן" onClick={()=>{setFlag("block");  }} />
               </div>
             }
 
@@ -426,7 +426,7 @@ export default function GetPageQ(props) {
 
         {
             !manager&&props.type==2&& <div style={{margin:"3px"}}className="card flex justify-content-center">
-                     <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe"}} label="הגש מבחן" onClick={()=>{setFlag("block");}} />
+                     <Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}} label="הגש מבחן" onClick={()=>{setFlag("block");}} />
               </div>
 }
 

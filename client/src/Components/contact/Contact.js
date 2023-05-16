@@ -77,7 +77,8 @@ export default function HookFormDoc() {
         <div style={{ direction: "rtl" }}>  
             <div className="card my-6 mx-6">
                 <h1>יצירת קשר</h1>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex justify-content-center">
+                <form onSubmit={handleSubmit(onSubmit)} className='w-6'>
                     <Toast ref={toast} />
                     <Controller
                         name="blog"
@@ -113,7 +114,7 @@ export default function HookFormDoc() {
                         />
                     </div>
                     {open&& <ContactPopUp open={open} setOpen={setOpen}></ContactPopUp>}
-                </form>
+                </form></div>
             </div></div>
     )
 }

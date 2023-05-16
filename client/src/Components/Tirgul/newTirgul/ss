@@ -1,0 +1,52 @@
+const 
+cities = [
+
+{ class:
+"a", 
+street: 
+"abc" },
+
+{ class:
+"a", 
+street: 
+"def" },
+
+{ class:
+"a", 
+street: 
+"ghd" },
+
+{ class:
+"b", 
+street: 
+"ghk" },
+
+{ class:
+"b", 
+street: 
+"ghk" },
+
+];
+
+
+
+const r = cities.reduce((acc,curr) => {
+const className = curr.class;
+
+//{a:[{ class: "a", street: "abc" }, { class: "a", street: "def" },]}
+
+return { ...acc,[className]: [...(acc[className] || []),curr] };}, {});
+
+
+
+// r = { a: [], b: [] };
+
+
+
+const classesArray = Object.entries(r).map(([className,tirgulim]) => {
+return { className, tirgulim };
+});
+
+
+
+// classesArray=[{className:"a"tirgulim:[]},]

@@ -6,8 +6,8 @@ export default function ContactPopUp(props) {
     // const [visible, setVisible] = useState(false);
     const footerContent = (
         <div>
-            <Button label="No" icon="pi pi-times" onClick={() => props.setOpen(false)} className="p-button-text" />
-            <Button label="Yes" icon="pi pi-check" onClick={() => props.setOpen(false)} autoFocus />
+            <Button label="לא" icon="pi pi-times" onClick={() => props.setOpen(false)} className="p-button-text" />
+            <Button label="כן" icon="pi pi-check" onClick={() => props.setOpen(false)} autoFocus />
         </div>
     );
 

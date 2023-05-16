@@ -60,15 +60,7 @@ export default function Recommendations(props) {
                          נעמה ר. אשדוד
         </p>
         },
-        // {
-        //     name:' אני מאד אלופה'
-        // },
-        // {
-        //     name:' אני מאד בוכה'
-        // },
-        // {
-        //     name:' אני מאד רוקדת'
-        // }
+
     ];
 
 
@@ -131,11 +123,11 @@ export default function Recommendations(props) {
 
     return (<>
 
-        <div className="bg-yellow-500 border-yellow-500 border-top-2  border-bottom-2 pr-8 pl-8 p-8">
+        <div className="bg-yellow-500 border-yellow-500 border-top-2  border-bottom-2 pr-8 pl-8 p-8  ">
 
   
-        <div className="card">
-            <Carousel value={products} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
+        <div className="card flex justify-content-center">
+            <Carousel value={products} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel w-6 justify-self-center" circular
             autoplayInterval={3000} itemTemplate={productTemplate} style={{ direction: "ltr"}}/>
         </div>
         {/* hgsa */}

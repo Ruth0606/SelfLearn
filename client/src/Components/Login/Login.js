@@ -116,7 +116,7 @@ if(localStorage.getItem("user"))
                                 </div>
                             )} />
 
-                            <div className='mt-0 text-xs text-400' style={{ cursor: "pointer",width:"fit-content",textAlign:"center"}} onClick={()=>{ navigate('/ResetPassword')}}>שכחתי את הסיסמה</div>
+                            <div className='mt-0 text-xs text-400 flex justify-content-center' style={{ cursor: "pointer",width:"fit-content",textAlign:"center"}} onClick={()=>{ navigate('/ResetPassword')}}>שכחתי את הסיסמה</div>
 
 
                             <Button type="submit" label="כניסה" className="mt-5" style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}} />

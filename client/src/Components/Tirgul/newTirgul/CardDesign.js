@@ -6,6 +6,9 @@ import "./CardDesign.css"
 import Material from '../Material';
 import GetPageQ from '../GetPageQ';
 import {useNavigate} from "react-router-dom"
+import x from "../../../img/x.png"
+import v from "../../../img/v.png"
+
 
 export default function CardDesign(props) {
     const navigate = useNavigate();
@@ -27,25 +30,35 @@ export default function CardDesign(props) {
             <Card title={` כיתה ${props.class} `} subTitle={`${props.subject}`} header={header} className="md:w-15rem h-15rem" style={{cursor:"pointer",margin:"8px",textAlign:"center",padding:"0px"}}
             onClick={(e)=>{
                 
-                return  <div style={{marginLeft: "10rem"}} >
-            {/* {console.log(flagLevel)} */}
-            {<Material idlevel={props.idlevel} subsubject={props.subsubject}></Material>}
-            {<GetPageQ idlevelorsubject={props.idlevel} type={1} ></GetPageQ>}
-            {/* {flagLevel &&<button onClick={()=><Quiz idlevelorsubject={selectedlevel.idlevel}idsub={selectedSubject.idsubject}leveldescription={selectedlevel.description}></Quiz>}>למעבר לבוחן</button>}     */}
-          {/* {flagLevel && <button onClick={()=> {return navigate("/Quiz/1/3")}}>למעבר לבוחן</button>} */}
-          {/* selectedlevel.idlevel */}
-          {<Button style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}}onClick={()=> {return navigate(`/Quiz/${ props.idlevel}/${props.idsubject}/${props.subsubject}`)}}>למעבר לבוחן</Button>}
-      </div>
+               return navigate(`/Helper/${props.idlevel}/${props.idsubject}/${props.level}/${props.subsubject}`);
     }}>
               <p className="m-0">
                 <span style={{margin:"8px"}}>{`${props.subsubject}`}</span>
                 {`רמה  ${props.level}`}
                 {/* <p style={{cursor:"pointer"}}>כניסה</p> */}
-                <br></br>
-{                props.Did==0&& <span  style={{margin:"8px"}}>הייתי</span>}
+                <span  style={{textAlign:'left'}}>
+                {props.Did==1&& <img
+                    alt="x"
+                    src={x}
+                    height="40"
+                    className="mr-2"
+                    style={{marginBottom:"0px",width:"30px",height:"30px",textAlign:'left'}}
+                    >
+                    </img>}
+                    {props.Did==0&& <img
+                    alt="v"
+                    src={v}
+                    height="60"
+                    className="mr-2"
+                    style={{marginBottom:"0px",width:"30px",height:"30px",textAlign:'left'}}
+                    >
+                    </img>}
+                </span>
+{/* {                props.Did==0&& <span  style={{margin:"8px"}}>הייתי</span>}
 {                props.Did==1&& <span  style={{margin:"8px"}}> לא הייתי</span>
 
-}                </p>
+}           */}
+      </p>
             </Card>
         </div>
     )

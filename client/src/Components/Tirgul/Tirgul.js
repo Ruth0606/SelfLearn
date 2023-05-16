@@ -8,7 +8,7 @@ export default function Tirgul(){
         <>
         
      <AllData></AllData>
-        <SelectedMaterial ></SelectedMaterial>
+        {/* <SelectedMaterial ></SelectedMaterial> */}
 
        {/* <button onClick={()=>navigate("/Quiz")}>למעבר לבוחן</button> */}
 

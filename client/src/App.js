@@ -21,13 +21,14 @@ import SetProfil from './Components/profil/SetProfil';
 import ContactNotRegister from "./Components/contact/ContactNotRegister";
 import ResetPassword from "./Components/login/ResetPassword";
 import ChangePassword from "./Components/profil/ChangePassword";
-
+import SelectedMaterial from "./Components/tirgul/SelectMaterial"
 import { BrowserRouter as Router,Routes,Route, Link } from 'react-router-dom';
 import { useState ,useEffect} from "react";
 import { useNavigate, useLocation } from "react-router-dom"
 
 import './App.css';
 import BackToHome from './Components/Home/BackToHome';
+import Helper from './Components/tirgul/newTirgul/Helper';
 function App() {
   
   const [userId, setUserId] = useState(null);
@@ -83,6 +84,9 @@ function App() {
                  <Route exact path='/ContactNotRegister' element={< ContactNotRegister />}></Route>    
                  <Route exact path='/ResetPassword' element={< ResetPassword />}></Route>
                  <Route exact path='/ChangePassword' element={< ChangePassword />}></Route>
+                 <Route exact path='/Helper/:idlevel/:idsubject/:level/:subsubject' element={< Helper  />}></Route>
+                 <Route exact path='/SelectedMaterial' element={< SelectedMaterial />}></Route>
+
           </Routes>
           </div>
        </Router>

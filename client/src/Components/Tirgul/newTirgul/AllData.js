@@ -2,7 +2,7 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import {useNavigate} from "react-router-dom"
-
+import SelectedMaterial from "../SelectMaterial"
 import React, { useEffect, useState } from "react";
 import { HiOutlineCursorArrowRays } from "react-icons/hi2";
 import { useDataFunctions } from "../../../Hooks/useDataFunctions";
@@ -110,10 +110,10 @@ export default function AllData() {
 
 
 
-                        setData(data)
-                        setFilteredData(data)
-                    // setData(classesArray)
-                    // setFilteredData(classesArray)
+                        // setData(data)
+                        // setFilteredData(data)
+                    setData(classesArray)
+                    setFilteredData(classesArray)
 
                 })
             }
@@ -122,6 +122,17 @@ export default function AllData() {
         ///   }
     }, []);
     const ff=false;
+
+    const [visiblel, setVisiblel] = useState(false);
+  const footerContentLevel = (
+    <div style={{width:"200px"}}>
+            {/* <SelectedMaterial></SelectedMaterial> */}
+
+      {/* <Button label="הוסף" icon="pi pi-check" onClick={(e) => addLevel(e)} autoFocus style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe",border:"#4caffe"}}/> */}
+    </div>
+  );
+
+  
     return (<>
            
         <div className="card flex flex-wrap justify-content-center gap-3" >
@@ -166,22 +177,38 @@ export default function AllData() {
                             return setFilteredData(data)
                         }
                         //  const c=document.getElementById("search").innerText;
-                        const ddd = data.filter((dd) => {
-                            return dd["subsubject.subject.class.description"] == c || dd["subsubject.subject.description"] == c || dd["subsubject.description"] == c || dd.description == c;
-
-                            })
-                        
-                        // const ddd = data.filter((dddd) => {
-                        //     dddd.tirgulim.filter((dd)=>{
+                        // const ddd = data.filter((dd) => {
                         //     return dd["subsubject.subject.class.description"] == c || dd["subsubject.subject.description"] == c || dd["subsubject.description"] == c || dd.description == c;
 
                         //     })
+                        // const f=false;
+                        // const ddd = data.filter((dddd) => {
+                        //      f=false;
+                        //     dddd.tirgulim.filter((dd)=>{
+                        //         if(dd["subsubject.subject.class.description"] == c || dd["subsubject.subject.description"] == c || dd["subsubject.description"] == c || dd.description == c==true)
+                        //     {
+                        //         f=dd["subsubject.subject.class.description"] == c || dd["subsubject.subject.description"] == c || dd["subsubject.description"] == c || dd.description == c==true;
+                        //         return f;
+                        //     }
+                        //     return f
 
+                        //     })
+                        //  })
+
+                        const ddd = data.map((dddd) => {
+                            return {className:dddd.className,tirgulim:dddd.tirgulim.filter((dd)=>{
+                              if(dd["subsubject.subject.class.description"] == c || dd["subsubject.subject.description"] == c || dd["subsubject.description"] == c || dd.description == c==true)
+                              return true;
+
+                              return false;
+                            
+
+                            })}
+                         })
                             //     console.log(dd["subsubject.subject.class.description"]==c||dd["subsubject.subject.description"]==c||dd["subsubject.description"]==c||dd.description==c);
                             //  if( dd["subsubject.subject.class.description"]==c||dd["subsubject.subject.description"]==c||dd["subsubject.description"]==c||dd.description==c)
                             //  return true;
-                        // })
-                        before = ddd[1]["subsubject.subject.class.description"];
+                       console.log(ddd);
 
                         setFilteredData([...ddd]);
                     // })
@@ -189,6 +216,8 @@ export default function AllData() {
               <InputText style={{ textAlign: "right", width: "700px" }} placeholder='חיפוש עפ"י שם כיתה , שם מקצוע , שם נושא או רמה' />
             </span>
         </div><br></br>
+        <div onClick={()=>navigate("/SelectedMaterial")}  style={{direction:"ltr",cursor:"pointer",width:"100px",backgroundColor:"orange",textAlign:'left',height:"100px",borderRadius:"50%"}}><br></br><br></br> למעבר לבחירה יותר ממוקדת </div>
+
       {  filteredData.length > 0 &&<p style={{textAlign:'right',width:"30%",marginRight:"5%",marginBottom:"6px"}}>  הסימון <img
                     alt="x"
                     src={x}
@@ -206,11 +235,32 @@ export default function AllData() {
                     >
                     </img> - כן בקרתם בו</p> }
 
-                    <button onClick={()=>navigate("/SelectedMaterial")}>לבחירה מהירה</button>
+                    {/* <button onClick={()=>navigate("/SelectedMaterial")} >לבחירה מהירה</button> */}
+                    {/* <Button  onClick={() => setVisiblel(true)} className="flex align-items-center justify-content-center font-bold text-white border-round m-2" style={{backgroundColor:"#4caffe" ,borderBlock:"#4caffe", minWidth: "50px", minHeight: "50px" ,border:"#4caffe"}} /> */}
+        <Dialog className="text-center w-30rem" header="" visible={visiblel} style={{ width: '550vw' }} onHide={() => setVisiblel(false)} footer={footerContentLevel}>
+            <div><SelectedMaterial></SelectedMaterial></div>
+        </Dialog>
         {filteredData.length == 0 && <h1 style={{ textAlign: "center" }}>לא נמצאו תוצאות</h1>}
+       { filteredData.length > 0&&
+        <div>
+      {filteredData.map((item,i) => (
+       item&&item.tirgulim&&item.tirgulim.length>0&& <div >
+      {  item.className!=='null'&&<h1 style={{ textAlign: "right",color:"#3d4052" }}>כיתה  {item.className}</h1>}
+          <div class="flex flex-wrap card-container blue-container column-gap-4 row-gap-6">
+            {item.className!=='null'&&item.tirgulim.map((d) => (
+              <div >
+           {d.description !== '' && <CardDesign class={d["subsubject.subject.class.description"]} subject={d["subsubject.subject.description"]} subsubject={d["subsubject.description"]} level={d.description} idlevel={d.idlevel} idsubject={d["subsubject.subject.idsubject"]} Did={d["subsubject.subject.passing_grade"]}></CardDesign>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      ))}
+    </div>}
+            
 
             {/* style={{ display: 'flex', flexDirection: 'row' }} */}
-            <div class="flex flex-wrap card-container blue-container column-gap-4 row-gap-6">
+            {/* <div class="flex flex-wrap card-container blue-container column-gap-4 row-gap-6">
             {filteredData.length > 0 && filteredData.map((d, i) => {
                 //  { if(i%4==0)
                 //     return <div></div>}
@@ -231,7 +281,7 @@ export default function AllData() {
                         </>)
 
                 }
-            })}</div>
+            })}</div> */}
        </>
     )
 }

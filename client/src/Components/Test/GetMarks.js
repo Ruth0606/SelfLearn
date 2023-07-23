@@ -2,9 +2,12 @@ import React, { useEffect, useState,useContext } from "react";
 import { useDataFunctions } from '../../Hooks/useDataFunctions'
 import useGetData from '../../Hooks/useGetData'
 import UserContext from "../user/UserContext";
-
+import test from "../../img/test.png"
+import minTest from "../../img/minTest.png"
+import marks from "../../img/marks.png"
 import "../styles/Test.css"
-
+import { Card } from 'primereact/card';
+import check from "../../img/check.png"
 
 export default function GetMarks(props) {
     const [data, setData] = useState([]);
@@ -12,9 +15,8 @@ export default function GetMarks(props) {
     const { getDataFunc } = useDataFunctions();
 
     function compareFunction1(a,b){
-      
         return b["subject.idsubject"]-a["subject.idsubject"]
-  }
+    }
 
     function compareFunction(a,b){
           return b["level.subsubject.subject.idsubject"]-a["level.subsubject.subject.idsubject"]
@@ -29,7 +31,7 @@ export default function GetMarks(props) {
                         data1=data1.sort(compareFunction1)
                         setData(data1)
                     })
-                },[])
+    },[])
     useEffect(() => {
                 getDataFunc(`question/test/getLevelTestsByIdStudent?idstudent=${idstudent}`)
                     .then((data1) => {
@@ -37,22 +39,53 @@ export default function GetMarks(props) {
                         console.log(data1);
                         setDataQ(data1)
                     })
-                },[])           
+    },[])           
 
-                const s="subject.description"
-     return (
-       <>
-     {data[0]!=null&&<>
-    <h1 className="title">ציונים</h1>
+    const s="subject.description"
+    return (<>
+        {data[0]!=null&&<>
+        {/* <img src={marks} alt="marks" width={"5%"} height={"5%"}/> */}
+        <div className="display-flex">
+        {/* <img src={minTest} alt="minTest" width={"3%"} height={"3%"}/> */}
+        <h1 style={{marginBottom:"50px",fontSize:"60px",marginTop:"0px"}}>ציונים</h1>
 
-    <h2>המבחנים שלי</h2>
-        { data.map((el)=>{return <div>מבחן ב{el[s]}, ציונך : {el["mark"]}</div>})}
+        </div>
+
+        <><img src={minTest} alt="minTest" width={"3%"} height={"3%"}/></>
+        <h2 style={{margin:"0px",marginBottom:"10px"}}>המבחנים שלי</h2>
+      
+        {data.map((el)=>{return <div>מבחן ב{el[s]}, ציונך : {el["mark"]}</div>})}
         <br></br>
-</>}
-{dataQ.length!=0&&<><h2>הבחנים שלי</h2>
-        { dataQ.map((el)=>{return <div> בוחן ב{el["level.subsubject.subject.description"]} - {el["level.subsubject.description"]} - רמה {el["level.description"]}, ציונך : {el["mark"]}</div>})}</>}
+        </>}
+        {dataQ.length!=0&&<><h2>הבחנים שלי</h2>
+        { dataQ.map((el)=>{return <>
+        
+
+      <div className="card m-2 flex justify-content-center">
+            <Card title={`בוחן ב${el["level.subsubject.subject.description"]}`} className="mt-0 p-2 w-5" style={{color:"#059bb4"}}>
+                {/* <p className="m-0">  */}
+                <p style={{margin:"0px",padding:"0px",color:"#036475"}}> {el["level.subsubject.description"]} - רמה {el["level.description"]}, ציונך : {el["mark"]}</p>
+                <img src={check} alt="check" width={"3%"} height={"3%"} style={{marginLeft:"15px",marginTop:"10px",padding:"0px",color:"#036475"}}/>
+                    <>ציונך : {el["mark"]}</>
+            
+                {/* </p> */}
+            </Card>
+        </div> 
     
-    {data[0]==null&&dataQ.length==0&&<h1>אין לך עדין ציונים, התחל להבחן!!!</h1>}
+
+
+
+
+
+           
+
+            </>})}</>}
+    
+        {data[0]==null&&dataQ.length==0&&<>
+            <h1 style={{color:"rgb(68, 75, 112)",fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'}}>אין לך עדין ציונים, התחל להבחן!!!</h1>
+            <img src={test} alt="test" width={"30%"} height={"30%"}/>
+
+            </>}
         </>
      )           
 }

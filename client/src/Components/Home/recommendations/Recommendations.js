@@ -2,8 +2,8 @@ import { Button } from 'primereact/button';
 import { Carousel } from 'primereact/carousel';
 import { Tag } from 'primereact/tag';
 // import { ProductService } from './service/ProductService';
- import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import quote from "../../../img/quote.png"
 export default function Recommendations(props) {
 
 // 
@@ -106,8 +106,9 @@ export default function Recommendations(props) {
 
     const productTemplate = (product) => {
         return (
-            <div className="border-1 surface-border border-round m-2 text-center py-5 px-3" >
+            <div className="surface-border border-round m-2 text-center py-5 px-3" >
                 <div>
+                  <img src={quote} alt="quote" width={"10%"} height={"10%"}/>
                     <h4 className="mb-1">{product.name}</h4>
                     {/* <h6 className="mt-0 mb-3">${product.price}</h6> */}
                     {/* <Tag value={product.inventoryStatus} severity={getSeverity(product)}></Tag> */}
@@ -124,7 +125,7 @@ export default function Recommendations(props) {
     return (<>
 
         <div className="bg-yellow-500 border-yellow-500 border-top-2  border-bottom-2 pr-8 pl-8 p-8  ">
-
+        {/* <img src={quote} alt="quote" width={"8%"} height={"8%"}/> */}
   
         <div className="card flex justify-content-center">
             <Carousel value={products} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel w-6 justify-self-center" circular
